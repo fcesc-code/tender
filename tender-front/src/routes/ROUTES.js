@@ -1,7 +1,7 @@
 const ROUTES = [
   { path: '/', title: 'home', nav: true },
   { path: '/profile', title: 'profile', nav: true },
-  { path: 'some', title:'test', nav: false}
+  { path: '/portfolio', title:'portfolio', nav: true }
 ];
 
 const LINKS = new Map();
