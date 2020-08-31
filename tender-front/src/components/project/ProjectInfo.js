@@ -1,10 +1,13 @@
 import React from 'react';
 
-function ProjectInfo() {
+function ProjectInfo(props) {
+  const project = { ...props.project };
+
   return (
     <div className="projectInfo__container">
-      <h2>Project info highlights</h2>
-      <p>Here some data from the project info</p>
+      <h2>{project.title} - highlights</h2>
+      <h3>status: {project.status}</h3>
+      <p>{project.description}</p>
     </div>
   );
 }
