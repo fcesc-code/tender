@@ -2,11 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 
-function PortfolioProjectItem(props) {
+function ProjectBoard() {
   const project = props.project;
   return (
     <li key={project.title}>
-      <div className="portfolioProjectList__item">
+      <div className="project__board">
         <h3>{project.title}</h3>
         <h2>Status: {project.status}</h2>
         <Link to={project.slug}>Find out more of this project</Link>    
@@ -18,13 +18,4 @@ function PortfolioProjectItem(props) {
   );
 }
 
-export default PortfolioProjectItem;
-
-
-
-
-
-
-
-
-
+export default ProjectBoard;

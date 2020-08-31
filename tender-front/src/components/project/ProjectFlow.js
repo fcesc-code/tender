@@ -1,9 +1,9 @@
 import React from 'react';
 
-function PortfolioFlow() {
+function ProjectFlow() {
   return (
-    <div className='portfolioFlow__container'>
-      <h2>Portfolio Flow</h2>
+    <div className='projectFlow__container'>
+      <h2>Project Flow</h2>
       <ul>
         <li>Data: key date 1</li>
         <li>Data: key date 2</li>
@@ -15,4 +15,4 @@ function PortfolioFlow() {
   );
 }
 
-export default PortfolioFlow;
+export default ProjectFlow;

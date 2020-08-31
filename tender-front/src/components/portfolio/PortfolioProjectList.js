@@ -5,7 +5,7 @@ import portfolio_mock from '../../mockdata-front/portfolio_mock';
 function PortfolioProjectList() {
   const projects = portfolio_mock;
   return (
-    <div className="porfolioProjectList__container">
+    <div className="portfolioProjectList__container">
       <h3>Displaying project list from your portfolio:</h3>
       <ul>
         {projects.map(project => { 
