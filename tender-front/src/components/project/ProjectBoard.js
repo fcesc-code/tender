@@ -1,8 +1,17 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-
+//import { Link } from 'react-router-dom';
 
 function ProjectBoard() {
+  return (
+    <p>Sample for the project board</p>
+  );
+}
+
+export default ProjectBoard;
+
+
+
+/*
   const project = props.project;
   return (
     <li key={project.title}>
@@ -16,6 +25,4 @@ function ProjectBoard() {
       </div>
     </li>
   );
-}
-
-export default ProjectBoard;
+*/

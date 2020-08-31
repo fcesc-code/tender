@@ -7,6 +7,7 @@ import Welcome from './welcome/Welcome';
 import Profile from './profile/Profile';
 import Portfolio from './portfolio/Portfolio';
 import Signup from './signup/Signup';
+import Project from './project/Project';
 import PageNotFound from './PageNotFound';
 
 function App() {
@@ -17,7 +18,7 @@ function App() {
           <Route exact path='/' component={Welcome} />
           <Route path='/profile' component={Profile} />
           <Route path='/portfolio' component={Portfolio} />
-          <Route path='/project/:projectSlug' component={Portfolio} />
+          <Route path='/project/:projectSlug' component={Project} />
           <Route path='/signup' component={Signup} />
           <Route component={PageNotFound} />
         </Switch>
