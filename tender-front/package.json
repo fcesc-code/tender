@@ -1,17 +1,16 @@
 {
-	"name": "tender",
+	"name": "tender-frontend",
 	"version": "1.0.0",
 	"description": "Helping the tendering process",
 	"main": "src/index.js",
 	"private": "true",
 	"scripts": {
-		"start": "set DEBUG=index,index:* & nodemon index.js",
-		"test": "nyc --reporter=lcov --reporter=html --reporter=text mocha **/*spec.js",
+		"start": "react-scripts start",
+		"test": "nyc --reporter=lcov --reporter=html --reporter=text jest",
 		"lint": "eslint . --fix",
 		"build": "react-scripts build",
 		"eject": "react-scripts eject"
 	},
-	"type": "module",
 	"keywords": [
 		"Skylab",
 		"Bootcamp 202007",
@@ -24,26 +23,15 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/fcesc-code/tender.git"
+		"url": "https://github.com/SkylabCoders/francesc-brugarolas-tender-app.git"
 	},
 	"license": "spanish intellectual property law @29th-August-2020",
 	"dependencies": {
 		"@testing-library/jest-dom": "^4.2.4",
 		"@testing-library/react": "^9.5.0",
 		"@testing-library/user-event": "^7.2.1",
-		"body-parser": "^1.19.0",
 		"bootstrap": "^4.5.2",
-		"chalk": "^4.1.0",
-		"create-react-app": "^3.4.1",
-		"debug": "^4.1.1",
-		"express": "^4.17.1",
 		"immer": "^7.0.8",
-		"joi": "^17.2.1",
-		"mongodb": "^3.6.0",
-		"nodemon": "^2.0.4",
-		"passport": "^0.4.1",
-		"passport-local": "^1.0.0",
-		"passport-validator": "^1.2.3",
 		"prop-types": "^15.7.2",
 		"react": "^16.13.1",
 		"react-dom": "^16.13.1",
@@ -56,28 +44,15 @@
 		"typescript": "^4.0.2"
 	},
 	"devDependencies": {
-		"chai": "^4.2.0",
 		"enzyme": "^3.11.0",
 		"enzyme-adapter-react-16": "^1.15.3",
-		"eslint": "^7.7.0",
+		"eslint": "^6.6.0",
 		"eslint-config-airbnb-base": "^14.2.0",
 		"eslint-config-prettier": "^6.11.0",
-		"jest": "^26.4.2",
-		"mocha": "^8.1.3",
+		"jest": "^24.9.0",
 		"nyc": "^15.1.0",
-		"prettier": "^2.1.1",
-		"sinon": "^9.0.3",
-		"sinon-chai": "^3.5.0",
-		"supertest": "^4.0.2"
+		"prettier": "^2.1.1"
 	},
-	"engines": {
-    "node": ">=8"
-  },
-  "babel": {
-    "presets": [
-      "babel-preset-react-app"
-    ]
-  },
 	"browserslist": {
 		"production": [
 			">0.2%",
@@ -105,20 +80,6 @@
 				"lines": 80,
 				"statements": -10
 			}
-		}
-	},
-	"nodemonconfig": {
-		"restartable": "rs",
-		"ignore": [
-			"node_modules/**/node_modules",
-			".eslintrc",
-			".gitignore",
-			"sonar-project.properties",
-			"README.md"
-		],
-		"delay": 2000,
-		"env": {
-			"PORT": 3010
 		}
 	}
 }
