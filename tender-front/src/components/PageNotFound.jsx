@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import ROUTES from './../routes/ROUTES';
+import ROUTES from '../routes/ROUTES';
 
 function PageNotFound() {
   return (
