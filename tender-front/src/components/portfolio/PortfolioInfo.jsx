@@ -5,11 +5,11 @@ function PortfolioInfo() {
   const projects = portfolio_mock;
   return (
     <div className="portfolioInfo__container">
-      <h2>Info</h2>
+      <h2>YOUR PROJECTS</h2>
       <p>
-        You have {projects.length} projects in your portfolio:&#32
-        {projects.filter(project => project.status === 'ongoing').length} ongoing,&nbsp
-        {projects.filter(project => project.status === 'planned').length} planned,&nbsp
+        You have {projects.length} projects in your portfolio:
+        {projects.filter(project => project.status === 'ongoing').length} ongoing,
+        {projects.filter(project => project.status === 'planned').length} planned,
         {projects.filter(project => project.status === 'closed').length} closed.
       </p>
     </div>

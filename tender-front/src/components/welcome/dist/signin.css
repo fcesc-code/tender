@@ -1,0 +1,23 @@
+.signIn {
+  width: 20rem;
+  background-color: #eeeeee;
+  border-radius: 0.7rem;
+}
+
+.signInForm {
+  width: 100%;
+  padding: 1rem 1.5rem;
+}
+
+.btn-centered {
+  min-width: 8rem;
+  display: block;
+  background: teal;
+  color: white;
+  padding: 0.5rem 1.5rem;
+  margin: 0.8rem auto 0.8rem auto;
+}
+.btn-centered:hover, .btn-centered:focus, .btn-centered:active {
+  background: coral;
+  color: #111111;
+}

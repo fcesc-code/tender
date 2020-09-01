@@ -6,7 +6,6 @@ function PortfolioProjectList() {
   const projects = portfolio_mock;
   return (
     <div className="portfolioProjectList__container">
-      <h3>Displaying your projects</h3>
       <ul>
         {projects.map(project => { 
           return (<PortfolioProjectItem project={project}/>)

@@ -22,7 +22,8 @@ const portfolio_mock = [
       currency: 'eur',
       completion: '2020-10-17T12:00:00.000Z'
     },
-    slug: 'house-spanish-wells-bahamas'
+    slug: 'house-spanish-wells-bahamas',
+    img: 'https://images.pexels.com/photos/2506990/pexels-photo-2506990.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
   },
   {
     _id: '2x8jfa449',
@@ -47,7 +48,8 @@ const portfolio_mock = [
       currency: 'eur',
       completion: '2021-11-25T12:00:00.000Z'
     },
-    slug: 'hacienda-refurbishment'
+    slug: 'hacienda-refurbishment',
+    img: 'https://images.pexels.com/photos/1109541/pexels-photo-1109541.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
   },
   {
     _id: '2x56y0349',
@@ -72,7 +74,8 @@ const portfolio_mock = [
       currency: 'chf',
       completion: '2019-10-28T13:44:05.840Z'
     },
-    slug: 'winter-house-vals'
+    slug: 'winter-house-vals',
+    img: 'https://images.pexels.com/photos/147411/italy-mountains-dawn-daybreak-147411.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
   },
   {
     _id: '2iu0f0349',
@@ -97,7 +100,8 @@ const portfolio_mock = [
       currency: 'usd',
       completion: '2020-12-06T12:00:00.000Z'
     },
-    slug: 'cottage-bali'
+    slug: 'cottage-bali',
+    img: 'https://images.pexels.com/photos/1179156/pexels-photo-1179156.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
   }
 ]
 
