@@ -1,10 +1,11 @@
 import React from 'react';
+import './footer.sass';
 
 function Footer() {
   return (
-    <div className="Footer">
+    <footer>
       <p>Francesc Brugarolas - <a href='https://www.skylabcoders.com/'>Skylab</a> bootcamp 202007</p>
-    </div>
+    </footer>
   );
 }
 

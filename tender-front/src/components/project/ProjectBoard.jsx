@@ -3,7 +3,7 @@ import React from 'react';
 
 function ProjectBoard() {
   return (
-    <p>Sample for the project board</p>
+    <h3>Sample for the project board</h3>
   );
 }
 

@@ -13,7 +13,8 @@ function Signin() {
           <label for='password'>Password</label>
           <input id='password' type='password' name='password' value='' minlenght='8' maxlength='32' class='form-control' placeholder='password' required></input>
         </div>
-        <button type='submit' className='btn btn-default'>Sign in</button>
+        <button type='submit' className='btn btn-default btn-centered'>Sign in</button>
+        <button type='submit' className='btn btn-default btn-centered'>Register</button>
       </form>
     </div>
   );
