@@ -1,4 +1,6 @@
 const express = require('express');
+const methods = require('./../controllers/listRoutesController');
+const itemMethods = require('./../controllers/itemRoutesController');
 
 function router(Model){
   const testRoutes = express.Router();
