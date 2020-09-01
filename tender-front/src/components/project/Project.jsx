@@ -6,6 +6,7 @@ import ProjectBudgetTab from './ProjectBudgetTab';
 import ProjectBudgetBoard from './ProjectBudgetBoard';
 import ProjectBoard from './ProjectBoard';
 import portfolio_mock from '../../mockdata-front/portfolio_mock';
+import './project.sass';
 
 function Project() {
   let urlQuery = useRouteMatch()
@@ -36,9 +37,9 @@ function Project() {
 
   return (
     <div className='project__container'>
-      <h2>Welcome to your Project</h2>
-      <div className='project__side'></div>
+      <div className='project__side'>
         <ProjectFlow />
+      </div>
       <div className='project__main'>
         <ProjectInfo project={project} />
         <ProjectBudgetTab />

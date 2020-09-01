@@ -1,12 +1,13 @@
 import React from 'react';
 import Nav from './Nav';
+import './header.sass';
 
 function Header() {
   return (
-    <div className="Header">
+    <header>
+      <h1 className='pageTitle'>TENDER</h1>
       <Nav />
-      <p>Header dummy component</p>
-    </div>
+    </header>
   );
 }
 

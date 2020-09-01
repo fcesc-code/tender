@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Switch } from "react-router-dom";
-import './App.css';
+import './App.sass';
 import Header from './common/Header';
 import Footer from './common/Footer';
 import Welcome from './welcome/Welcome';
@@ -12,16 +12,18 @@ import PageNotFound from './PageNotFound';
 
 function App() {
   return (
-    <div className="main">
+    <div className="main__container">
       <Header />
-        <Switch>
-          <Route exact path='/' component={Welcome} />
-          <Route path='/profile' component={Profile} />
-          <Route path='/portfolio' component={Portfolio} />
-          <Route path='/project/:projectSlug' component={Project} />
-          <Route path='/signup' component={Signup} />
-          <Route component={PageNotFound} />
-        </Switch>
+        <main>
+          <Switch>
+            <Route exact path='/' component={Welcome} />
+            <Route path='/profile' component={Profile} />
+            <Route path='/portfolio' component={Portfolio} />
+            <Route path='/project/:projectSlug' component={Project} />
+            <Route path='/signup' component={Signup} />
+            <Route component={PageNotFound} />
+          </Switch>
+        </main>
       <Footer />
     </div>
   );
