@@ -1,10 +1,10 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import Footer from './Footer';
+import Profile from './Profile';
 
-const tree = renderer.create(<Footer />).toJSON();
+const tree = renderer.create(<Profile />).toJSON();
 
-describe('Footer component snapshot', () => {
+describe('Profile component snapshot', () => {
     test('should match', () => {
         expect(tree).toMatchSnapshot();
     })

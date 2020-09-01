@@ -1,10 +1,10 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import Footer from './Footer';
+import PageNotFound from './PageNotFound';
 
-const tree = renderer.create(<Footer />).toJSON();
+const tree = renderer.create(<PageNotFound />).toJSON();
 
-describe('Footer component snapshot', () => {
+describe('PageNotFound component snapshot', () => {
     test('should match', () => {
         expect(tree).toMatchSnapshot();
     })
