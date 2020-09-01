@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ROUTES from './../../routes/ROUTES';
+import ROUTES from '../../routes/ROUTES';
 import { Link } from 'react-router-dom';
 import './nav.sass';
 

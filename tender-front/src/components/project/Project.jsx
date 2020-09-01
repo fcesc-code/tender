@@ -5,7 +5,7 @@ import ProjectFlow from './ProjectFlow';
 import ProjectBudgetTab from './ProjectBudgetTab';
 import ProjectBudgetBoard from './ProjectBudgetBoard';
 import ProjectBoard from './ProjectBoard';
-import portfolio_mock from './../../mockdata-front/portfolio_mock';
+import portfolio_mock from '../../mockdata-front/portfolio_mock';
 
 function Project() {
   let urlQuery = useRouteMatch()
