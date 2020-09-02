@@ -6,15 +6,16 @@ import ProjectBudgetTab from './ProjectBudgetTab';
 import ProjectBudgetBoard from './ProjectBudgetBoard';
 import ProjectBoard from './ProjectBoard';
 import portfolio_mock from '../../mockdata-front/portfolio_mock';
+import portfolio_timeline_mock from './../../mockdata-front/portfolio_timeline_mock';
 import './project.sass';
 
 function Project() {
   let urlQuery = useRouteMatch()
   let urlSlug = urlQuery.params.projectSlug;
-  const [ slug, setSlug ] = useState(urlSlug);
-  const [ view ] = useState('all');
+  const [ slug ] = useState(urlSlug);
+  const [ view ] = useState('another');
   const [ project, setProject ] = useState(undefined);
-  console.log('AQUI', urlSlug);
+  const timeline = portfolio_timeline_mock;
 
   useEffect(() => {
     if( project === undefined){ setProject(loadProjectBySlug(slug)) }
@@ -38,7 +39,7 @@ function Project() {
   return (
     <div className='project__container'>
       <div className='project__side'>
-        <ProjectFlow />
+        <ProjectFlow timeline={timeline}/>
       </div>
       <div className='project__main'>
         <ProjectInfo project={project} />

@@ -22,7 +22,7 @@ function PortfolioInfo() {
           <TuneIcon htmlColor='#ffffff' />
         </div>
         <div className='icon'>
-          <SortByAlphaIcon htmlColor='#ffffff' />
+          <SortByAlphaIcon htmlColor='#ffffff' /> 
         </div>
       </div>
     </div>
