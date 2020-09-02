@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import project_mock from '../../mockdata-front/project_mock';
 import './projectBudgetTab.sass';
+import AddIcon from '@material-ui/icons/Add';
 
 function ProjectProjectTab() {
   const projects = project_mock;
@@ -15,6 +16,7 @@ function ProjectProjectTab() {
         {projects.map(budget => { 
           return (<li><Link to={budget.slug}>{budget.title}</Link></li>)
         })}
+        <li><AddIcon /></li>
       </ul>      
     </div>
   );

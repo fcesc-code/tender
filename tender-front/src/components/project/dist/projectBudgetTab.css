@@ -1,0 +1,31 @@
+.projectBudgetList__tab {
+  width: 100%;
+}
+.projectBudgetList__tab > ul {
+  width: 100%;
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: stretch;
+}
+.projectBudgetList__tab > ul > li {
+  flex-grow: 1;
+  display: inline-block;
+  margin: 0;
+  background-color: #011627;
+  color: white;
+  padding: 0.5rem 1.5rem;
+  line-height: 2rem;
+  text-align: center;
+}
+.projectBudgetList__tab > ul > li:hover {
+  background-color: #e53d00;
+}
+.projectBudgetList__tab > ul > li > a {
+  color: white;
+}
+.projectBudgetList__tab > ul > li > a:hover {
+  color: white;
+  text-decoration: underline 1px dotted white;
+}

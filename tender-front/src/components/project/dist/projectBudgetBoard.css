@@ -1,0 +1,55 @@
+.portfolioProjectList__item {
+  width: 100%;
+  background-color: transparent;
+  border-radius: 0.7rem;
+  border: 1px dashed teal;
+  margin-top: 1rem;
+  padding: 1rem;
+}
+.portfolioProjectList__item:hover {
+  background-color: #f6f6f6;
+  box-shadow: 2px 5px 6px 0px rgba(34, 34, 34, 0.5);
+}
+
+.item__title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.item__title > h3 {
+  color: teal;
+  font-weight: normal;
+}
+
+.project__budgetBoard {
+  width: 100%;
+}
+
+.board__table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.board__table > thead > tr {
+  background-color: #06aed5;
+}
+.board__table > thead > tr > th {
+  font-weight: bold;
+  margin: 0.2rem 1rem;
+  padding: 0.3rem 1rem;
+  color: white;
+}
+.board__table > tbody > tr:nth-child(odd) {
+  background-color: #f6f6f6;
+}
+.board__table > tbody > tr:hover {
+  background-color: #fde74c;
+  color: black;
+}
+.board__table > tbody > tr > td {
+  margin: 0.2rem 1rem;
+  padding: 0.2rem 1rem;
+}
+.board__table > tbody > tr > td:hover {
+  font-weight: bold;
+}
