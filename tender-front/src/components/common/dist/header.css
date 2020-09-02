@@ -1,13 +1,12 @@
-@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@800&display=swap");
 header {
   display: flex;
   flex-shrink: 0;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1.5rem;
+  margin: 1rem 0;
 }
 header > h1 {
-  font-style: "Playfair Display", Arial, serif;
-  color: teal;
+  font-family: "Times New Roman", serif;
+  color: #011627;
 }

@@ -12,7 +12,7 @@ function Nav() {
     <div className="nav">
       <ul>
         {menu.map(route => { 
-          return (<li key={route.title}><Link to={route.path}>{route.title}</Link></li>)
+          return (<li key={route.title}><Link to={route.path}>{route.title.toUpperCase()}</Link></li>)
         })}
       </ul>
     </div>
