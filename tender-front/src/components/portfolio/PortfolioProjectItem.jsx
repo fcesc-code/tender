@@ -8,7 +8,7 @@ function PortfolioProjectItem(props) {
   const project = props.project;
   return (
     <li key={project.title}>
-      <div className='portfolioProjectList__item'>
+      <div className='portfolioProjList__item'>
         <div className='item__content'>
           <div className='item__img'>
             <img className='img--insideCard' alt='' src={project.img} />
