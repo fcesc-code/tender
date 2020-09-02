@@ -1,6 +1,7 @@
 import React from 'react';
 import PortfolioProjectItem from './PortfolioProjectItem';
 import portfolio_mock from '../../mockdata-front/portfolio_mock';
+import './portfolioProjectList.sass';
 
 function PortfolioProjectList() {
   const projects = portfolio_mock;

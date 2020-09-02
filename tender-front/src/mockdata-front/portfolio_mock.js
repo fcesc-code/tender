@@ -2,14 +2,16 @@ const portfolio_mock = [
   {
     _id: '2x8jf0349',
     title: 'House in Bahamas',
-    description: 'This project is to build a super house in the Bahamas islands, with a private pier and an infinity pool',
+    description: 'Luxury home in the Bahamas islands. With a stylish minimalist design, space flows through the patios to allow a fluid spatial experience. Equipped with an infinity pool as well as a private pier.',
     status: 'ongoing',
     location: {
       country: 'Bahamas',
       region: 'Spanish Wells Island',
       city: 'Spanish Wells',
       street: 'South St 34',
-      postalCode: 'XK40G'
+      postalCode: 'XK40G',
+      latitude: 225.5431905,
+      longitude: -76.7682582
     },
     estimate: {
       budget: 20000000,
@@ -35,7 +37,9 @@ const portfolio_mock = [
       region: 'Mexico Distrito Federal',
       city: 'Monterey',
       street: 'Calle Cocoyoc 138',
-      postalCode: '2352C'
+      postalCode: '2352C',
+      latitude: 25.6825931,
+      longitude: -100.2895959
     },
     estimate: {
       budget: 580000000,
@@ -54,14 +58,16 @@ const portfolio_mock = [
   {
     _id: '2x56y0349',
     title: 'Winter house in Switzerland',
-    description: 'Winter house on top of the hill pike, close to the alps',
+    description: 'Winter house on top of the hill pike, at the heart of the Alps in the most pure Schwarzenbald style.',
     status: 'closed',
     location: {
       country: 'Switzerland',
       region: 'Wallis',
       city: 'Vals',
       street: 'Poststrasse 7',
-      postalCode: '7132'
+      postalCode: '7132',
+      latitude: 46.618097,
+      longitude: 9.1756607
     },
     estimate: {
       budget: 200340000,
@@ -80,14 +86,16 @@ const portfolio_mock = [
   {
     _id: '2iu0f0349',
     title: 'Cottage in Bali',
-    description: 'This project is to build a small cottage in Bali for the weekends.',
+    description: 'Small cottage on a breathtaking beach in Bali for family weekends.',
     status: 'ongoing',
     location: {
       country: 'Indonesia',
       region: 'Bali Island',
       city: 'Singaraja',
       street: 'Jl. Sudirman Gg. 3, 12',
-      postalCode: 'BA46'
+      postalCode: 'BA46',
+      latitude: -8.5387865,
+      longitude: 114.9914523
     },
     estimate: {
       budget: 1000000,

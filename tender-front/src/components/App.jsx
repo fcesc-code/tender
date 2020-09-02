@@ -14,16 +14,16 @@ function App() {
   return (
     <div className="main__container">
       <Header />
-        <main>
-          <Switch>
-            <Route exact path='/' component={Welcome} />
-            <Route path='/profile' component={Profile} />
-            <Route path='/portfolio' component={Portfolio} />
-            <Route path='/project/:projectSlug' component={Project} />
-            <Route path='/signup' component={Signup} />
-            <Route component={PageNotFound} />
-          </Switch>
-        </main>
+      <main>
+        <Switch>
+          <Route exact path='/' component={Welcome} />
+          <Route path='/profile' component={Profile} />
+          <Route path='/portfolio' component={Portfolio} />
+          <Route path='/project/:projectSlug' component={Project} />
+          <Route path='/signup' component={Signup} />
+          <Route component={PageNotFound} />
+        </Switch>
+      </main>
       <Footer />
     </div>
   );
