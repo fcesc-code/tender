@@ -57,7 +57,7 @@ function router(collection){
       (async function returnList(){
         try {
           const data = await db(collection).findToArray(query);
-          res.data = data;
+          req.data = data;
           next();
         } catch (error) {
           res.send(error);

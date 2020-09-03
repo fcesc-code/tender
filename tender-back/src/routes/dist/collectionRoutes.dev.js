@@ -66,7 +66,7 @@ function router(collection) {
 
             case 3:
               data = _context.sent;
-              res.data = data;
+              req.data = data;
               next();
               _context.next = 11;
               break;

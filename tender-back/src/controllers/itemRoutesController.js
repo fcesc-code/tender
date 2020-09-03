@@ -4,7 +4,7 @@ const debug = require('debug')('server:itemRoutersController.js');
 
 function itemMethods(collection){
 	function readOne (req, res) {  // this works
-		const { data } = res
+		const { data } = req;
 		res.status(200);
 		res.json(data); // change to json
 	};

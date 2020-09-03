@@ -10,7 +10,7 @@ var debug = require('debug')('server:itemRoutersController.js');
 function itemMethods(collection) {
   function readOne(req, res) {
     // this works
-    var data = res.data;
+    var data = req.data;
     res.status(200);
     res.json(data); // change to json
   }

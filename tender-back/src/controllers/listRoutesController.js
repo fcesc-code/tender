@@ -20,8 +20,10 @@ function listMethods(collection){
     (async function returnList(){
       try {
         const data = await db(collection).findToArray(query);
-        res.send(data);
+        res.status(200);
+        res.json(data);
       } catch (error) {
+        res.status(404);
         res.send(error);
       }
     })();

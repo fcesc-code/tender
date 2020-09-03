@@ -34,21 +34,23 @@ function listMethods(collection) {
 
             case 3:
               data = _context.sent;
-              res.send(data);
-              _context.next = 10;
+              res.status(200);
+              res.json(data);
+              _context.next = 12;
               break;
 
-            case 7:
-              _context.prev = 7;
+            case 8:
+              _context.prev = 8;
               _context.t0 = _context["catch"](0);
+              res.status(404);
               res.send(_context.t0);
 
-            case 10:
+            case 12:
             case "end":
               return _context.stop();
           }
         }
-      }, null, null, [[0, 7]]);
+      }, null, null, [[0, 8]]);
     })();
   }
 
