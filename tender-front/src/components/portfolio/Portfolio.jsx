@@ -5,7 +5,7 @@ import PortfolioProjectList from './PortfolioProjectList';
 import './portfolio.sass';
 import portfolio_timeline_mock from './../../mockdata-front/portfolio_timeline_mock';
 
-function Portfolio() {
+function Portfolio({ projects, ...props }) {
   const timeline = portfolio_timeline_mock; // remove once real data is feeded - state is in component that renders timeline, not here (would force rerender of other components)
 
   return (
