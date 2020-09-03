@@ -15,18 +15,7 @@ function itemMethods(collection) {
     res.json(data); // change to json
   }
 
-  ; // function updateItemName (req, res) {
-  // 	const { item } = req;
-  // 	if (req && req.body && req.body.name) { 
-  // 		item.name = req.body.name 
-  // 	}
-  // 	item.save((error) => {
-  // 		if (error) { res.send(error);	}
-  // 		res.status(204);
-  // 		res.json(item);
-  // 	});
-  // };
-  // function updateMany (req, res) {
+  ; // function updateMany (req, res) {
   // 	const { item } = req;
   // 	if (req.body._id) {
   // 		delete req.body._id;
