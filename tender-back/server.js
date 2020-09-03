@@ -2,19 +2,16 @@ const express = require('express');
 const debug = require('debug')('server:server.js');
 const chalk = require('chalk');
 const bodyParser = require('body-parser');
+const DATABASE_CONFIG = require('./database/DATABASE_CONFIG');
 
-const port = process.env.PORT || 3010;
+const PORT = process.env.PORT || 3010;
 const server = express();
 
 server.use(bodyParser.urlencoded({ extended: true }));
 server.use(bodyParser.json());
 
-// const testRoutes = require('./src/routes/testRoutes')();
+const projectRoutes = require('./src/routes/collectionRoutes')(DATABASE_CONFIG.projectsCollection);
 
-// server.use('/api/test', testRoutes);
+server.use('/api/projects', projectRoutes);
 
-server.get('/', (req, res)=>{
-  res.send('Server is working !');
-});
-
-server.listen(port, ()=>{debug(`Listening on port, ${chalk.blueBright(port)}`)});
+server.listen(PORT, ()=>{ console.log(`Server listening on port ${chalk.blueBright(PORT)}`)});

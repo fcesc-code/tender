@@ -1,5 +1,8 @@
+const db = require('../modules/modules.js');
+const debug = require('debug')('server:listRoutersController.js');
 
-function methods(Model){
+function listMethods(collection){
+
   function create (req, res) {
     const item = new Model(req.body);
     if(!req.body.name){ 
@@ -11,20 +14,26 @@ function methods(Model){
       res.json(item);
     }
   }
-  function getList (req, res) {
-    const query = {};
-    if  (req && req.query && req.query.id) {
-      query.id = req.query.id;
-    } else if (req && req.query && req.query.name) {
-      query.name = req.query.name; 
-    }
-    Model.find(query, (err, items)=>{
-      if (err) { return res.send(err) }
-      res.status(200);
-      return res.json(items);
-    })
-  };
-  return { create, getList };
-}
 
-module.exports = methods;
+  function getListByUser (req, res) { // this works
+    const query = { 'clearance.user_id': req.params.userId };
+    (async function returnList(){
+      try {
+        const data = await db(collection).findToArray(query);
+        res.send(data);
+      } catch (error) {
+        res.send(error);
+      }
+    })();
+  }
+  
+  return { create, getListByUser };
+
+};
+
+module.exports = listMethods;
+
+
+// dbConnection(DATABASE_CONFIG.projectsCollection)
+//   .then(data=>{console.log(data)})
+//   .catch(err=>{console.log(err)});

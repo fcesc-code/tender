@@ -1,12 +1,24 @@
-function itemMethods(){
-	function readOne (req, res) {
-		const { item } = req;
-		res.status(200);
-		res.json(item);
+const { ObjectID } = require('mongodb');
+const db = require('../modules/modules.js');
+const debug = require('debug')('server:itemRoutersController.js');
+
+function itemMethods(collection){
+	function readOne (req, res) {  // this works
+		const query = { '_id': ObjectID(req.params.projectId) };
+		console.log('calling with query', query);
+		(async function returnList(){
+      try {
+				const data = await db(collection).findToArray(query);
+				res.status(200);
+				res.send(data);
+				//json(data); change when functionality works
+      } catch (error) {
+        res.send(error);
+      }
+    })();
 	};
 	
 	function updateItemName (req, res) {
-		
 		const { item } = req;
 
 		if (req && req.body && req.body.name) { 
@@ -48,7 +60,21 @@ function itemMethods(){
 		});
 	};
 
-	return  { remove, updateMany, updateItemName, readOne }
+	function readOneByUser (req, res) {
+		const query = { 'clearance.user_id': req.params.userId, '_id': req.params.projId };
+		(async function returnList(){
+      try {
+				const data = await db(collection).findToArray(query);
+				res.status(200);
+				res.send(data);
+				//json(data); change when functionality works
+      } catch (error) {
+        res.send(error);
+      }
+    })();
+	};
+
+	return  { remove, updateMany, updateItemName, readOne, readOneByUser }
 }
 
 

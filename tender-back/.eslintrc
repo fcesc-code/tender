@@ -20,7 +20,6 @@
 	},
 	"rules": {
 		"eslint-disable-next-line": "react-hooks/exhaustive-deps",
-		"no-console": "off",
 		"no-underscore-dangle": "off",
 		"no-unused-vars": "warn",
 		"react/prop-types": "warn"
