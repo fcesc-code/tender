@@ -5,21 +5,17 @@ var db = require('../modules/modules.js');
 var debug = require('debug')('server:listRoutersController.js');
 
 function listMethods(collection) {
-  function create(req, res) {
-    var item = new Model(req.body);
-
-    if (!req.body.name) {
-      res.status(400);
-      res.send('Item name is required');
-    } else {
-      item.save(function (err) {
-        res.send(err);
-      });
-      res.status(201);
-      res.json(item);
-    }
-  }
-
+  // function create (req, res) {
+  //   const item = new Model(req.body);
+  //   if(!req.body.name){ 
+  //     res.status(400);
+  //     res.send('Item name is required');
+  //   } else {
+  //     item.save((err)=>{res.send(err)});
+  //     res.status(201);
+  //     res.json(item);
+  //   }
+  // }
   function getListByUser(req, res) {
     // this works
     var query = {
@@ -38,26 +34,27 @@ function listMethods(collection) {
 
             case 3:
               data = _context.sent;
-              res.send(data);
-              _context.next = 10;
+              res.status(200);
+              res.json(data);
+              _context.next = 12;
               break;
 
-            case 7:
-              _context.prev = 7;
+            case 8:
+              _context.prev = 8;
               _context.t0 = _context["catch"](0);
+              res.status(404);
               res.send(_context.t0);
 
-            case 10:
+            case 12:
             case "end":
               return _context.stop();
           }
         }
-      }, null, null, [[0, 7]]);
+      }, null, null, [[0, 8]]);
     })();
   }
 
   return {
-    create: create,
     getListByUser: getListByUser
   };
 }
