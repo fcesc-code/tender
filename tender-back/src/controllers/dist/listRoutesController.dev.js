@@ -5,21 +5,17 @@ var db = require('../modules/modules.js');
 var debug = require('debug')('server:listRoutersController.js');
 
 function listMethods(collection) {
-  function create(req, res) {
-    var item = new Model(req.body);
-
-    if (!req.body.name) {
-      res.status(400);
-      res.send('Item name is required');
-    } else {
-      item.save(function (err) {
-        res.send(err);
-      });
-      res.status(201);
-      res.json(item);
-    }
-  }
-
+  // function create (req, res) {
+  //   const item = new Model(req.body);
+  //   if(!req.body.name){ 
+  //     res.status(400);
+  //     res.send('Item name is required');
+  //   } else {
+  //     item.save((err)=>{res.send(err)});
+  //     res.status(201);
+  //     res.json(item);
+  //   }
+  // }
   function getListByUser(req, res) {
     // this works
     var query = {
@@ -57,7 +53,6 @@ function listMethods(collection) {
   }
 
   return {
-    create: create,
     getListByUser: getListByUser
   };
 }

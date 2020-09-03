@@ -1,9 +1,10 @@
 const express = require('express');
 const listMethods = require('../controllers/listRoutesController');
 const itemMethods = require('../controllers/itemRoutesController');
+const { ObjectID } = require('mongodb');
+const db = require('../modules/modules.js');
 
 function router(collection){
-  debugger;
   const collectionRoutes = express.Router();
 
   // collectionRoutes
@@ -50,9 +51,24 @@ function router(collection){
     .get(listMethods(collection).getListByUser);
 
   collectionRoutes
+    .all('/:projectId', (req, res, next)=>{
+      const query = { '_id': ObjectID(req.params.projectId) };
+      // console.log('calling with query', query);
+      (async function returnList(){
+        try {
+          const data = await db(collection).findToArray(query);
+          res.data = data;
+          next();
+        } catch (error) {
+          res.send(error);
+        }
+      })();
+    })
+
+  collectionRoutes
     .route('/:projectId')
-    .patch(itemMethods(collection).updateMany) // not operative yet
-    .delete(itemMethods(collection).remove) // not operative yet
+    //.patch(itemMethods(collection).updateMany) // not operative yet
+    //.delete(itemMethods(collection).remove) // not operative yet
     .get(itemMethods(collection).readOne);
 
   return collectionRoutes;
