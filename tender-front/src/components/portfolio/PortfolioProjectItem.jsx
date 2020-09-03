@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './portfolioProjectItem.sass';
-import LINKS from '../../routes/ROUTES';
 import PlaceIcon from '@material-ui/icons/Place';
 
 function PortfolioProjectItem(props) {

@@ -19,7 +19,7 @@ function Project() {
 
   useEffect(() => {
     if( project === undefined){ setProject(loadProjectBySlug(slug)) }
-  });
+  }, [project, slug]);
 
   function loadProjectBySlug(slug){
     // to be removed

@@ -1,11 +1,13 @@
 import ACTION_TYPES from './ACTION_TYPES';
 import { beginApiCall, apiCallError } from './apiStatusActions';
+import api from '../../api/api';
 
 export function loadProjectsFlowFromPortfolioByUserIdSuccess(projects) {
   return { type: ACTION_TYPES.PORTFOLIO.LOAD_PORTFOLIO_FLOW, payload: projects };
 }
 
-export function loadProjectsInfoFromPortfolioByUserIdSuccess(projects) {
+export function loadProjectsByUserId_success(projects) {
+  console.log('dispatching action LOAD_PORTFOLIO_INFO');
   return { type: ACTION_TYPES.PORTFOLIO.LOAD_PORTFOLIO_INFO, payload: projects };
 }
 
@@ -24,13 +26,16 @@ export function loadPortfolioFlowByUserId(_userid) {
   };
 }
 
-export function loadPortfolioInfoByUserId(_userid) {
+export function loadProjectsByUserId(_userId) { 
+  console.log('loadProjectsByUserId action called with userID', _userId);
   return function(dispatch) {
+    console.log('callback from loadProjectsByUserId action called');
     dispatch(beginApiCall());
-    return api
-      .getProjectsInfoFromPortfolioByUserId(_userid)
+    console.log(api());
+    return api().getProjectsByUserId(_userId)
       .then(projects => {
-        dispatch(loadProjectsInfoFromPortfolioByUserIdSuccess(projects));
+        console.log('data received from api into action, and ready for dispatch', projects);
+        dispatch(loadProjectsByUserId_success(projects));
       })
       .catch(error => {
         dispatch(apiCallError(error));
