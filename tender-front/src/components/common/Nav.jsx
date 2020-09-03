@@ -3,8 +3,6 @@ import ROUTES from '../../routes/ROUTES';
 import { Link } from 'react-router-dom';
 import './nav.sass';
 
-console.log('FIRST', ROUTES);
-
 function Nav() {
   const [menu] = useState(ROUTES.ROUTES.filter(route=>route.nav)); 
 
