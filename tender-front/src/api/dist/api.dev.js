@@ -11,10 +11,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 
 function api() {
   function getProjectsByUserId(_userId) {
+    console.log('getProjects called');
     (0, _axios["default"])({
-      method: 'get',
-      url: "localhost:3010/api/projects/byUser/".concat(_userId)
+      method: 'GET',
+      url: "http://localhost:3010/api/projects/byUser/".concat(_userId)
     }).then(function (data) {
+      console.log('DATA from db arrived at front - api');
       return data;
     })["catch"](function (error) {
       console.log(error);

@@ -10,7 +10,7 @@ import Signup from './signup/Signup';
 import Project from './project/Project';
 import PageNotFound from './PageNotFound';
 
-function App() {
+function App(props) {
   return (
     <>
       <div className="main__container">
@@ -21,7 +21,7 @@ function App() {
           <Switch>
             <Route exact path='/' component={Welcome} />
             <Route path='/profile' component={Profile} />
-            <Route path='/portfolio' component={Portfolio} />
+            <Route path='/portfolio'><Portfolio store={props.store} /></Route>
             <Route path='/project/:projectSlug' component={Project} />
             <Route path='/signup' component={Signup} />
             <Route component={PageNotFound} />

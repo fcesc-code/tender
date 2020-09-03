@@ -12,11 +12,11 @@ const store = configureStore();
 
 ReactDOM.render(
   <React.StrictMode>
-    <ReduxProvider store={store}></ReduxProvider>
+    <ReduxProvider store={store}>
       <Router>
-        <App />
+        <App store={store}/>
       </Router>
-    <ReduxProvider/>
+    </ReduxProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

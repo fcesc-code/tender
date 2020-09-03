@@ -7,6 +7,7 @@ export function loadProjectsFlowFromPortfolioByUserIdSuccess(projects) {
 }
 
 export function loadProjectsByUserId_success(projects) {
+  console.log('dispatching action LOAD_PORTFOLIO_INFO');
   return { type: ACTION_TYPES.PORTFOLIO.LOAD_PORTFOLIO_INFO, payload: projects };
 }
 
@@ -25,12 +26,15 @@ export function loadPortfolioFlowByUserId(_userid) {
   };
 }
 
-export function loadProjectsByUserId(_userid) { 
+export function loadProjectsByUserId(_userId) { 
+  console.log('loadProjectsByUserId action called with userID', _userId);
   return function(dispatch) {
+    console.log('callback from loadProjectsByUserId action called');
     dispatch(beginApiCall());
-    return api
-      .getProjectsByUserId(_userid)
+    console.log(api());
+    return api().getProjectsByUserId(_userId)
       .then(projects => {
+        console.log('data received from api into action, and ready for dispatch', projects);
         dispatch(loadProjectsByUserId_success(projects));
       })
       .catch(error => {

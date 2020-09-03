@@ -8,6 +8,7 @@ export default function portfolioReducer(state = initialState.portfolio, action)
     case ACTION_TYPES.PORTFOLIO.LOAD_PORTFOLIO_FLOW:
       return action.payload;
     case ACTION_TYPES.PORTFOLIO.LOAD_PORTFOLIO_INFO:
+      console.log('portfolio reducer entered with', action.payload);
       return action.payload;
     default:
       return state;

@@ -3,11 +3,13 @@ import axios from 'axios';
 function api(){
 
   function getProjectsByUserId(_userId) {
+    console.log('getProjects called');
     axios({
-      method: 'get',
-      url: `localhost:3010/api/projects/byUser/${_userId}`
+      method: 'GET',
+      url: `http://localhost:3010/api/projects/byUser/${_userId}`
       })
-      .then( (data)=>{
+      .then( data=>{
+        console.log('DATA from db arrived at front - api')
         return data;
       })
       .catch(error=>{
