@@ -28,6 +28,7 @@
 	},
 	"license": "spanish intellectual property law @29th-August-2020",
 	"dependencies": {
+		"@auth0/auth0-react": "^1.0.0",
 		"@material-ui/core": "^4.11.0",
 		"@material-ui/icons": "^4.9.1",
 		"@material-ui/lab": "^4.0.0-alpha.56",
