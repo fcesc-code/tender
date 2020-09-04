@@ -1,7 +1,10 @@
 import React from 'react';
 import './signin.sass';
+import LoginButton from './LoginButton';
+import LogoutButton from './LogoutButton';
 
 function Signin() {
+
   return (
     <div className="signIn">
       <form className='signInForm' action='' method='POST'>
@@ -17,7 +20,8 @@ function Signin() {
             <input id='password' type='password' name='password' value='' minlenght='8' maxLength='32' className='form-control' placeholder='password' required onChange={()=>{}}></input>
           </label>
         </div>
-        <button type='submit' className='btn btn-default btn-centered'>Sign in</button>
+        <LoginButton/>
+        <LogoutButton/>
         <button type='submit' className='btn btn-default btn-centered'>Register</button>
       </form>
     </div>
