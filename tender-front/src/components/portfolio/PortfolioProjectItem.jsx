@@ -10,7 +10,7 @@ function PortfolioProjectItem(props) {
       <div className='portfolioProjList__item'>
         <div className='item__content'>
           <div className='item__img'>
-            <img className='img--insideCard' alt='' src={project.img} />
+            <img className='img--insideCard' alt='' src={project.img.replace(' ', '')} />
           </div>
           <div className='item__text'>
             <div className='item__title'>

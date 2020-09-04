@@ -30,12 +30,13 @@ export function loadProjectsByUserId(_userId) {
   console.log('loadProjectsByUserId action called with userID', _userId);
   return function(dispatch) {
     console.log('callback from loadProjectsByUserId action called');
+    console.log('%cbeginApiCall dispatched', 'color: green');
     dispatch(beginApiCall());
     console.log(api());
     return api().getProjectsByUserId(_userId)
       .then(projects => {
         console.log('data received from api into action, and ready for dispatch', projects);
-        dispatch(loadProjectsByUserId_success(projects));
+        dispatch(loadProjectsByUserId_success(projects.data));
       })
       .catch(error => {
         dispatch(apiCallError(error));

@@ -10,11 +10,13 @@ export default function apiCallStatusReducer(
   action
 ) {
   if (action.type === ACTION_TYPES.API.BEGIN_API_CALL) {
+    console.log('%capiCallSattusReducer incremented state + 1', 'color: green');
     return state + 1;
   } else if (
     action.type === ACTION_TYPES.API.ERROR_API_CALL ||
     actionTypeEndsInSuccess(action.type)
   ) {
+    console.log('%capiCallSattusReducer decremented state -1 1', 'color: green');
     return state - 1;
   }
 

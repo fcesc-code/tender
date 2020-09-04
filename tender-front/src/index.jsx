@@ -6,17 +6,17 @@ import './index.css';
 import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 import configureStore from './redux/configureStore';
-import { Provider as ReduxProvider } from 'react-redux';
+import { Provider } from 'react-redux';
 
-const store = configureStore();
+export const store = configureStore();
 
 ReactDOM.render(
   <React.StrictMode>
-    <ReduxProvider store={store}>
+    <Provider store={store}>
       <Router>
-        <App store={store}/>
+        <App />
       </Router>
-    </ReduxProvider>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
