@@ -19,7 +19,9 @@ function listMethods(collection){
     const query = { 'clearance.user_id': req.params.userId };
     (async function returnList(){
       try {
+        console.log('URRAH, ha entrado en la callback');
         const data = await db(collection).findToArray(query);
+        console.log('DATOS RECIBIDOS DE LA BD', data);
         res.status(200);
         res.json(data);
       } catch (error) {

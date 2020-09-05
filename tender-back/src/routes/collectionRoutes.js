@@ -48,6 +48,10 @@ function router(collection){
 
   collectionRoutes
     .route('/byUser/:userId')
+    .all((req, res, next)=>{
+      console.log('AQUI LA PUNYETERA REQ', req.headers);
+      next();
+    })
     .get(listMethods(collection).getListByUser);
 
   collectionRoutes

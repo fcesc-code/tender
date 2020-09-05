@@ -48,7 +48,10 @@ function router(collection) {
   //     })
   //   });
 
-  collectionRoutes.route('/byUser/:userId').get(listMethods(collection).getListByUser);
+  collectionRoutes.route('/byUser/:userId').all(function (req, res, next) {
+    console.log('AQUI LA PUNYETERA REQ', req.headers);
+    next();
+  }).get(listMethods(collection).getListByUser);
   collectionRoutes.all('/:projectId', function (req, res, next) {
     var query = {
       '_id': ObjectID(req.params.projectId)
