@@ -1,4 +1,10 @@
-const ACTION_TYPES = {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+var ACTION_TYPES = {
   PROJECT: {
     CREATE_PROJECT: 'CREATE_PROJECT',
     UPDATE_PROJECT: 'UPDATE_PROJECT',
@@ -48,9 +54,10 @@ const ACTION_TYPES = {
     BEGIN_API_CALL: 'BEGIN_API_CALL',
     ERROR_API_CALL: 'ERROR_API_CALL'
   }
-}
-
+};
 /* All delete operations are by default optimistic deletes */
+
 /* All calculate operations are by default optimistic calculations */
 
-export default ACTION_TYPES;
+var _default = ACTION_TYPES;
+exports["default"] = _default;

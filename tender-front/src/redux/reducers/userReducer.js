@@ -11,6 +11,10 @@ export default function userReducer(state = initialState.user, action) {
       return {};
     case ACTION_TYPES.USER.LOAD_USER:
       return action.payload;
+    case ACTION_TYPES.USER.SAVE_CURRENT_USER:
+      return { ...state, currentUser: action.payload };
+    case ACTION_TYPES.USER.REMOVE_CURRENT_USER:
+      return { ...state, currentUser: undefined };
     default:
       return state;
   }

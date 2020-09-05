@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import CONNECTION_CONFIG from './../../auth0/CONNECTION_CONFIG';
 import LogoutButton from './../welcome/LogoutButton';
+import { saveCurrentUser } from './../../redux/actions/userActions';
+import { store } from '../../index';
 
 const Profile = () => {
   const { user, isAuthenticated, getAccessTokenSilently } = useAuth0();
@@ -27,17 +29,19 @@ const Profile = () => {
   
         const { user_metadata } = await metadataResponse.json();
 
-        // console.log('%cAQUI METADATA TOKEN - dentro de useEffect', 'color: green', accessToken)
+        console.log('%cAQUI METADATA TOKEN - dentro de useEffect', 'color: green', accessToken)
         if(accessToken){
-          // console.log('%cha entrado en el if !', 'color: red');
-          // console.log('%ccomprobamos accesToken DENTRO del if', 'color: red', accessToken);
+          console.log('%cha entrado en el if !', 'color: red');
+          console.log('%ccomprobamos accesToken DENTRO del if', 'color: red', accessToken);
+          store.dispatch(saveCurrentUser(user.sub));
           sessionStorage.setItem('USER_TOKEN', JSON.stringify(accessToken));
+          
         }
         
-        // console.log('%cAQUI EL USER DE LOS COJONES', 'color: blue', user);
-        // console.log('%cAQUI EL USER_ID único', 'color: blue', user.sub);
-        
         setUserMetadata(user_metadata);
+        console.log('%cAQUI EL USER DE LOS COJONES', 'color: blue', user);
+        console.log('%cAQUI EL USER_ID único', 'color: blue', user.sub);
+        
       } catch (error) {
         console.log(error.message);
       }

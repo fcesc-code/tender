@@ -1,22 +1,28 @@
-import ACTION_TYPES from './ACTION_TYPES';
-// import { beginApiCall, apiCallError } from './apiStatusActions';
+"use strict";
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.saveCurrentUser = saveCurrentUser;
+exports.removeCurrentUser = removeCurrentUser;
+
+var _ACTION_TYPES = _interopRequireDefault(require("./ACTION_TYPES"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+// import { beginApiCall, apiCallError } from './apiStatusActions';
 // export function createUserSuccess(user) {
 //   return { type: ACTION_TYPES.USER.CREATE_USER, payload: user };
 // }
-
 // export function updateUserSuccess(user) {
 //   return { type: ACTION_TYPES.USER.UPDATE_USER, payload: user };
 // }
-
 // export function deleteUserOptimistic(_id) {
 //   return { type: ACTION_TYPES.USER.DELETE_USER, payload: _id };
 // }
-
 // export function loadUserByIdSuccess(_id) {
 //   return { type: ACTION_TYPES.USER.LOAD_USER, payload: _id };
 // }
-
 // export function loadUserById(_id) {
 //   return function(dispatch) {
 //     dispatch(beginApiCall());
@@ -31,7 +37,6 @@ import ACTION_TYPES from './ACTION_TYPES';
 //       });
 //   };
 // }
-
 // export function saveUser(user) {
 //   return function(dispatch, getState) {
 //     dispatch(beginApiCall());
@@ -48,34 +53,28 @@ import ACTION_TYPES from './ACTION_TYPES';
 //       });
 //   };
 // }
-
 // export function deleteUser(user) {
 //   return function(dispatch) {
 //     dispatch(deleteUserOptimistic(user));
 //     return api.deleteUser(user,_id);
 //   };
 // }
-
-export function saveCurrentUser(uniqueUserId) {
-  return function(dispatch) {
+function saveCurrentUser(uniqueUserId) {
+  return function (dispatch) {
     dispatch({
-      type: ACTION_TYPES.USER.SAVE_CURRENT_USER,
+      type: _ACTION_TYPES["default"].USER.SAVE_CURRENT_USER,
       payload: uniqueUserId
     });
   };
 }
 
-export function removeCurrentUser() {
-  return function(dispatch) {
+function removeCurrentUser() {
+  return function (dispatch) {
     dispatch({
-      type: ACTION_TYPES.USER.REMOVE_CURRENT_USER
+      type: _ACTION_TYPES["default"].USER.REMOVE_CURRENT_USER
     });
   };
-}
-
-
-
-// ACTION_TYPES.USER.CREATE_USER
+} // ACTION_TYPES.USER.CREATE_USER
 // ACTION_TYPES.USER.UPDATE_USER
 // ACTION_TYPES.USER.DELETE_USER
 // ACTION_TYPES.USER.LOAD_USER
