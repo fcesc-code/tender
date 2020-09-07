@@ -22,17 +22,16 @@ function userReducer() {
   var action = arguments.length > 1 ? arguments[1] : undefined;
 
   switch (action.type) {
-    case _ACTION_TYPES["default"].USER.CREATE_USER:
-      return action.payload;
-
     case _ACTION_TYPES["default"].USER.UPDATE_USER:
-      return action.payload;
+      return _objectSpread({}, state, {
+        userToUpdate: action.payload
+      });
 
     case _ACTION_TYPES["default"].USER.DELETE_USER:
-      return {};
-
-    case _ACTION_TYPES["default"].USER.LOAD_USER:
-      return action.payload;
+      return _objectSpread({}, state, {
+        userToUpdate: undefined,
+        userToDelete: action.payload
+      });
 
     case _ACTION_TYPES["default"].USER.SAVE_CURRENT_USER:
       return _objectSpread({}, state, {

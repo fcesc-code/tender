@@ -86,7 +86,7 @@ export function existCurrentUser(user) {
       .then( response => { 
         console.log('api front function was called successfully and will dispatch this payload:', response)
         dispatch({
-          type: ACTION_TYPES.USER.REMOVE_CURRENT_USER,
+          type: ACTION_TYPES.USER.EXIST_CURRENT_USER,
           payload: response
         });
       })

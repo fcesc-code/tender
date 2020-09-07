@@ -21,12 +21,13 @@ function router(collection){
           console.log('DATOS RECIBIDOS DE LA BD:', data, typeof(data), data instanceof Array, data.length, data.join('').length);
           let result;
           if (data.length === 0){
-            console.log('El usuario no existe. Lanzando nueva consulta a la BBDD');
+            console.log('El usuario no existe en la BBDD. Lanzando nueva consulta a la BBDD');
             const user = req.body.user;
             await db(collection).create( { name: user.name, email: user.email, user_sub: uniqueId  } );
-            result = 'successful';
+            result = { type: 'new', created: 'successful', signupForm: false };
           } else {
-            console.log('El usuario sí existe');
+            console.log('El usuario sí existe en la BBDD.');
+            result = { type: 'recurrent' }
           }
           res.status(200);
           res.json(result);

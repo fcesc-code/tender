@@ -4,7 +4,6 @@ import portfolio from './portfolioReducer';
 import budget from './budgetReducer';
 import position from './positionReducer';
 import user from './userReducer';
-import auth from './authReducer';
 import apiStatus from './apiStatusReducer';
 
 const rootReducer = combineReducers({
@@ -13,7 +12,6 @@ const rootReducer = combineReducers({
   budget,
   position,
   user,
-  auth,
   apiStatus
 });
 

@@ -38,7 +38,7 @@ function router(collection) {
                 break;
               }
 
-              console.log('El usuario no existe. Lanzando nueva consulta a la BBDD');
+              console.log('El usuario no existe en la BBDD. Lanzando nueva consulta a la BBDD');
               user = req.body.user;
               _context.next = 11;
               return regeneratorRuntime.awrap(db(collection).create({
@@ -48,31 +48,38 @@ function router(collection) {
               }));
 
             case 11:
-              result = 'successful';
-              _context.next = 15;
+              result = {
+                type: 'new',
+                created: 'successful',
+                signupForm: false
+              };
+              _context.next = 16;
               break;
 
             case 14:
-              console.log('El usuario sí existe');
+              console.log('El usuario sí existe en la BBDD.');
+              result = {
+                type: 'recurrent'
+              };
 
-            case 15:
+            case 16:
               res.status(200);
               res.json(result);
-              _context.next = 23;
+              _context.next = 24;
               break;
 
-            case 19:
-              _context.prev = 19;
+            case 20:
+              _context.prev = 20;
               _context.t0 = _context["catch"](0);
               res.status(404);
               res.send(_context.t0);
 
-            case 23:
+            case 24:
             case "end":
               return _context.stop();
           }
         }
-      }, null, null, [[0, 19]]);
+      }, null, null, [[0, 20]]);
     })();
   });
   return userRoutes;

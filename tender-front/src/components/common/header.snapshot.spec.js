@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import Footer from './Header';
+import Header from './Header';
 
 const tree = renderer.create(<Header />).toJSON();
 

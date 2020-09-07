@@ -5,6 +5,8 @@ const REDUCERS_INITIAL_STATE = {
   position: {},
   user: {},
   auth: {},
+  currentUser: '',
+  currentUserType: '',
   apiCallsInProgress: 0
 };
 
