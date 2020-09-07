@@ -9,6 +9,7 @@ import Portfolio from './portfolio/Portfolio';
 import Signup from './signup/Signup';
 import Project from './project/Project';
 import PageNotFound from './PageNotFound';
+import PageNotAuthorised from './PageNotAuthorised';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
             <Route path='/portfolio' component={Portfolio} />
             <Route path='/project/:projectSlug' component={Project} />
             <Route path='/signup' component={Signup} />
+            <Route exact path='/401' component={PageNotAuthorised} />
             <Route component={PageNotFound} />
           </Switch>
         </main>

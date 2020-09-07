@@ -42,9 +42,17 @@ server.get('/authorized', function (req, res) {
   res.send('Secured Resource');
 });
 
-var projectRoutes = require('./src/routes/collectionRoutes')(DATABASE_CONFIG.projectsCollection);
+var projectRoutes = require('./src/routes/projectRoutes')(DATABASE_CONFIG.projectsCollection);
 
 server.use('/api/projects', jwtCheck, projectRoutes);
+
+var budgetRoutes = require('./src/routes/budgetRoutes')(DATABASE_CONFIG.budgetsCollection);
+
+server.use('/api/budgets', jwtCheck, budgetRoutes);
+
+var quotationRoutes = require('./src/routes/quotationRoutes')(DATABASE_CONFIG.quotationsCollection);
+
+server.use('/api/quotations', jwtCheck, quotationRoutes);
 
 var userRoutes = require('./src/routes/userRoutes')(DATABASE_CONFIG.usersCollection);
 

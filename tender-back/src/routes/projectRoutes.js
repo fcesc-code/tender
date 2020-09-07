@@ -1,13 +1,13 @@
 const express = require('express');
-const listMethods = require('../controllers/listRoutesController');
+const listByUserMethods = require('../controllers/listByUserController');
 const itemMethods = require('../controllers/itemRoutesController');
 const { ObjectID } = require('mongodb');
 const db = require('../modules/modules.js');
 
 function router(collection){
-  const collectionRoutes = express.Router();
+  const projectRoutes = express.Router();
 
-  // collectionRoutes
+  // projectRoutes
   //   .all('/:itemId', (req, res, next) => {
   //     Model.findById(req.params.itemId, (error, item) =>{
   //       if (error) { res.send(error) }
@@ -20,18 +20,18 @@ function router(collection){
   //     })
   //   });
 
-  // collectionRoutes
+  // projectRoutes
   //   .route('/:itemId')
   //   .patch(itemMethods(collection).updateMany)
   //   .delete(itemMethods(collection).remove)
   //   .get(itemMethods(collection).readOne);
 
-  // collectionRoutes
+  // projectRoutes
   //   .route('byUser/')
   //   .post(listMethods(collection).create)
   //   .get(listMethods(collection).getList);
 
-  // collectionRoutes
+  // projectRoutes
   //   .all('byUser/:userId', (req, res, next) => {
   //     console.log('ENTERING ALL');
   //     Model.findById(req.params.userId, (error, user) =>{
@@ -46,15 +46,11 @@ function router(collection){
   //     })
   //   });
 
-  collectionRoutes
+  projectRoutes
     .route('/byUser/:userId')
-    .all((req, res, next)=>{
-      console.log('AQUI LA PUNYETERA REQ', req.headers);
-      next();
-    })
-    .get(listMethods(collection).getListByUser);
+    .get(listByUserMethods(collection).getListByUser);
 
-  collectionRoutes
+  projectRoutes
     .all('/:projectId', (req, res, next)=>{
       const query = { '_id': ObjectID(req.params.projectId) };
       // console.log('calling with query', query);
@@ -69,13 +65,13 @@ function router(collection){
       })();
     })
 
-  collectionRoutes
+  projectRoutes
     .route('/:projectId')
     //.patch(itemMethods(collection).updateMany) // not operative yet
     //.delete(itemMethods(collection).remove) // not operative yet
     .get(itemMethods(collection).readOne);
 
-  return collectionRoutes;
+  return projectRoutes;
 }
 
 module.exports = router;

@@ -19,11 +19,13 @@ function router(collection){
           console.log('URRAH, ha entrado en la callback listo para llamar a la bd');
           const data = await db(collection).findToArray(query);
           console.log('DATOS RECIBIDOS DE LA BD:', data, typeof(data), data instanceof Array, data.length, data.join('').length);
+
           let result;
           if (data.length === 0){
             console.log('El usuario no existe en la BBDD. Lanzando nueva consulta a la BBDD');
             const user = req.body.user;
-            await db(collection).create( { name: user.name, email: user.email, user_sub: uniqueId  } );
+            
+            await db(collection).createOne( { name: user.name, email: user.email, user_sub: uniqueId  } );
             result = { type: 'new', created: 'successful', signupForm: false };
           } else {
             console.log('El usuario sí existe en la BBDD.');
