@@ -1,4 +1,7 @@
 import ACTION_TYPES from './ACTION_TYPES';
+import { beginApiCall, apiCallError } from './apiStatusActions';
+import api from '../../api/api';
+
 // import { beginApiCall, apiCallError } from './apiStatusActions';
 
 // export function createUserSuccess(user) {
@@ -73,7 +76,27 @@ export function removeCurrentUser() {
   };
 }
 
-
+export function existCurrentUser(user) {
+  console.log('entering exist current user action')
+  return function(dispatch) {
+    console.log('entering callback of the exist current user action')
+    dispatch(beginApiCall());
+    return api()
+      .checkIsNewUser(user)
+      .then( response => { 
+        console.log('api front function was called successfully and will dispatch this payload:', response)
+        dispatch({
+          type: ACTION_TYPES.USER.REMOVE_CURRENT_USER,
+          payload: response
+        });
+      })
+      .catch(error => {
+        console.log('an error was thrown in the api call of the exist current user function');
+        dispatch(apiCallError(error));
+        throw error;
+      });
+  };
+}
 
 // ACTION_TYPES.USER.CREATE_USER
 // ACTION_TYPES.USER.UPDATE_USER

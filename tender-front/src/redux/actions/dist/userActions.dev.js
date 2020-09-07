@@ -5,8 +5,13 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.saveCurrentUser = saveCurrentUser;
 exports.removeCurrentUser = removeCurrentUser;
+exports.existCurrentUser = existCurrentUser;
 
 var _ACTION_TYPES = _interopRequireDefault(require("./ACTION_TYPES"));
+
+var _apiStatusActions = require("./apiStatusActions");
+
+var _api = _interopRequireDefault(require("../../api/api"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -72,6 +77,25 @@ function removeCurrentUser() {
   return function (dispatch) {
     dispatch({
       type: _ACTION_TYPES["default"].USER.REMOVE_CURRENT_USER
+    });
+  };
+}
+
+function existCurrentUser(user) {
+  console.log('entering exist current user action');
+  return function (dispatch) {
+    console.log('entering callback of the exist current user action');
+    dispatch((0, _apiStatusActions.beginApiCall)());
+    return (0, _api["default"])().checkIsNewUser(user).then(function (response) {
+      console.log('api front function was called successfully and will dispatch this payload:', response);
+      dispatch({
+        type: _ACTION_TYPES["default"].USER.REMOVE_CURRENT_USER,
+        payload: response
+      });
+    })["catch"](function (error) {
+      console.log('an error was thrown in the api call of the exist current user function');
+      dispatch((0, _apiStatusActions.apiCallError)(error));
+      throw error;
     });
   };
 } // ACTION_TYPES.USER.CREATE_USER

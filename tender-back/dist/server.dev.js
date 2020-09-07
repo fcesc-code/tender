@@ -45,6 +45,10 @@ server.get('/authorized', function (req, res) {
 var projectRoutes = require('./src/routes/collectionRoutes')(DATABASE_CONFIG.projectsCollection);
 
 server.use('/api/projects', jwtCheck, projectRoutes);
+
+var userRoutes = require('./src/routes/userRoutes')(DATABASE_CONFIG.usersCollection);
+
+server.use('/api/users', jwtCheck, userRoutes);
 server.listen(PORT, function () {
   console.log("Server listening on port ".concat(chalk.blueBright(PORT)));
 });

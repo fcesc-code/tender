@@ -44,6 +44,11 @@ function userReducer() {
         currentUser: undefined
       });
 
+    case _ACTION_TYPES["default"].USER.EXIST_CURRENT_USER:
+      return _objectSpread({}, state, {
+        currentUserType: action.payload
+      });
+
     default:
       return state;
   }

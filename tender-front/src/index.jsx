@@ -17,7 +17,7 @@ ReactDOM.render(
     <Auth0Provider
       domain={CONNECTION_CONFIG.domain}
       clientId={CONNECTION_CONFIG.clientId}
-      redirectUri={window.location.origin}
+      redirectUri={`${window.location.origin}/profile`}
       audience={CONNECTION_CONFIG.audience}
       scope={CONNECTION_CONFIG.scope}
       useRefreshTokens={true}

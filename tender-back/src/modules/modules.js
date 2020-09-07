@@ -24,7 +24,26 @@ function db(selectedCollection){
     }
   }
 
-  return { findToArray }
+  async function create(entity){
+    console.log('create function of modules -back- was called')
+    let client;
+    try {
+      client = await MongoClient.connect(DATABASE_CONFIG.url, { useNewUrlParser: true, useUnifiedTopology: true });
+      const collection = client.db(DATABASE_CONFIG.dbName).collection(selectedCollection);
+      console.log('database is being called (insrtOne) with:', entity);
+      await collection.insertOne(entity);
+      const now = new Date();
+      console.log(`${chalk.blueBright(`${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}:${now.getMilliseconds()} backend: `)}${chalk.greenBright('module.js:')} Create method called successfully`);
+      return 'successfully';
+    } catch (error) {
+      console.log('backend: FAILED CALL create f in db f, modules.js - ERROR: ', error);
+      debug(error);
+    } finally {
+      await client.close();
+    }
+  }
+
+  return { findToArray, create }
 }
 
 module.exports = db;

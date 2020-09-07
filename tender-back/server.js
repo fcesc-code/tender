@@ -37,4 +37,8 @@ const projectRoutes = require('./src/routes/collectionRoutes')(DATABASE_CONFIG.p
 
 server.use('/api/projects', jwtCheck, projectRoutes);
 
+const userRoutes = require('./src/routes/userRoutes')(DATABASE_CONFIG.usersCollection);
+
+server.use('/api/users', jwtCheck, userRoutes);
+
 server.listen(PORT, ()=>{ console.log(`Server listening on port ${chalk.blueBright(PORT)}`)});
