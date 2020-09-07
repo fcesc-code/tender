@@ -60,20 +60,16 @@ import api from '../../api/api';
 // }
 
 export function saveCurrentUser(uniqueUserId) {
-  return function(dispatch) {
-    dispatch({
+  return {
       type: ACTION_TYPES.USER.SAVE_CURRENT_USER,
       payload: uniqueUserId
-    });
-  };
+    }
 }
 
 export function removeCurrentUser() {
-  return function(dispatch) {
-    dispatch({
+  return {
       type: ACTION_TYPES.USER.REMOVE_CURRENT_USER
-    });
-  };
+    }
 }
 
 export function existCurrentUser(user) {

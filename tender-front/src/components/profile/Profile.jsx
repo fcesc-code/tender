@@ -39,7 +39,7 @@ const Profile = () => {
         }
         
         setUserMetadata(user_metadata);
-        console.log('%cAQUI EL USER DE LOS COJONES', 'color: blue', user);
+        console.log('%cAQUI EL USER DE LAS NARICES', 'color: blue', user);
         // console.log('%cAQUI EL USER_ID único', 'color: blue', user.sub);
         
       } catch (error) {
