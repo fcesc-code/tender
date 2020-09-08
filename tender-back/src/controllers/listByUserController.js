@@ -1,5 +1,5 @@
 const db = require('../modules/modules.js');
-const debug = require('debug')('server:budgetController.js');
+const debug = require('debug')('server:listByUserController.js');
 
 function listByUserMethods(collection){
   function getListByUser (req, res) { // this works

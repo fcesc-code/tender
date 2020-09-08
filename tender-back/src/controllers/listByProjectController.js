@@ -1,5 +1,5 @@
 const db = require('../modules/modules.js');
-const debug = require('debug')('server:budgetController.js');
+const debug = require('debug')('server:listByProjectController.js');
 
 function listByProjectMethods(collection){
   function getListByProject (req, res) { // this works
