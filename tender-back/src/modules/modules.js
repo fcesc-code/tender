@@ -1,6 +1,7 @@
 const DATABASE_CONFIG = require('../../database/DATABASE_CONFIG');
 const { MongoClient } = require('mongodb');
 const debug = require('debug')('server:modules.js');
+const chalk = require('chalk');
 const printTimeLog = require('./../utils/printTimeLog');
 
 function db(selectedCollection){

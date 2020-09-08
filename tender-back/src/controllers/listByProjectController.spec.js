@@ -1,5 +1,5 @@
 const sinon = require('sinon');
-const listByUserMethods = require('./listByUserController');
+const listByProjectMethods = require('./listByProjectController');
 const chai = require('chai');
 const sinonChai = require('sinon-chai');
 const expect = chai.expect;
@@ -7,9 +7,9 @@ chai.use(sinonChai);
 const DATABASE_CONFIG = require('../../database/DATABASE_CONFIG');
 const db = require('../modules/modules');
 
-describe('LIST BY USER Controller test set', ()=>{
+describe('LIST BY PROJECT Controller test set', ()=>{
 
-  describe('GET LIST BY USER function', ()=>{
+  describe('GET LIST BY PROJECT function', ()=>{
 
     afterEach(()=>{
       sinon.restore();
@@ -19,7 +19,7 @@ describe('LIST BY USER Controller test set', ()=>{
       const collection = DATABASE_CONFIG.projectsCollection;
       const req = {
         params: {
-          id: '5f4faca78b141a231040efad'
+          id: '5f4fae868b141a231040efb5'
         }
       }
       const res = {
@@ -36,7 +36,7 @@ describe('LIST BY USER Controller test set', ()=>{
 
       const jsonSpy = sinon.spy(res, 'status');
 
-      const methods = listByUserMethods(collection);
+      const methods = listByProjectMethods(collection);
       methods.getListByUser(req, res);
 
       expect(jsonSpy).to.have.been.calledWith(200);
@@ -48,8 +48,7 @@ describe('LIST BY USER Controller test set', ()=>{
     const dbFake = sinon.fake.throws(new Error);
     sinon.replace(db, 'findToArray', dbFake);
 
-    expect(()=>{listByUserMethods(DATABASE_CONFIG.projectsCollection).getListByUser().to.throw()});
+    expect(()=>{listByProjectMethods(DATABASE_CONFIG.projectsCollection).getListByUser().to.throw()});
   });
 
 })
-
