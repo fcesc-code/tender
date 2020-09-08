@@ -7,7 +7,7 @@ import { store } from '../../index';
 
 const Profile = () => {
   const { user, isAuthenticated, getAccessTokenSilently } = useAuth0();
-  const [userMetadata, setUserMetadata] = useState(null);
+  const [ userMetadata, setUserMetadata ] = useState(null);
   
   useEffect(() => {
     const getUserMetadata = async () => {

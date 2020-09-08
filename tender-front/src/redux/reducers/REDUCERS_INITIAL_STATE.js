@@ -4,7 +4,6 @@ const REDUCERS_INITIAL_STATE = {
   budget: {},
   quotation: {},
   user: {},
-  auth: {},
   currentUser: '',
   currentUserType: '',
   apiCallsInProgress: 0

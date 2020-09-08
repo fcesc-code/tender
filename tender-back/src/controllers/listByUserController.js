@@ -18,7 +18,7 @@ function listByUserMethods(collection){
 
   function getFlowByUser(req, res){
     const query = { 'clearance.user_id': req.params.userId };
-    const projection = { events: 1 };
+    const projection = { "events": 1 };
     (async function returnList(){
       try {
         const data = await db(collection).findProjectionToArray(query, projection);

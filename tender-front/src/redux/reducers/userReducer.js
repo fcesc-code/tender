@@ -8,11 +8,11 @@ export default function userReducer(state = REDUCERS_INITIAL_STATE.user, action 
     case ACTION_TYPES.USER.DELETE_USER:
       return { ...state, userToUpdate: undefined, userToDelete: action.payload };
     case ACTION_TYPES.USER.SAVE_CURRENT_USER:
-      return { ...state, currentUser: action.payload };
+      return { ...state, user: { currentUser: action.payload } };
     case ACTION_TYPES.USER.REMOVE_CURRENT_USER:
-      return { ...state, currentUser: undefined };
+      return { ...state, user: { currentUser: undefined } };
     case ACTION_TYPES.USER.EXIST_CURRENT_USER:
-      return { ...state, currentUserType: action.payload }
+      return { ...state, user: { currentUserType: action.payload } };
     default:
       return state;
   }
