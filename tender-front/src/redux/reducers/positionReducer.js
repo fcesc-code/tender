@@ -1,7 +1,7 @@
 import ACTION_TYPES from './../actions/ACTION_TYPES';
-import initialState from './initialState';
+import REDUCERS_INITIAL_STATE from './REDUCERS_INITIAL_STATE';
 
-export default function positionReducer(state = initialState.position, action) {
+export default function positionReducer(state = REDUCERS_INITIAL_STATE.position, action = ACTION_TYPES.DEFAULT) {
   switch (action.type) {
     case ACTION_TYPES.POSITION.CREATE_POSITION:
       return action.payload;

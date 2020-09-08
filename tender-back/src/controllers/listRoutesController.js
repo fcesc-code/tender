@@ -33,7 +33,7 @@ function listMethods(collection){
   
   return { getListByUser };
 
-};
+}
 
 module.exports = listMethods;
 

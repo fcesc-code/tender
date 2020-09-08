@@ -7,7 +7,7 @@ function itemMethods(collection){
 		const { data } = req;
 		res.status(200);
 		res.json(data); // change to json
-	};
+	}
 	
 	// function updateMany (req, res) {
 	// 	const { item } = req;

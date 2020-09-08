@@ -4,7 +4,7 @@ import portfolio from './portfolioReducer';
 import budget from './budgetReducer';
 import position from './positionReducer';
 import user from './userReducer';
-import apiStatus from './apiStatusReducer';
+import apiStatus from './apiCallStatusReducer';
 
 const rootReducer = combineReducers({
   project,

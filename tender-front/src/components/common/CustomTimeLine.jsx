@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './customTimeLine.sass';
 
-function PortfolioTimeline(props) {
+function CustomTimeline(props) {
   const [timeline] = useState(props.timeline);
 
   return (
@@ -28,4 +28,4 @@ function PortfolioTimeline(props) {
   );
 }
 
-export default PortfolioTimeline;
+export default CustomTimeline;

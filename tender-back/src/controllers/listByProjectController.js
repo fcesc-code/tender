@@ -19,6 +19,6 @@ function listByProjectMethods(collection){
   
   return { getListByProject };
 
-};
+}
 
 module.exports = listByProjectMethods;

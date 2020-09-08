@@ -21,9 +21,9 @@ function Project() {
     if( project === undefined){ setProject(loadProjectBySlug(slug)) }
   }, [project, slug]);
 
-  function loadProjectBySlug(slug){
+  function loadProjectBySlug(slugArg){
     // to be removed
-    const data = portfolio_mock.filter(project => project.slug === slug)[0];
+    const data = portfolio_mock.filter(projectItem => projectItem.slug === slugArg)[0];
     console.log('DATOS DEL MOCK', data)
     return data;
   }

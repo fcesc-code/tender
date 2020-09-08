@@ -18,6 +18,6 @@ function listByUserMethods(collection){
   
   return { getListByUser };
 
-};
+}
 
 module.exports = listByUserMethods;

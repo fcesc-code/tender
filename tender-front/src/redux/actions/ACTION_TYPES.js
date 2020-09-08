@@ -46,7 +46,8 @@ const ACTION_TYPES = {
   API: {
     BEGIN_API_CALL: 'BEGIN_API_CALL',
     ERROR_API_CALL: 'ERROR_API_CALL'
-  }
+  },
+  DEFAULT: 'DEFAULT'
 }
 
 /* All delete operations are by default optimistic deletes */

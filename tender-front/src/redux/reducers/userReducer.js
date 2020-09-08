@@ -1,7 +1,7 @@
 import ACTION_TYPES from './../actions/ACTION_TYPES';
-import initialState from './initialState';
+import REDUCERS_INITIAL_STATE from './REDUCERS_INITIAL_STATE';
 
-export default function userReducer(state = initialState.user, action) {
+export default function userReducer(state = REDUCERS_INITIAL_STATE.user, action = ACTION_TYPES.DEFAULT) {
   switch (action.type) {
     case ACTION_TYPES.USER.UPDATE_USER:
       return { ...state, userToUpdate: action.payload };

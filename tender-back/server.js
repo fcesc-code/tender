@@ -7,7 +7,7 @@ const jwt = require('express-jwt');
 const jwks = require('jwks-rsa');
 const jwtAuthz = require('express-jwt-authz');
 const JWT_CONFIG = require('./config/JWT_CONFIG');
-const cors = require('cors');
+// const cors = require('cors');
 
 const PORT = process.env.PORT || 3010;
 const server = express();
@@ -15,7 +15,11 @@ const server = express();
 server.use(bodyParser.urlencoded({ extended: true }));
 server.use(bodyParser.json());
 
-server.use(cors());
+// server.use(cors());
+server.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'localhost:3000');
+  next();
+});
 
 const jwtCheck = jwt({
   secret: jwks.expressJwtSecret({

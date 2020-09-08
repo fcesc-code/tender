@@ -9,8 +9,9 @@ import configureStore from './redux/configureStore';
 import { Provider } from 'react-redux';
 import CONNECTION_CONFIG from './auth0/CONNECTION_CONFIG';
 import { Auth0Provider } from "@auth0/auth0-react";
+import REDUCERS_INITIAL_STATE from './redux/reducers/REDUCERS_INITIAL_STATE';
 
-export const store = configureStore();
+export const store = configureStore(REDUCERS_INITIAL_STATE);
 
 ReactDOM.render(
   <React.StrictMode>

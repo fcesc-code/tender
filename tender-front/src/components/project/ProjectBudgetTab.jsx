@@ -4,7 +4,7 @@ import project_mock from '../../mockdata-front/project_mock';
 import './projectBudgetTab.sass';
 import AddIcon from '@material-ui/icons/Add';
 
-function ProjectProjectTab() {
+function ProjectBudgetTab() {
   const projects = project_mock;
   // probably instead of a link it would be interesting to use a State - regular one, not redux since it is only for this component
   // change route of home in the first link
@@ -22,4 +22,4 @@ function ProjectProjectTab() {
   );
 }
 
-export default ProjectProjectTab;
+export default ProjectBudgetTab;

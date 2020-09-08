@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PortfolioProjectItem from './PortfolioProjectItem';
 // import portfolio_mock from '../../mockdata-front/portfolio_mock';

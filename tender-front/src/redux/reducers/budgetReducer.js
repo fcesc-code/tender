@@ -1,7 +1,7 @@
 import ACTION_TYPES from './../actions/ACTION_TYPES';
-import initialState from './initialState';
+import REDUCERS_INITIAL_STATE from './REDUCERS_INITIAL_STATE';
 
-export default function budgetReducer(state = initialState.budget, action) {
+export default function budgetReducer(state = REDUCERS_INITIAL_STATE.budget, action = ACTION_TYPES.DEFAULT) {
   switch (action.type) {
     case ACTION_TYPES.BUDGET.CREATE_BUDGET:
       return action.payload;
