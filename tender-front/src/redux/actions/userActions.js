@@ -1,6 +1,6 @@
 import ACTION_TYPES from './ACTION_TYPES';
 import { beginApiCall, apiCallError } from './apiStatusActions';
-import api from '../../api/api';
+import { checkIsNewUser } from '../../api/api';
 
 // import { beginApiCall, apiCallError } from './apiStatusActions';
 
@@ -77,8 +77,7 @@ export function existCurrentUser(user) {
   return function(dispatch) {
     console.log('entering callback of the exist current user action')
     dispatch(beginApiCall());
-    return api()
-      .checkIsNewUser(user)
+    return checkIsNewUser(user)
       .then( response => { 
         console.log('api front function was called successfully and will dispatch this payload:', response)
         dispatch({

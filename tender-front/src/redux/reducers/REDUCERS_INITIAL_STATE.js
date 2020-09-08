@@ -2,7 +2,7 @@ const REDUCERS_INITIAL_STATE = {
   project: {},
   portfolio: {},
   budget: {},
-  position: {},
+  quotation: {},
   user: {},
   auth: {},
   currentUser: '',
