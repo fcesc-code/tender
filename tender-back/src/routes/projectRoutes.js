@@ -51,6 +51,10 @@ function router(collection){
     .get(listByUserMethods(collection).getListByUser);
 
   projectRoutes
+    .route('/flow/byUser/:userId')
+    .get(listByUserMethods(collection).getFlowByUser);
+
+  projectRoutes
     .all('/:projectId', (req, res, next)=>{
       const query = { '_id': ObjectID(req.params.projectId) };
       // console.log('calling with query', query);

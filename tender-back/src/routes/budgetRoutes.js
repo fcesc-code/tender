@@ -10,6 +10,10 @@ function router(collection){
     .get(listByUserMethods(collection).getListByUser);
 
   budgetRoutes
+    .route('/flow/byUser/:userId')
+    .get(listByUserMethods(collection).getFlowByUser);
+
+  budgetRoutes
     .route('/byProject/:projectId')
     .get(listByProjectMethods(collection).getListByProject);
 
