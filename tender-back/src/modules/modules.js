@@ -14,11 +14,11 @@ function db(selectedCollection){
 
       const data = await collection.find(searchCriteria).toArray();
       const txt = `${chalk.blueBright(printTimeLog())} ${chalk.greenBright('module.js')} findToArray method called successfully`;
-      console.log(txt);
+      // console.log(txt);
 
       return data;
     } catch (error) {
-      console.log('backend: FAILED CALL findToArray f in db f, modules.js - ERROR: ', error);
+      // console.log('backend: FAILED CALL findToArray f in db f, modules.js - ERROR: ', error);
       debug(error);
     } finally {
       await client.close();
@@ -27,12 +27,13 @@ function db(selectedCollection){
 
   async function findProjectionToArray(searchCriteria, projection){
     let client;
+    console.log('findProjectionToArray entered with args', searchCriteria, projection);
     try {
       client = await MongoClient.connect(DATABASE_CONFIG.url, { useNewUrlParser: true, useUnifiedTopology: true });
       const collection = client.db(DATABASE_CONFIG.dbName).collection(selectedCollection);
 
-      const data = await collection.find(searchCriteria, projection).toArray();
-      const txt = `${chalk.blueBright(printTimeLog())} ${chalk.greenBright('module.js')} findToArray method called successfully`;
+      const data = await collection.find(searchCriteria).project(projection).toArray();
+      const txt = `${chalk.blueBright(printTimeLog())} ${chalk.greenBright('module.js')} findProjectionToArray method called successfully`;
       console.log(txt);
 
       return data;

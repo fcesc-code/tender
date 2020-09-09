@@ -9,16 +9,16 @@ function CustomTimeline(props) {
       <ul>
         {timeline.map(item => {
           return(
-            <li className='timeline__item' key={item.content}>
+            <li className='timeline__item' key={item.time + item.est_time}>
               <div className='item__left'>
-              <p>{item.date}</p>
+              <p>{(item.time === undefined || item.time === '') ? `e ${item.est_time}` : `  ${item.time}` }</p>
               </div>
               <div className='item__separator'>
                 <span className={`separator__dot ${item.status}`}></span>
                 <span className='separator__line'></span>
               </div>
               <div className='item__right'>
-              <p>{item.content}</p>
+              <p>{item.name}</p>
               </div>
             </li>
           )

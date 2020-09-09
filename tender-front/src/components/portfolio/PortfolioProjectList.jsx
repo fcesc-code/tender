@@ -6,13 +6,10 @@ import { loadProjectsByUserId } from '../../redux/actions/portfolioActions';
 import Spinner from '../common/Spinner';
 
 function PortfolioProjectList( { dispatch, projects, userId } ) {
-  console.log('%cSHOW PROPS', 'color: gray', projects);
-
-  // const mockUser = '5f4faca78b141a231040efad';
+  // console.log('%cSHOW PROPS', 'color: gray', projects);
 
   useEffect(()=>{
     if( Object.keys(projects).length === 0 && projects.constructor === Object ){
-      console.log('%cuseEffect calls loadProjectsByUserId', 'color: yellow');
       dispatch(loadProjectsByUserId(userId));
     }
   }, [ ]);

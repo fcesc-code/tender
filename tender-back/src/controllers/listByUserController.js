@@ -18,11 +18,13 @@ function listByUserMethods(collection){
 
   function getFlowByUser(req, res){
     const query = { 'clearance.user_id': req.params.userId };
-    const projection = { "events": 1 };
+    const projection = { 'events': 1 };
+    // console.log('enterinng getFlowByUser');
     (async function returnList(){
       try {
         const data = await db(collection).findProjectionToArray(query, projection);
-        const reducer = (accumulated, current) => { accumulated.concat(current) };
+        // console.log('URRAH! data from the db:', JSON.stringify(data));
+        const reducer = (a, c) => a.concat(c);
         const order = function (a, b) {
           let firstTime;
           let secondTime;
@@ -31,8 +33,9 @@ function listByUserMethods(collection){
           firstTime = new Date(firstTime);
           secondTime = new Date(secondTime);
           return firstTime - secondTime; 
-        } // add logic to order depending on
+        }
         const result = data.map(group => group.events).reduce(reducer).sort(order);
+        // console.log('DATA has been transformed and is ready to be sent back to front', JSON.stringify(result));
         res.status(200);
         res.json(result);
       } catch (error) {
