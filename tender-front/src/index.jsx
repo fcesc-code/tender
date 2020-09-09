@@ -15,20 +15,20 @@ export const store = configureStore(REDUCERS_INITIAL_STATE);
 
 ReactDOM.render(
   <React.StrictMode>
-    <Auth0Provider
-      domain={CONNECTION_CONFIG.domain}
-      clientId={CONNECTION_CONFIG.clientId}
-      redirectUri={`${window.location.origin}/profile`}
-      audience={CONNECTION_CONFIG.audience}
-      scope={CONNECTION_CONFIG.scope}
-      useRefreshTokens={true}
-    >
-      <Provider store={store}>
+    <Provider store={store}>
+      <Auth0Provider
+        domain={CONNECTION_CONFIG.domain}
+        clientId={CONNECTION_CONFIG.clientId}
+        redirectUri={`${window.location.origin}/profile`}
+        audience={CONNECTION_CONFIG.audience}
+        scope={CONNECTION_CONFIG.scope}
+        useRefreshTokens={true}
+      >
         <Router>
           <App />
         </Router>
-      </Provider>
-    </Auth0Provider>
+      </Auth0Provider>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

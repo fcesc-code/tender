@@ -4,14 +4,13 @@ import REDUCERS_INITIAL_STATE from './REDUCERS_INITIAL_STATE';
 export default function portfolioReducer(state = REDUCERS_INITIAL_STATE.portfolio, action = ACTION_TYPES.DEFAULT) {
   switch (action.type) {
     case ACTION_TYPES.PORTFOLIO.CALCULATE_PORTFOLIO:
-      return action.payload;
+      return { ...state,calculated: action.payload };
     case ACTION_TYPES.PORTFOLIO.LOAD_PORTFOLIO_FLOW:
-      return action.payload;
+      return { ...state, flow: action.payload };
     case ACTION_TYPES.PORTFOLIO.LOAD_PORTFOLIO_INFO:
       console.log('portfolio reducer entered with', action.payload);
-      return action.payload;
+      return { ...state, data: action.payload };
     default:
       return state;
   }
 }
-

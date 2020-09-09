@@ -2,21 +2,14 @@ import ACTION_TYPES from './ACTION_TYPES';
 import { beginApiCall, apiCallError } from './apiStatusActions';
 import { getPortfolioFlowByUserId, getProjectsByUserId } from '../../api/api';
 
-export function loadProjectsFlowFromPortfolioByUserIdSuccess(projects) {
-  return { type: ACTION_TYPES.PORTFOLIO.LOAD_PORTFOLIO_FLOW, payload: projects };
-}
-
-export function loadProjectsByUserId_success(projects) {
-  console.log('dispatching action LOAD_PORTFOLIO_INFO');
-  return { type: ACTION_TYPES.PORTFOLIO.LOAD_PORTFOLIO_INFO, payload: projects };
-}
-
 export function loadPortfolioFlowByUserId(_userid) {
   return function(dispatch) {
     dispatch(beginApiCall());
+
     return getPortfolioFlowByUserId(_userid)
-      .then(projects => {
-        dispatch(loadProjectsFlowFromPortfolioByUserIdSuccess(projects));
+      .then(flowData => {
+        dispatch({ type: ACTION_TYPES.PORTFOLIO.LOAD_PORTFOLIO_FLOW_SUCCESS });
+        return flowData;
       })
       .catch(error => {
         dispatch(apiCallError(error));
@@ -26,21 +19,25 @@ export function loadPortfolioFlowByUserId(_userid) {
 }
 
 export function loadProjectsByUserId(_userId) { 
+  console.log('action loadProjectsByUserId');
+  return function (dispatch) {
   console.log('loadProjectsByUserId action called with userID', _userId);
-  return function(dispatch) {
-    console.log('callback from loadProjectsByUserId action called');
-    console.log('%cbeginApiCall dispatched', 'color: green');
-    dispatch(beginApiCall());
-    return getProjectsByUserId(_userId)
-      .then(projects => {
-        console.log('data received from api into action, and ready for dispatch', projects);
-        dispatch(loadProjectsByUserId_success(projects.data));
-      })
-      .catch(error => {
-        dispatch(apiCallError(error));
-        throw error;
+  dispatch(beginApiCall());
+  
+  return getProjectsByUserId(_userId)
+    .then(response => {
+      console.log('data received from api into action, and ready for dispatch', response.data);
+      dispatch({ type: ACTION_TYPES.PORTFOLIO.LOAD_PORTFOLIO_INFO_SUCCESS });
+      dispatch({
+        type: ACTION_TYPES.PORTFOLIO.LOAD_PORTFOLIO_INFO,
+        payload: response.data
       });
-  };
+    })
+    .catch(error => {
+      dispatch(apiCallError(error));
+      throw error;
+    });
+  }
 }
 
 

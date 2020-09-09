@@ -3,9 +3,10 @@ import getHeaders from './getHeaders';
 
 export function getProjectsByUserId(_userId) {
   const headers = getHeaders();
+  // console.log('api getProjecstByUserId', headers);
   return axios.get(`http://localhost:3010/api/projects/byUser/${_userId}`, { headers } )
     .then( data=>{
-      console.log('%cDATA from db arrived at front @ getProjectsByUserId - api', 'color: blue')
+      // console.log('%cDATA from db arrived at front @ getProjectsByUserId - api', 'color: blue')
       return data;
     })
     .catch(error=>{
@@ -68,10 +69,9 @@ export function getQuotationsByBudgetId(_budgetId) {
 
 export function checkIsNewUser(user) {
   const headers = getHeaders();
-  console.log('export function check is new user from api - front - was called with:', user, headers);
   return axios.post(`http://localhost:3010/api/users/${user.sub}`, { user }, { headers } )
   .then( data=>{
-    console.log('%cDATA from db arrived at front from axios result @ checkIsNewUser - api', 'color: blue')
+    // console.log('%cDATA from db arrived at front from axios result @ checkIsNewUser - api', 'color: blue')
     return data;
   })
   .catch(error=>{

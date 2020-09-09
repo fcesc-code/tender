@@ -6,10 +6,6 @@ function router(collection){
 
   userRoutes
     .route('/:userSub')
-    .all((req, res, next)=>{
-      console.log('AQUI LA PUNYETERA REQ DEL USER DELS OUS', req.headers);
-      next();
-    })
     .post((req, res) => {
       console.log('CONSULTANT EL POST DEL USER', req.params.userSub);
       const uniqueId = req.params.userSub;
@@ -26,11 +22,12 @@ function router(collection){
             const user = req.body.user;
             
             await db(collection).createOne( { name: user.name, email: user.email, user_sub: uniqueId  } );
-            result = { type: 'new', created: 'successful', signupForm: false };
+            result = { type: 'new', uid: data[0]._id };
           } else {
             console.log('El usuario sí existe en la BBDD.');
-            result = { type: 'recurrent' }
+            result = { type: 'recurrent', uid: data[0]._id };
           }
+          console.log('Listo para devolver result: ', result);
           res.status(200);
           res.json(result);
         } catch (error) {
