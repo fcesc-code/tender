@@ -18,7 +18,7 @@ function PortfolioProjectList( { dispatch, projects, userId } ) {
     ( Object.keys(projects).length === 0 && projects.constructor === Object ) ? (<Spinner/>) : (
       <div className="portfolioProjectList__container">
         <ul>
-         {projects.data.map(project => { 
+         {projects.map(project => { 
             return (<PortfolioProjectItem key={project._id} project={project}/>)
           })}
         </ul>      
@@ -29,7 +29,7 @@ function PortfolioProjectList( { dispatch, projects, userId } ) {
 
 function mapStateToProps(state){
   return ({
-    projects: state.portfolio,
+    projects: state.portfolio.data,
     userId: state.user.uid
   });
 }

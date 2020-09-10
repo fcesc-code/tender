@@ -16,6 +16,20 @@ export function getProjectsByUserId(_userId) {
   });
 }
 
+export function getProjectBySlug(slug) {
+  const headers = getHeaders();
+  console.log('api getProjectBySlug', headers);
+  return axios.get(`${ROOT}/projects/bySlug/${slug}`, { headers } )
+    .then( data=>{
+      console.log('%cDATA from db arrived at front @ getProjectBySlug - api', 'color: blue')
+      return data;
+    })
+    .catch(error=>{
+      console.log(error);
+      return error;
+  });
+}
+
 export function getBudgetsByProjectId(_projectId) {
   const headers = getHeaders();
   return axios.get(`${ROOT}/budgets/byProject/${_projectId}`, { headers } )

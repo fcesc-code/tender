@@ -11,10 +11,12 @@ export default function projectReducer(state = REDUCERS_INITIAL_STATE.project, a
       return state;
     case ACTION_TYPES.PROJECT.CALCULATE_PROJECT:
       return { ...state, calculated: action.payload };
+    case ACTION_TYPES.PROJECT.LOAD_PROJECT_BYSLUG:
+      return { ...state, current: action.payload };
     case ACTION_TYPES.PROJECT.LOAD_PROJECT_FLOW:
-      console.log('entering into project flow reducer')
       return { ...state, flow: action.payload };
     case ACTION_TYPES.PROJECT.LOAD_PROJECT_INFO:
+      console.log('entering into project info reducer')
       return { ...state, data: action.payload };
     default:
       return state;

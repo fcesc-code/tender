@@ -1,24 +1,42 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import project_mock from '../../mockdata-front/project_mock';
 import './projectBudgetsTab.sass';
+import { loadBudgetsByProjectId } from '../../redux/actions/projectActions';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import Spinner from '../common/Spinner';
 
-function ProjectBudgetTab() {
-  const projects = project_mock;
-  // probably instead of a link it would be interesting to use a State - regular one, not redux since it is only for this component
-  // change route of home in the first link
-  // devolver la info al componente parent con una callback
+function ProjectBudgetTab( { dispatch, userId, budgets, project } ) {
+  console.log('Project budgets tab - received props', project);
+
+  useEffect(()=>{
+    if( Object.keys(budgets).length === 0 && budgets.constructor === Object && project !== undefined ){
+      console.log('project budgets tab - entering use effect with ', project._id, userId);
+      dispatch(loadBudgetsByProjectId(project._id, userId));
+    }
+  }, [ project, budgets ]);
+
   return (
-    <div className="projectBudgetList__tab">
-      <ul>
-        {projects.map(budget => { 
-          return (<li><Link to={budget.slug}>{budget.title}</Link></li>)
-        })}
-        <li className='specialRight'><ChevronRightIcon /></li>
-      </ul>      
-    </div>
+    ( Object.keys(budgets).length === 0 && budgets.constructor === Object ) ? (<Spinner/>) : (
+      <div className="projectBudgetList__tab">
+        <ul>
+          {budgets.map(budget => { 
+            return (<li><Link to={budget.slug}>{budget.title}</Link></li>)
+          })}
+          <li className='specialRight'><ChevronRightIcon /></li>
+        </ul>      
+      </div>
+    )
   );
 }
 
-export default ProjectBudgetTab;
+function mapStateToProps(state){
+  return ({
+    budgets: state.project.data,
+    userId: state.user.uid,
+    project: state.project.current
+  });
+}
+
+
+export default connect(mapStateToProps)(ProjectBudgetTab);

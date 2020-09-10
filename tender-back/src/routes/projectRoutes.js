@@ -1,5 +1,6 @@
 const express = require('express');
 const listByUserMethods = require('../controllers/listByUserController');
+const listBySlugMethods = require('../controllers/listBySlugController');
 const itemMethods = require('../controllers/itemRoutesController');
 const { ObjectID } = require('mongodb');
 const db = require('../modules/modules.js');
@@ -49,6 +50,10 @@ function router(collection){
   projectRoutes
     .route('/byUser/:userId')
     .get(listByUserMethods(collection).getListByUser);
+
+  projectRoutes
+    .route('/bySlug/:slug')
+    .get(listBySlugMethods(collection).getItemBySlug);
 
   projectRoutes
     .route('/flow/byUser/:userId')

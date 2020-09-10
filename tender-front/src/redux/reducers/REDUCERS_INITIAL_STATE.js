@@ -1,8 +1,8 @@
 const REDUCERS_INITIAL_STATE = {
-  project: {},
-  portfolio: {},
-  budget: {},
-  quotation: {},
+  project: { data: {}, flow: {}, current: {}, calculated: {} },
+  portfolio: { data: {}, flow: {}, calculated: {} },
+  budget: { data: {}, calculated: {} },
+  quotation: { data: {}, calculated: {} },
   user: {},
   apiCallsInProgress: 0
 };

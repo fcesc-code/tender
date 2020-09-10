@@ -42,7 +42,7 @@ function mapStateToProps(state){
     return newE;
   }
 
-  const formatedData = state.project.flow === undefined ? undefined : state.project.flow.map(e=>callback(e));
+  const formatedData = ( Object.keys(state.project.flow).length === 0 && state.project.flow.constructor === Object ) ? undefined : state.project.flow.map(e=>callback(e));
 
   return ({
     flow: formatedData,

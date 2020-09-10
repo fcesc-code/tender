@@ -7,7 +7,7 @@ import './portfolioInfo.sass';
 function PortfolioInfo({ projects }) {
 
   function displayInfo(){
-  return ( projects !== undefined && projects.length !== 0 ) ? 
+  return ( Object.keys(projects).length !== 0 && projects.constructor === Object ) ? 
     (
       <p>
         <span>You have {projects.length} projects in your portfolio:</span>

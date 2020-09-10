@@ -10,15 +10,15 @@ function ProjectBudgetBoard() {
       <table className='board__table'>
         <thead>
           <tr>
-            {data.headers.map(header=>{
-              return(<th>{header}</th>)
+            {data.headers.map((header, index)=>{
+              return(<th key={`H0.${index}`}>{header}</th>)
             })}
           </tr>
         </thead>
         <tbody>
-          {data.entries.map(entry=>{
-            return(<tr>{entry.map(field=>{
-            return(<td>{field}</td>)
+          {data.entries.map((entry, rowIndex)=>{
+            return(<tr key={rowIndex}>{entry.map((field, index)=>{
+            return(<td key={`R${rowIndex}.${index}`}>{field}</td>)
             })}</tr>)
           })}
         </tbody>
