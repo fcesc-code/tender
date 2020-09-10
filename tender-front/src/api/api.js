@@ -18,10 +18,10 @@ export function getProjectsByUserId(_userId) {
 
 export function getProjectBySlug(slug) {
   const headers = getHeaders();
-  console.log('api getProjectBySlug', headers);
+  // console.log('api getProjectBySlug');
   return axios.get(`${ROOT}/projects/bySlug/${slug}`, { headers } )
     .then( data=>{
-      console.log('%cDATA from db arrived at front @ getProjectBySlug - api', 'color: blue')
+      // console.log('%cDATA from db arrived at front @ getProjectBySlug - api', 'color: blue')
       return data;
     })
     .catch(error=>{
@@ -30,8 +30,9 @@ export function getProjectBySlug(slug) {
   });
 }
 
-export function getBudgetsByProjectId(_projectId) {
+export function getBudgetsByProjectId(_projectId, _userId) {
   const headers = getHeaders();
+  console.log('api was called: getBudgetsByProjectId');
   return axios.get(`${ROOT}/budgets/byProject/${_projectId}`, { headers } )
     .then( data=>{
       console.log('%cDATA from db arrived at front @ getBudgetsByProjectId - api', 'color: blue')

@@ -1,6 +1,6 @@
 import ACTION_TYPES from './ACTION_TYPES';
 import { beginApiCall, apiCallError } from './apiStatusActions';
-import { getProjectFlowByUserId, getBudgetsByUserId, getProjectBySlug } from '../../api/api';
+import { getProjectFlowByUserId, getBudgetsByProjectId, getProjectBySlug } from '../../api/api';
 
 export function loadProjectBySlug(slug) {
   return function(dispatch) {
@@ -10,7 +10,7 @@ export function loadProjectBySlug(slug) {
         dispatch({ type: ACTION_TYPES.PROJECT.LOAD_PROJECT_BYSLUG_SUCCESS });
         dispatch({
           type: ACTION_TYPES.PROJECT.LOAD_PROJECT_BYSLUG,
-          payload: response.data
+          payload: response.data[0]
         });
       })
       .catch(error => {
@@ -46,14 +46,14 @@ export function deleteProject(project_id) {
 }
 
 export function loadProjectFlowByUserId(_userId) {
-  console.log('action loadProjectFlowByUserId');
+  // console.log('action loadProjectFlowByUserId');
   return function(dispatch) {
-    console.log('loadProjectFlowByUserId action called with userID', _userId);
+    // console.log('loadProjectFlowByUserId action called with userID', _userId);
     dispatch(beginApiCall());
 
     return getProjectFlowByUserId(_userId)
       .then(response => {
-        console.log('data received from api into action, and ready for dispatch', response.data);
+        // console.log('data received from api into action, and ready for dispatch', response.data);
         dispatch({ type: ACTION_TYPES.PROJECT.LOAD_PROJECT_FLOW_SUCCESS });
         dispatch({
           type: ACTION_TYPES.PROJECT.LOAD_PROJECT_FLOW,
@@ -92,12 +92,12 @@ export function loadProjectFlowByUserId(_userId) {
 export function loadBudgetsByProjectId(_projectId, _userId) { 
   console.log('action loadBudgetsByProjectId');
   return function (dispatch) {
-  console.log('loadBudgetsByProjectId action called with userID', _userId);
+  console.log('loadBudgetsByProjectId action called with ', _projectId, _userId);
   dispatch(beginApiCall());
   
-  return getBudgetsByUserId(_projectId, _userId)
+  return getBudgetsByProjectId(_projectId, _userId)
     .then(response => {
-      console.log('data received from api into action, and ready for dispatch', response.data);
+      console.log('loadBudgetsByProjectId: data received from api into action, and ready for dispatch', response.data);
       dispatch({ type: ACTION_TYPES.PROJECT.LOAD_PROJECT_INFO_SUCCESS });
       dispatch({
         type: ACTION_TYPES.PROJECT.LOAD_PROJECT_INFO,

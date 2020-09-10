@@ -6,26 +6,26 @@ import TuneIcon from '@material-ui/icons/Tune';
 import SortByAlphaIcon from '@material-ui/icons/SortByAlpha';
 import AspectRatioIcon from '@material-ui/icons/AspectRatio';
 
-function ProjectBudgetTabOptions() {
+function ProjectBudgetTabOptions(props) {
 
   return (
     <div className="projectBudgetOptions__tab">
       <div className='tab__left'>
-        <div className='tab__item'>
-          <Link to={'/'}>Budgets summary</Link>
+        <div className='tab__item tab__text' onClick={(event)=>{event.preventDefault(); props.view('all')}}>
+          <p>Budgets summary</p>
         </div>
       </div>
       <div className='tab__right'>
-        <div className='tab__item'>
+        <div className='tab__item tab__icon'>
           <AddIcon className='icon' htmlColor='ffffff' />
         </div>
-        <div className='tab__item'>
+        <div className='tab__item tab__icon'>
           <TuneIcon className='icon' htmlColor='#ffffff' />
         </div>
-        <div className='tab__item'>
+        <div className='tab__item tab__icon'>
           <SortByAlphaIcon className='iconRight' htmlColor='#ffffff' />
         </div>
-        <div className='tab__item tab__right'>
+        <div className='tab__item tab__icon tab__right'>
           <AspectRatioIcon className='iconRight' htmlColor='#ffffff' />
         </div>
       </div>

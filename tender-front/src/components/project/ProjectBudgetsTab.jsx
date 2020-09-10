@@ -6,15 +6,15 @@ import { loadBudgetsByProjectId } from '../../redux/actions/projectActions';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import Spinner from '../common/Spinner';
 
-function ProjectBudgetTab( { dispatch, userId, budgets, project } ) {
-  console.log('Project budgets tab - received props', project);
+function ProjectBudgetTab( { dispatch, userId, budgets, projectId } ) {
+  console.log('Project budgets tab - received props', projectId, '&', userId);
 
   useEffect(()=>{
-    if( Object.keys(budgets).length === 0 && budgets.constructor === Object && project !== undefined ){
-      console.log('project budgets tab - entering use effect with ', project._id, userId);
-      dispatch(loadBudgetsByProjectId(project._id, userId));
+    if( projectId !== undefined && userId !== undefined && Object.keys(budgets).length === 0 ){
+      console.log('project budgets tab - entering use effect with ', projectId, userId);
+      dispatch(loadBudgetsByProjectId(projectId, userId));
     }
-  }, [ project, budgets ]);
+  }, [ userId, projectId ]);
 
   return (
     ( Object.keys(budgets).length === 0 && budgets.constructor === Object ) ? (<Spinner/>) : (
@@ -34,7 +34,7 @@ function mapStateToProps(state){
   return ({
     budgets: state.project.data,
     userId: state.user.uid,
-    project: state.project.current
+    projectId: state.project.current['_id']
   });
 }
 

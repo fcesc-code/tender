@@ -12,25 +12,22 @@
     margin: 0
     background-color: #011627
     color: white
-    padding: .5rem 1.5rem
     line-height: 2rem
     text-align: center
 
-    &.icon
-      padding: .5rem .1rem .5rem .1rem
-
-    &.iconRight
-      padding: .5rem 1.5rem .5rem .1rem
-
-    > a
+    > p
       color: white
+      padding: 0
+      margin: 0
 
       &:hover
         color: white
-        text-decoration: underline 1px dotted white
 
 .tab__item
   flex-grow: 1
+
+  &:hover
+    background-color: #e53d00
 
 .tab__mainText
   flex-grow: 4
@@ -38,5 +35,15 @@
   &.tab__mainText--left
     text-align: left
 
-.tab__item:hover
-  background-color: #e53d00
+.tab__text
+  padding: .5rem 1.5rem
+
+.tab__icon
+  padding: .5rem
+  max-width: 2.5rem
+
+.icon
+  text-align: center
+
+.tab__right
+  padding-right: 1.5rem

@@ -16,7 +16,7 @@ function Project( { dispatch, userId } ) {
   let urlQuery = useRouteMatch()
   let urlSlug = urlQuery.params.projectSlug;
   // const [ slug ] = useState(urlSlug);
-  const [ view ] = useState('another');
+  const [ view, setView ] = useState('');
   // const [ project, setProject ] = useState(undefined);
   // const timeline = portfolio_timeline_mock;
 
@@ -46,7 +46,7 @@ function Project( { dispatch, userId } ) {
       </div>
       <div className='project__main'>
         <ProjectInfo />
-        <ProjectBudgetsTabOptions />
+        <ProjectBudgetsTabOptions view={(selectedView)=>{setView(selectedView)}}/>
         <ProjectBudgetsTab />
         {renderCurrentTab()}
       </div>
