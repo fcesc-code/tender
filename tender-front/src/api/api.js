@@ -1,10 +1,11 @@
 import axios from 'axios';
 import getHeaders from './getHeaders';
+const ROOT = 'http://localhost:3010/api';
 
 export function getProjectsByUserId(_userId) {
   const headers = getHeaders();
   // console.log('api getProjecstByUserId', headers);
-  return axios.get(`http://localhost:3010/api/projects/byUser/${_userId}`, { headers } )
+  return axios.get(`${ROOT}/projects/byUser/${_userId}`, { headers } )
     .then( data=>{
       // console.log('%cDATA from db arrived at front @ getProjectsByUserId - api', 'color: blue')
       return data;
@@ -17,7 +18,7 @@ export function getProjectsByUserId(_userId) {
 
 export function getBudgetsByProjectId(_projectId) {
   const headers = getHeaders();
-  return axios.get(`http://localhost:3010/api/budgets/byProject/${_projectId}`, { headers } )
+  return axios.get(`${ROOT}/budgets/byProject/${_projectId}`, { headers } )
     .then( data=>{
       console.log('%cDATA from db arrived at front @ getBudgetsByProjectId - api', 'color: blue')
       return data;
@@ -30,9 +31,9 @@ export function getBudgetsByProjectId(_projectId) {
 
 export function getBudgetsByUserId(_userId) {
   const headers = getHeaders();
-  return axios.get(`http://localhost:3010/api/budgets/byUser/${_userId}`, { headers } )
+  return axios.get(`${ROOT}/budgets/byUser/${_userId}`, { headers } )
     .then( data=>{
-      console.log('%cDATA from db arrived at front @ getProjectsByUserId - api', 'color: blue')
+      console.log('%cDATA from db arrived at front @ getBudgetsByUserId - api', 'color: blue')
       return data;
     })
     .catch(error=>{
@@ -43,7 +44,7 @@ export function getBudgetsByUserId(_userId) {
 
 export function getQuotationsByUserId(_userId) {
   const headers = getHeaders();
-  return axios.get(`http://localhost:3010/api/quotations/byUser/${_userId}`, { headers } )
+  return axios.get(`${ROOT}/quotations/byUser/${_userId}`, { headers } )
     .then( data=>{
       console.log('%cDATA from db arrived at front @ getQuotationsByUserId - api', 'color: blue')
       return data;
@@ -56,9 +57,9 @@ export function getQuotationsByUserId(_userId) {
 
 export function getQuotationsByBudgetId(_budgetId) {
   const headers = getHeaders();
-  return axios.get(`http://localhost:3010/api/quotations/byBudget/${_budgetId}`, { headers } )
+  return axios.get(`${ROOT}/quotations/byBudget/${_budgetId}`, { headers } )
     .then( data=>{
-      console.log('%cDATA from db arrived at front @ getBudgetsByBudgetId - api', 'color: blue')
+      console.log('%cDATA from db arrived at front @ getQuotationsByBudgetId - api', 'color: blue')
       return data;
     })
     .catch(error=>{
@@ -69,7 +70,7 @@ export function getQuotationsByBudgetId(_budgetId) {
 
 export function checkIsNewUser(user) {
   const headers = getHeaders();
-  return axios.post(`http://localhost:3010/api/users/${user.sub}`, { user }, { headers } )
+  return axios.post(`${ROOT}/users/${user.sub}`, { user }, { headers } )
   .then( data=>{
     // console.log('%cDATA from db arrived at front from axios result @ checkIsNewUser - api', 'color: blue')
     return data;
@@ -82,9 +83,9 @@ export function checkIsNewUser(user) {
 
 export function getPortfolioFlowByUserId(_userId){
   const headers = getHeaders();
-  return axios.get(`http://localhost:3010/api/projects/flow/byUser/${_userId}`, { headers } )
+  return axios.get(`${ROOT}/projects/flow/byUser/${_userId}`, { headers } )
     .then( data=>{
-      console.log('%cDATA from db arrived at front @ getQuotationsByUserId - api', 'color: blue')
+      console.log('%cDATA from db arrived at front @ getPortfolioFlowByUserId - api', 'color: blue')
       return data;
     })
     .catch(error=>{
@@ -95,9 +96,9 @@ export function getPortfolioFlowByUserId(_userId){
 
 export function getProjectFlowByUserId(_userId){
   const headers = getHeaders();
-  return axios.get(`http://localhost:3010/api/budgets/flow/byUser/${_userId}`, { headers } )
+  return axios.get(`${ROOT}/budgets/flow/byUser/${_userId}`, { headers } )
     .then( data=>{
-      console.log('%cDATA from db arrived at front @ getQuotationsByUserId - api', 'color: blue')
+      console.log('%cDATA from db arrived at front @ getProjectFlowByUserId - api', 'color: blue')
       return data;
     })
     .catch(error=>{

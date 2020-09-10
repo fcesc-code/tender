@@ -10,7 +10,7 @@ function PortfolioFlow( { dispatch, flow, userId } ) {
 
   useEffect(()=>{
     if( flow === undefined && userId !== undefined ){
-      console.log('%cuseEffect calls loadProjectsByUserId', 'color: yellow');
+      // console.log('%cuseEffect calls loadProjectsByUserId', 'color: yellow');
       dispatch(loadPortfolioFlowByUserId(userId));
     }
   }, [ userId ]);
@@ -19,7 +19,7 @@ function PortfolioFlow( { dispatch, flow, userId } ) {
     ( flow === undefined ) ? (<Spinner/>) : (
       <div className='portfolioFlow__container'>
         <h2>FLOW</h2>
-        <CustomTimeLine key={flow.est_time + flow.time} timeline={flow}/>
+        <CustomTimeLine timeline={flow}/>
       </div>
     )
   );
