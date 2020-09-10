@@ -1,8 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import project_mock from '../../mockdata-front/project_mock';
-import './projectBudgetTab.sass';
-import AddIcon from '@material-ui/icons/Add';
+import './projectBudgetsTab.sass';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
 function ProjectBudgetTab() {
@@ -13,12 +12,10 @@ function ProjectBudgetTab() {
   return (
     <div className="projectBudgetList__tab">
       <ul>
-        <li><Link to={'/'}>Budgets summary</Link></li>
         {projects.map(budget => { 
           return (<li><Link to={budget.slug}>{budget.title}</Link></li>)
         })}
-        <li className='specialLeft'><ChevronRightIcon /></li>
-        <li className='specialRight'><AddIcon /></li>
+        <li className='specialRight'><ChevronRightIcon /></li>
       </ul>      
     </div>
   );

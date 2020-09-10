@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useRouteMatch } from 'react-router-dom';
 import ProjectInfo from './ProjectInfo';
 import ProjectFlow from './ProjectFlow';
-import ProjectBudgetTab from './ProjectBudgetTab';
+import ProjectBudgetsTab from './ProjectBudgetsTab';
+import ProjectBudgetsTabOptions from './ProjectBudgetsTabOptions';
 import ProjectBudgetBoard from './ProjectBudgetBoard';
 import ProjectBoard from './ProjectBoard';
 import portfolio_mock from '../../mockdata-front/portfolio_mock';
@@ -43,7 +44,8 @@ function Project() {
       </div>
       <div className='project__main'>
         <ProjectInfo project={project} />
-        <ProjectBudgetTab />
+        <ProjectBudgetsTabOptions />
+        <ProjectBudgetsTab />
         {renderCurrentTab()}
       </div>
     </div>

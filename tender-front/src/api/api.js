@@ -85,7 +85,7 @@ export function getPortfolioFlowByUserId(_userId){
   const headers = getHeaders();
   return axios.get(`${ROOT}/projects/flow/byUser/${_userId}`, { headers } )
     .then( data=>{
-      console.log('%cDATA from db arrived at front @ getPortfolioFlowByUserId - api', 'color: blue')
+      // console.log('%cDATA from db arrived at front @ getPortfolioFlowByUserId - api', 'color: blue')
       return data;
     })
     .catch(error=>{
@@ -98,7 +98,7 @@ export function getProjectFlowByUserId(_userId){
   const headers = getHeaders();
   return axios.get(`${ROOT}/budgets/flow/byUser/${_userId}`, { headers } )
     .then( data=>{
-      console.log('%cDATA from db arrived at front @ getProjectFlowByUserId - api', 'color: blue')
+      // console.log('%cDATA from db arrived at front @ getProjectFlowByUserId - api', 'color: blue')
       return data;
     })
     .catch(error=>{

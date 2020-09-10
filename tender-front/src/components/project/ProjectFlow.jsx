@@ -6,11 +6,9 @@ import './projectFlow.sass';
 import Spinner from '../common/Spinner';
 
 function ProjectFlow( { dispatch, flow, userId } ) {
-  console.log('aqui en el componente, mostrando flow', flow);
 
   useEffect(()=>{
     if( flow === undefined && userId !== undefined ){
-      console.log('%cuseEffect calls loadProjectsByUserId', 'color: yellow');
       dispatch(loadProjectFlowByUserId(userId));
     }
   }, [ userId ]);
