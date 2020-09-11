@@ -16,7 +16,6 @@ export default function projectReducer(state = REDUCERS_INITIAL_STATE.project, a
     case ACTION_TYPES.PROJECT.LOAD_PROJECT_FLOW:
       return { ...state, flow: action.payload };
     case ACTION_TYPES.PROJECT.LOAD_PROJECT_INFO:
-      console.log('entering into project info reducer')
       return { ...state, data: action.payload };
     default:
       return state;

@@ -90,14 +90,13 @@ export function loadProjectFlowByUserId(_userId) {
 // }
 
 export function loadBudgetsByProjectId(_projectId, _userId) { 
-  console.log('action loadBudgetsByProjectId');
   return function (dispatch) {
-  console.log('loadBudgetsByProjectId action called with ', _projectId, _userId);
+  // console.log('loadBudgetsByProjectId action called with ', _projectId, _userId);
   dispatch(beginApiCall());
   
   return getBudgetsByProjectId(_projectId, _userId)
     .then(response => {
-      console.log('loadBudgetsByProjectId: data received from api into action, and ready for dispatch', response.data);
+      // console.log('loadBudgetsByProjectId: data received from api into action, and ready for dispatch', response.data);
       dispatch({ type: ACTION_TYPES.PROJECT.LOAD_PROJECT_INFO_SUCCESS });
       dispatch({
         type: ACTION_TYPES.PROJECT.LOAD_PROJECT_INFO,
@@ -110,3 +109,11 @@ export function loadBudgetsByProjectId(_projectId, _userId) {
     });
   }
 }
+
+// function setCurrentBudgetFromProject(budget_id){
+
+//   return dispatch({
+//     type: ACTION_TYPES.BUDGET.LOAD_BUDGET,
+//     payload: budget
+//   })
+// }

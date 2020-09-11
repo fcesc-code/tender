@@ -1,17 +1,16 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import './projectBudgetsTabOptions.sass';
 import AddIcon from '@material-ui/icons/Add';
 import TuneIcon from '@material-ui/icons/Tune';
 import SortByAlphaIcon from '@material-ui/icons/SortByAlpha';
 import AspectRatioIcon from '@material-ui/icons/AspectRatio';
 
-function ProjectBudgetTabOptions(props) {
+function ProjectBudgetTabOptions({ view }) {
 
   return (
     <div className="projectBudgetOptions__tab">
       <div className='tab__left'>
-        <div className='tab__item tab__text' onClick={(event)=>{event.preventDefault(); props.view('all')}}>
+        <div className='tab__item tab__text' onClick={(event)=>{event.preventDefault(); view('all')}}>
           <p>Budgets summary</p>
         </div>
       </div>

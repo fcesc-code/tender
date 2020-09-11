@@ -6,12 +6,10 @@ import { loadBudgetsByProjectId } from '../../redux/actions/projectActions';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import Spinner from '../common/Spinner';
 
-function ProjectBudgetTab( { dispatch, userId, budgets, projectId } ) {
-  console.log('Project budgets tab - received props', projectId, '&', userId);
+function ProjectBudgetTab( { dispatch, userId, budgets, projectId, view } ) {
 
   useEffect(()=>{
     if( projectId !== undefined && userId !== undefined && Object.keys(budgets).length === 0 ){
-      console.log('project budgets tab - entering use effect with ', projectId, userId);
       dispatch(loadBudgetsByProjectId(projectId, userId));
     }
   }, [ userId, projectId ]);
@@ -20,8 +18,8 @@ function ProjectBudgetTab( { dispatch, userId, budgets, projectId } ) {
     ( Object.keys(budgets).length === 0 && budgets.constructor === Object ) ? (<Spinner/>) : (
       <div className="projectBudgetList__tab">
         <ul>
-          {budgets.map(budget => { 
-            return (<li><Link to={budget.slug}>{budget.title}</Link></li>)
+          {budgets.map((budget, index) => { 
+            return (<li key={index} onClick={(event)=>{event.preventDefault(); view(budget._id)}}>{budget.title}</li>)
           })}
           <li className='specialRight'><ChevronRightIcon /></li>
         </ul>      

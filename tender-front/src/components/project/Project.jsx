@@ -7,7 +7,7 @@ import ProjectBudgetsTab from './ProjectBudgetsTab';
 import ProjectBudgetsTabOptions from './ProjectBudgetsTabOptions';
 import ProjectBudgetBoard from './ProjectBudgetBoard';
 import ProjectBoard from './ProjectBoard';
-import { loadProjectBySlug } from './../../redux/actions/projectActions';
+import { loadProjectBySlug, setCurrentBudgetFromProject } from './../../redux/actions/projectActions';
 // import portfolio_mock from '../../mockdata-front/portfolio_mock';
 // import portfolio_timeline_mock from './../../mockdata-front/portfolio_timeline_mock';
 import './project.sass';
@@ -17,12 +17,13 @@ function Project( { dispatch, userId } ) {
   let urlSlug = urlQuery.params.projectSlug;
   // const [ slug ] = useState(urlSlug);
   const [ view, setView ] = useState('');
+  console.log('EN EL PARENT VIEW ES', view);
   // const [ project, setProject ] = useState(undefined);
   // const timeline = portfolio_timeline_mock;
 
   useEffect(() => {
-    if( urlSlug !== undefined){ dispatch(loadProjectBySlug(urlSlug, userId)) }
-  }, [urlSlug]);
+    if( urlSlug !== undefined ){ dispatch(loadProjectBySlug(urlSlug, userId)) }
+  }, [ urlSlug ]);
 
   // function loadProjectBySlug(slugArg){
   //   // to be removed
@@ -35,7 +36,7 @@ function Project( { dispatch, userId } ) {
     if(view === 'all'){
       return (<ProjectBoard />)
     } else {
-      return (<ProjectBudgetBoard />)
+      return (<ProjectBudgetBoard view={view} />)
     }
   }
 
@@ -47,7 +48,7 @@ function Project( { dispatch, userId } ) {
       <div className='project__main'>
         <ProjectInfo />
         <ProjectBudgetsTabOptions view={(selectedView)=>{setView(selectedView)}}/>
-        <ProjectBudgetsTab />
+        <ProjectBudgetsTab view={(selectedView)=>{setView(selectedView)}}/>
         {renderCurrentTab()}
       </div>
     </div>
@@ -56,7 +57,7 @@ function Project( { dispatch, userId } ) {
 
 function mapStateToProps(state){
   return ({
-    userId: state.user.uid
+    userId: state.user.uid,
   });
 }
 
