@@ -4,7 +4,6 @@ import './projectBudgetBoard.sass';
 import Spinner from '../common/Spinner';
 
 function ProjectBudgetBoard( { budget } ) {
-  console.log(' the budget inside the compo is ', budget);
   for (let p in budget){ console.log('prop ', p)};
 
   return (
@@ -33,7 +32,6 @@ function ProjectBudgetBoard( { budget } ) {
 
 function mapStateToProps( state, { view } ){
   const selectedBudget = (Object.keys(state.project.data).length === 0) ? '' : ( view === '' ) ? state.project.data[0] : state.project.data.filter(item=>item._id === view)[0];
-  console.log('showing insides of mapStateToProps with selectedBudget', view, selectedBudget);
   return {
     budget: selectedBudget
   }

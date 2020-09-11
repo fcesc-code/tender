@@ -7,30 +7,17 @@ import ProjectBudgetsTab from './ProjectBudgetsTab';
 import ProjectBudgetsTabOptions from './ProjectBudgetsTabOptions';
 import ProjectBudgetBoard from './ProjectBudgetBoard';
 import ProjectBoard from './ProjectBoard';
-import { loadProjectBySlug, setCurrentBudgetFromProject } from './../../redux/actions/projectActions';
-// import portfolio_mock from '../../mockdata-front/portfolio_mock';
-// import portfolio_timeline_mock from './../../mockdata-front/portfolio_timeline_mock';
+import { loadProjectBySlug } from './../../redux/actions/projectActions';
 import './project.sass';
 
 function Project( { dispatch, userId } ) {
   let urlQuery = useRouteMatch()
   let urlSlug = urlQuery.params.projectSlug;
-  // const [ slug ] = useState(urlSlug);
   const [ view, setView ] = useState('');
-  console.log('EN EL PARENT VIEW ES', view);
-  // const [ project, setProject ] = useState(undefined);
-  // const timeline = portfolio_timeline_mock;
 
   useEffect(() => {
     if( urlSlug !== undefined ){ dispatch(loadProjectBySlug(urlSlug, userId)) }
   }, [ urlSlug ]);
-
-  // function loadProjectBySlug(slugArg){
-  //   // to be removed
-  //   const data = portfolio_mock.filter(projectItem => projectItem.slug === slugArg)[0];
-  //   console.log('DATOS DEL MOCK', data)
-  //   return data;
-  // }
 
   function renderCurrentTab(){
     if(view === 'all'){
