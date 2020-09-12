@@ -10,6 +10,7 @@ import Signup from './signup/Signup';
 import Project from './project/Project';
 import PageNotFound from './PageNotFound';
 import PageNotAuthorised from './PageNotAuthorised';
+import Barchart from './graphics/Brachart';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
             <Route path='/project/:projectSlug' component={Project} />
             <Route path='/signup' component={Signup} />
             <Route exact path='/401' component={PageNotAuthorised} />
+            <Route path='/chart' component={Barchart} />
             <Route component={PageNotFound} />
           </Switch>
         </main>
