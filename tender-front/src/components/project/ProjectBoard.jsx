@@ -1,9 +1,13 @@
 import React from 'react';
+import DonutChart from '../graphics/DonutChart';
 //import { Link } from 'react-router-dom';
 
 function ProjectBoard() {
   return (
-    <h3>Sample for the project board</h3>
+    <>
+      <h3>Sample for the project board</h3>
+      <DonutChart />
+    </>
   );
 }
 

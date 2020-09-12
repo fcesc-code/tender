@@ -3,9 +3,9 @@ import * as d3 from 'd3';
 import './barchart.sass';
 
 const MOCK_DATA = [12, 5, 23, 14, 9, 31];
-const COLORS = [ '#5c1800', '#a02b00', '#e53d00', '#ea6433', '#129e0', '#fad8cc' ];
+const COLORS = [ '#5c1800', '#a02b00', '#e53d00', '#ea6433', '#f29e80', '#fad8cc', 'red', 'green' ];
 
-function Barchart() {
+function DonutChart() {
   const [ data ] = useState( [ ...MOCK_DATA ] );
   const svgRef = useRef();
   const [ width, setWidth ] = useState( 0 );
@@ -22,23 +22,31 @@ function Barchart() {
 
   function drawChart(){
     const w = (width === 0) ? Math.floor(Number(window.getComputedStyle(svgRef.current).width.slice(0,-2))) : width;
-    const radius = Math.min(400, w * 0.5 * 0.8);
-    const h = Math.max(Math.min(w, 500), radius*2) + 10;  
+    const radius = Math.floor(Math.min(400, w * 0.5 * 0.8));
+    const h = Math.floor(Math.max(Math.min(w, 500), radius*2)) + 10;  
     const donutWidth = Math.max(40, Math.floor(radius / Math.PI));
 
     console.log('HERE HERE:', width, '=>', w, h);
 
     const max = getMax(data);
+    const total = getTotal(data);
+
+    console.log('MAX', max);
 
     function slice(d, i){
-      const startA = ( i === 0 ) ? 0 : getTotal( data.slice([ 0, i+1 ]) );
-      const endA = startA + d;
+      // console.log(`%cdata index=${i} is ${d}, accumulated [${(i - 1 > 0)?getTotal(data.slice(0, i - 1)):0},${getTotal(data.slice(0, i))}]`, 'color:green');
+      console.log(`%centering with ${d}, total ${total}`,'color: red');
+      const startA = ( i === 0 ) ? 0 : getTotal( data.slice( 0, i ) );
+      const endA = getTotal( data.slice( 0, i + 1) );
+      const radiantsStartA = (startA/total)*Math.PI*2;
+      const radiantsEndA = (endA/total)*Math.PI*2;
+      console.log(`%cready to create arch: start angle ${radiantsStartA.toFixed(3)}, end angle ${radiantsEndA.toFixed(3)}`, 'color:yellow');
       const arc = d3
         .arc()
         .innerRadius(radius-donutWidth)
         .outerRadius(radius)
-        .startAngle((startA/max)*Math.PI*2)
-        .endAngle((endA/max)*Math.PI*2);
+        .startAngle(radiantsStartA)
+        .endAngle(radiantsEndA);
       return arc;
     }
 
@@ -53,7 +61,8 @@ function Barchart() {
       .append("path")
       .attr("transform", `translate(${Math.floor(w/2)}, ${Math.floor(h/2)})`)
       .attr("d", (d, i) => slice(d, i)())
-      .attr("fill", (d, i) => `${COLORS[i]}`)
+      .transition().duration(1500)
+      .attr("fill", (d, i) => {console.log(COLORS[i]); return `${COLORS[i]}`})
       .attr("stroke", `#f6f6f6`)
       .attr("stroke-width", "1px");
 
@@ -87,4 +96,4 @@ function Barchart() {
   );
 }
 
-export default Barchart;
+export default DonutChart;
