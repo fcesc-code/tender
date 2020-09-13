@@ -108,3 +108,5 @@ firebaseinit.js
 *secret*.*
 *KEYS*.*
 *keys*.*
+*.env
+.env

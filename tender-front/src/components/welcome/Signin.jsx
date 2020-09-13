@@ -2,6 +2,7 @@ import React from 'react';
 import './signin.sass';
 import LoginButton from './LoginButton';
 import LogoutButton from './LogoutButton';
+import RegisterButton from './RegisterButton';
 
 function Signin() {
 
@@ -20,9 +21,9 @@ function Signin() {
             <input id='password' type='password' name='password' value='' minlenght='8' maxLength='32' className='form-control' placeholder='password' required onChange={()=>{}}></input>
           </label>
         </div>
-        <LoginButton/>
-        <LogoutButton/>
-        <button type='submit' className='btn btn-default btn-centered'>Register</button>
+        <LoginButton />
+        <LogoutButton />
+        <RegisterButton />
       </form>
     </div>
   );
