@@ -1,7 +1,6 @@
 import React from 'react';
 import './signin.sass';
 import LoginButton from './LoginButton';
-import LogoutButton from './LogoutButton';
 import RegisterButton from './RegisterButton';
 
 function Signin() {
@@ -22,7 +21,6 @@ function Signin() {
           </label>
         </div>
         <LoginButton />
-        <LogoutButton />
         <RegisterButton />
       </form>
     </div>
