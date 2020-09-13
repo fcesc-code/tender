@@ -1,8 +1,15 @@
 import React from 'react';
 import Signin from './Signin';
 import './welcome.sass';
+import { useAuth0 } from "@auth0/auth0-react";
 
 function Welcome() {
+  const { isLoading } = useAuth0();
+
+  if (isLoading) {
+    return <p>Loading... please, wait</p>;
+  }
+  
   return (
     <div className='welcome'>
       <h2>Welcome to tender</h2>
