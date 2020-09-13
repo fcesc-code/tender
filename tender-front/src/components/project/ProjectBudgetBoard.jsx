@@ -36,8 +36,8 @@ function mapStateToProps( state, { view } ){
     console.log('ENTERING FORMATTING FUNCTION WITH ', budget, budget.data.entries);
     const currency = budget.currency;
     for (let entry of budget.data.entries){
-      entry[4] = formatIntToCurrency(entry[4], currency);
-      entry[5] = formatIntToCurrency(entry[5], currency);
+      if(typeof(entry[4]) === 'number') {entry[4] = formatIntToCurrency(entry[4], currency)};
+      if(typeof(entry[5]) === 'number') {entry[5] = formatIntToCurrency(entry[5], currency)};
     }
     console.log('EXITING FORMATTING FUNCTION WITH ', budget);
   }
