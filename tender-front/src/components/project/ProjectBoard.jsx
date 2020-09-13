@@ -5,7 +5,7 @@ import DonutChart from '../graphics/DonutChart';
 function ProjectBoard() {
   return (
     <>
-      <h3>Sample for the project board</h3>
+      <h3>Budgets' summary</h3>
       <DonutChart />
     </>
   );

@@ -61,11 +61,11 @@ function DonutChart() {
       .append("path")
       .attr("transform", `translate(${Math.floor(w/2)}, ${Math.floor(h/2)})`)
       .attr("d", (d, i) => slice(d, i)())
-      .transition().duration(1500)
       .attr("fill", (d, i) => {console.log(COLORS[i]); return `${COLORS[i]}`})
       .attr("stroke", `#f6f6f6`)
-      .attr("stroke-width", "1px");
-
+      .attr("stroke-width", "1px")
+      .transition().duration(2000)
+      .attr("transform", `translate(${Math.floor(w/2)}, ${Math.floor(h/2)}) rotate(180)`);
   };
 
   function setNewSize(){
