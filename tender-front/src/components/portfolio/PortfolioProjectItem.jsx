@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './portfolioProjectItem.sass';
 import PlaceIcon from '@material-ui/icons/Place';
+import { API_MAPS } from '../../auth0/API_GEOLOCATION_CONFIG';
 
 function PortfolioProjectItem(props) {
   const project = props.project;
@@ -27,7 +28,7 @@ function PortfolioProjectItem(props) {
             </div>
             <div className='location__bar'>
               <div className='location__icon'>
-                <a href={`https://www.google.com/maps/search/?api=1&query=${project.location.latitude},${project.location.longitude}`}>
+                <a target='_blank' href={`${API_MAPS.protocol}${API_MAPS.host}${API_MAPS.query}${project.location.latitude},${project.location.longitude}`}>
                   <PlaceIcon></PlaceIcon>
                 </a>
               </div>
