@@ -3,8 +3,7 @@ const ROUTES = [
   { path: '/profile', title: 'profile', nav: true, auth: true },
   { path: '/portfolio', title:'portfolio', nav: true, auth: true },
   { path: '/project', title: 'project', nav: false, auth: true },
-  { path: '/signup', title: 'register', nav: true, auth: false },
-  { path: '/', title: 'logout', nav: true, auth: true }
+  { path: '/signup', title: 'register', nav: true, auth: false }
 ];
 
 // path here means root path

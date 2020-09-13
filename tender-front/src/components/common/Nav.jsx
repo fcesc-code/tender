@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import ROUTES from '../../routes/ROUTES';
 import { Link } from 'react-router-dom';
-import { useAuth0 } from "@auth0/auth0-react";
-
+import { useAuth0 } from '@auth0/auth0-react';
+import LogoutButton from './../welcome/LogoutButton';
 import './nav.sass';
 
 function Nav() {
   const [menu] = useState(ROUTES.ROUTES.filter(route=>route.nav)); 
-  const { isAuthenticated } = useAuth0();
+  const { isAuthenticated, logout } = useAuth0();
 
   function getMenu(){
     if(isAuthenticated){
@@ -25,6 +25,7 @@ function Nav() {
     <div className="nav">
       <ul>
         {getMenu()}
+        {(isAuthenticated) ? <li><LogoutButton /></li> : null }
       </ul>
     </div>
   );

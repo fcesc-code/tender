@@ -11,7 +11,7 @@ function Signup() {
             <div className='formSection'>
               <div className='form-group'>
                 <label htmlFor='username'>User name</label>
-                <input id='username' type='text' name='username' value='' className='form-control' placeholder='email' required onChange={()=>{}}></input>
+                <input id='username' type='text' name='username' value='' className='form-control' placeholder='your full name' required onChange={()=>{}}></input>
               </div>
               <div className='form-group'>
                 <label htmlFor='password'>Password</label>

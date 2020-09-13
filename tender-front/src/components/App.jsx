@@ -25,6 +25,7 @@ function App() {
             <Route path='/login' component={Welcome} />
             <Route path='/profile' component={Profile} />
             <Route path='/portfolio' component={Portfolio} />
+            <Route path='/project/:projectSlug/:budgetId' component={Project} />
             <Route path='/project/:projectSlug' component={Project} />
             <Route path='/signup' component={Signup} />
             <Route exact path='/401' component={PageNotAuthorised} />
