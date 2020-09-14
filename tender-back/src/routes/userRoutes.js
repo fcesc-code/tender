@@ -17,7 +17,7 @@ function router(collection){
           // console.log('DATOS RECIBIDOS DE LA BD:', data, typeof(data), data instanceof Array, data.length, data.join('').length);
 
           let result;
-          if (data.length === 0){
+          if (data.length === 0 && req.params.userSub.slice(0,6) === 'auth0|'){
             // console.log('El usuario no existe en la BBDD. Lanzando nueva consulta a la BBDD');
             const user = req.body.user;
             

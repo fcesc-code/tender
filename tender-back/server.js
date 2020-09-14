@@ -15,7 +15,6 @@ const server = express();
 server.use(bodyParser.urlencoded({ extended: true }));
 server.use(bodyParser.json());
 
-// server.use(cors());
 server.use(cors());
 
 const jwtCheck = jwt({
