@@ -86,12 +86,3 @@ function mapStateToProps( state, { view } ){
 }
 
 export default connect(mapStateToProps)(ProjectBudgetBoard);
-
-
-
-
-
-
-
-
-
