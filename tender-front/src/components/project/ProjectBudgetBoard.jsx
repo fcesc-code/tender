@@ -5,6 +5,27 @@ import Spinner from '../common/Spinner';
 
 function ProjectBudgetBoard( { budget } ) {
 
+  function generateClassName(index){
+    let className = '';
+    switch(index){
+      case 0:
+      case 1:
+        className = 'tableCell__left';
+        break;
+      case 2:
+        className = 'tableCell__center';
+        break;
+      case 3:
+      case 4:
+      case 5:
+        className = 'tableCell__right';
+        break;
+      default:
+        className = 'tableCell__default';
+    }
+    return className;
+  }
+
   return (
     ( Object.keys(budget).length === 0 ) ? (<Spinner/>) : (
       <div className="project__budgetBoard">
@@ -12,14 +33,14 @@ function ProjectBudgetBoard( { budget } ) {
           <thead>
             <tr>
               {budget.data.headers.map((header, index)=>{
-                return(<th key={`H0.${index}`}>{header}</th>)
+                return(<th key={`H0.${index}`} className={`${generateClassName(index)}`}>{header}</th>)
               })}
             </tr>
           </thead>
           <tbody>
             {budget.data.entries.map((entry, rowIndex)=>{
               return(<tr key={rowIndex}>{entry.map((field, index)=>{
-              return(<td key={`R${rowIndex}.${index}`}>{field}</td>)
+              return(<td key={`R${rowIndex}.${index}`} className={`${generateClassName(index)}`}>{field}</td>)
               })}</tr>)
             })}
           </tbody>
