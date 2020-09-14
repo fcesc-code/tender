@@ -5,6 +5,7 @@ import budget from './budgetReducer';
 import quotation from './quotationReducer';
 import user from './userReducer';
 import apiCallsInProgress from './apiCallStatusReducer';
+import errors from './errorReducer';
 
 const rootReducer = combineReducers({
   project,
@@ -12,7 +13,8 @@ const rootReducer = combineReducers({
   budget,
   quotation,
   user,
-  apiCallsInProgress
+  apiCallsInProgress,
+  errors
 });
 
 export default rootReducer;

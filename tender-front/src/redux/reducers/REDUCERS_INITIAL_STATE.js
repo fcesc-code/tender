@@ -4,7 +4,8 @@ const REDUCERS_INITIAL_STATE = {
   budget: { data: {}, calculated: {} },
   quotation: { data: {}, calculated: {} },
   user: {},
-  apiCallsInProgress: 0
+  apiCallsInProgress: 0,
+  errors: []
 };
 
 export default REDUCERS_INITIAL_STATE;
