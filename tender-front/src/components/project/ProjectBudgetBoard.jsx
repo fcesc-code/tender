@@ -65,7 +65,7 @@ function mapStateToProps( state, { view } ){
 
   function formatIntToCurrency(currentNumber, currency){
     const newNumber = String((Number(currentNumber) / 100).toFixed(2));
-    const numberWithThousandPoint = `${newNumber.slice(0,-3)}.${newNumber.slice(-3)}`;
+    const numberWithThousandPoint = (newNumber.length >= 7) ? `${newNumber.slice(0,-6)}.${newNumber.slice(-6)}` : newNumber;
     currency = currency.toLowerCase();
     let newCurrency;
     switch(currency){

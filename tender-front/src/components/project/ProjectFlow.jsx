@@ -4,6 +4,7 @@ import CustomTimeLine from '../common/CustomTimeLine';
 import { loadProjectFlowByUserId } from '../../redux/actions/projectActions';
 import './projectFlow.sass';
 import Spinner from '../common/Spinner';
+import formatFlow from './../../tools/formatFlow';
 
 function ProjectFlow( { dispatch, flow, userId } ) {
 
@@ -24,25 +25,8 @@ function ProjectFlow( { dispatch, flow, userId } ) {
 }
 
 function mapStateToProps(state){
-  function callback(e){
-    const realDate = e.time === '' ? '' : new Date(e.time);
-    const estDate = e.est_time === '' ? '' : new Date(e.est_time);
 
-    function getCustomDateString(date){
-      const year = date.getFullYear();
-      const month = date.getMonth();
-      const day = date.getDate();
-      return `${String(year).slice(-2)}.${month}.${day}`;
-    }
-
-    const newE = { ...e };
-    newE.time = realDate === '' ? '' : getCustomDateString(realDate);
-    newE.est_time = estDate === '' ? '' : getCustomDateString(estDate);
-
-    return newE;
-  }
-
-  const formatedData = ( Object.keys(state.project.flow).length === 0 && state.project.flow.constructor === Object ) ? undefined : state.project.flow.map(e=>callback(e));
+  const formatedData = ( Object.keys(state.project.flow).length === 0 && state.project.flow.constructor === Object ) ? undefined : state.project.flow.map(e=>formatFlow(e));
 
   return ({
     flow: formatedData,

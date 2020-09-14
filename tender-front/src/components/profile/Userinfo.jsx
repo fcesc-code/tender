@@ -2,14 +2,16 @@ import React, { useState } from 'react';
 import './userinfo.sass';
 import { formatDate } from './../../tools/formatDate';
 
-function Userinfo({ user, userMetadata }) {
+function Userinfo({ user }) {
   const [ userName, setUserName ] = useState( user.name );
   const [ userEmail, setUserEmail ] = useState( user.email );
   const [ updated_at ] = useState( formatDate(user.updated_at, { time: true, date: 'long' }) );
-  // const [ userOrganizationName, setUserOrganizationName ] = useState('');
-  // const [ userOrganizationRole, setUserOrganizationRole ] = useState('');
-  // const [ userOrganizationNick, setUserOrganizationNick ] = useState('');
+  const [ userOrganizationName, setUserOrganizationName ] = useState('');
+  const [ userOrganizationRole, setUserOrganizationRole ] = useState('');
+  const [ userOrganizationNick, setUserOrganizationNick ] = useState('');
   const [ editableForm, setEditableForm ] = useState( false );
+
+  console.log('HERE HERE, ', userOrganizationName, userOrganizationNick, userOrganizationRole);
 
   return (
     <section className='userDataForm'>
