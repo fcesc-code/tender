@@ -19,7 +19,7 @@ function Map( ) {
 
   return (
     <React.Fragment>
-      <iframe  width="600" height="450" frameborder="0" src={`${url}`} allowFullScreen='true'></iframe>
+      <iframe className="iframe__map" width="600" height="450" frameBorder="0" src={`${url}`} allowFullScreen></iframe>
     </React.Fragment>
   )
 }

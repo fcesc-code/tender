@@ -1,8 +1,11 @@
 import React, { useEffect } from 'react';
 import Map from './Map';
 import './modal.sass';
+import CloseIcon from '@material-ui/icons/Close';
 
 const Modal = ({ onRequestClose, title, latitude, longitude }) => {
+
+  console.log('HERE HERE', title);
 
   useEffect(() => {
 		function onKeyDown(event) {
@@ -23,14 +26,20 @@ const Modal = ({ onRequestClose, title, latitude, longitude }) => {
   return (
 		<div className='modal__backdrop'>
 			<div className='modal__container'>
-        <h3 className='modal__title'>{title}</h3>
 				<Map latitude={latitude} longitude={longitude} />
-				<button type='button' onClick={onRequestClose}>
-					Close
-				</button>
+        <div className='modal__titlebar'>
+          <CloseIcon className='close__icon' htmlColor='#06aed5' onClick={onRequestClose} />
+          <p className='modal__title'>{title}</p>
+        </div>
 			</div>
 		</div>
 	);
 };
 
 export default Modal;
+
+/*
+				<button type='button' onClick={onRequestClose}>
+					Close
+				</button>
+*/

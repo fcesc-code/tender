@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './portfolioProjectItem.sass';
 import PlaceIcon from '@material-ui/icons/Place';
-import { API_MAPS } from '../../auth0/API_GEOLOCATION_CONFIG';
 import Modal from './../common/Modal';
 
 function PortfolioProjectItem(props) {
@@ -15,7 +14,7 @@ function PortfolioProjectItem(props) {
   
   return (
     <li key={project.title}>
-      {isModalOpen && <Modal onRequestClose={toggleModal} />}
+      {isModalOpen && <Modal onRequestClose={toggleModal} title={project.title} />}
       <div className='portfolioProjList__item'>
         <div className='item__content'>
           <div className='item__img'>
@@ -36,7 +35,7 @@ function PortfolioProjectItem(props) {
             </div>
             <div className='location__bar'>
               <div className='location__icon'>
-                <PlaceIcon onClick={toggleModal}/>
+                <PlaceIcon className='place__icon' onClick={toggleModal} />
               </div>
               <div className='location__text'>
                 <p>{project.location.street}, {project.location.city}, {project.location.postalCode}</p>
