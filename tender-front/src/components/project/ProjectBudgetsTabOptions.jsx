@@ -5,7 +5,7 @@ import TuneIcon from '@material-ui/icons/Tune';
 import SortByAlphaIcon from '@material-ui/icons/SortByAlpha';
 import AspectRatioIcon from '@material-ui/icons/AspectRatio';
 
-function ProjectBudgetTabOptions({ view }) {
+function ProjectBudgetsTabOptions({ view }) {
 
   return (
     <div className="projectBudgetOptions__tab">
@@ -32,4 +32,4 @@ function ProjectBudgetTabOptions({ view }) {
   );
 }
 
-export default ProjectBudgetTabOptions;
+export default ProjectBudgetsTabOptions;

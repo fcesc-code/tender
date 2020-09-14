@@ -28,7 +28,7 @@ function DonutChart() {
 
     // console.log('HERE HERE:', width, '=>', w, h);
 
-    const max = getMax(data);
+    // const max = getMax(data);
     const total = getTotal(data);
 
     // console.log('MAX', max);
@@ -66,7 +66,7 @@ function DonutChart() {
       .attr("stroke-width", "1px")
       .transition().duration(2000)
       .attr("transform", `translate(${Math.floor(w/2)}, ${Math.floor(h/2)}) rotate(180)`);
-  };
+  }
 
   function setNewSize(){
     if(svgRef.current){

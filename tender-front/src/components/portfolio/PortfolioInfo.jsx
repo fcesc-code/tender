@@ -26,7 +26,7 @@ function PortfolioInfo({ projects }) {
   }
 
   return (
-    <>
+    <div>
       <div className="portfolioInfo__container">
         <div className='info__main'>
           <h2>YOUR PROJECTS</h2>
@@ -42,7 +42,7 @@ function PortfolioInfo({ projects }) {
         </div>
       </div>
       { (dropdownStatus) ? <Dropdown data={MOCK_FILTER} setFilter={(v)=>setAppliedFilter(v)}/> : '' }
-    </>
+    </div>
   );
 }
 

@@ -57,23 +57,48 @@ function mapStateToProps( state, { view } ){
     console.log('ENTERING FORMATTING FUNCTION WITH ', budget, budget.data.entries);
     const currency = budget.currency;
     for (let entry of budget.data.entries){
-      if(typeof(entry[4]) === 'number') {entry[4] = formatIntToCurrency(entry[4], currency)};
-      if(typeof(entry[5]) === 'number') {entry[5] = formatIntToCurrency(entry[5], currency)};
+      if(typeof(entry[4]) === 'number') {entry[4] = formatIntToCurrency(entry[4], currency)}
+      if(typeof(entry[5]) === 'number') {entry[5] = formatIntToCurrency(entry[5], currency)}
     }
     console.log('EXITING FORMATTING FUNCTION WITH ', budget);
   }
 
   function formatIntToCurrency(currentNumber, currency){
-    const newNumber = (Number(currentNumber) / 100).toFixed(2);
+    const newNumber = String((Number(currentNumber) / 100).toFixed(2));
+    const numberWithThousandPoint = `${newNumber.slice(0,-3)}.${newNumber.slice(-3)}`;
+    currency = currency.toLowerCase();
     let newCurrency;
     switch(currency){
       case 'eur':
         newCurrency = '€';
         break;
+      case 'gbp':
+        newCurrency = '£';
+        break;
+      case 'usd':
+        newCurrency = '$';
+        break;
+      case 'jpy':
+      case 'cnh':
+      case 'cny':
+        newCurrency = '¥';
+        break;
+      case 'krw':
+        newCurrency = '₩';
+        break;
+      case 'ils':
+        newCurrency = '₪';
+        break;
+      case 'pgk':
+        newCurrency = '₱';
+        break;
+      case 'rub':
+        newCurrency = '₽';
+        break;
       default:
         newCurrency = currency;
     }
-    const newValue = `${newNumber} €`;
+    const newValue = `${numberWithThousandPoint} ${newCurrency.toUpperCase()}`;
     return newValue;
   }
 

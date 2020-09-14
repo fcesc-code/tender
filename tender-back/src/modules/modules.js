@@ -13,7 +13,7 @@ function db(selectedCollection){
       const collection = client.db(DATABASE_CONFIG.dbName).collection(selectedCollection);
 
       const data = await collection.find(searchCriteria).toArray();
-      const txt = `${chalk.blueBright(printTimeLog())} ${chalk.greenBright('module.js')} findToArray method called successfully`;
+      // const txt = `${chalk.blueBright(printTimeLog())} ${chalk.greenBright('module.js')} findToArray method called successfully`;
       // console.log(txt);
 
       return data;

@@ -7,7 +7,7 @@ import './nav.sass';
 
 function Nav() {
   const [menu] = useState(ROUTES.ROUTES.filter(route=>route.nav)); 
-  const { isAuthenticated, logout } = useAuth0();
+  const { isAuthenticated } = useAuth0();
 
   function getMenu(){
     if(isAuthenticated){

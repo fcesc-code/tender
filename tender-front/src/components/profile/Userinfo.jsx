@@ -6,9 +6,9 @@ function Userinfo({ user, userMetadata }) {
   const [ userName, setUserName ] = useState( user.name );
   const [ userEmail, setUserEmail ] = useState( user.email );
   const [ updated_at ] = useState( formatDate(user.updated_at, { time: true, date: 'long' }) );
-  const [ userOrganizationName, setUserOrganizationName ] = useState('');
-  const [ userOrganizationRole, setUserOrganizationRole ] = useState('');
-  const [ userOrganizationNick, setUserOrganizationNick ] = useState('');
+  // const [ userOrganizationName, setUserOrganizationName ] = useState('');
+  // const [ userOrganizationRole, setUserOrganizationRole ] = useState('');
+  // const [ userOrganizationNick, setUserOrganizationNick ] = useState('');
   const [ editableForm, setEditableForm ] = useState( false );
 
   return (
