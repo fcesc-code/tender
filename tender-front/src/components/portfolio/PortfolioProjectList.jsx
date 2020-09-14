@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import PortfolioProjectItem from './PortfolioProjectItem';
 import './portfolioProjectList.sass';
@@ -7,12 +7,22 @@ import Spinner from '../common/Spinner';
 
 function PortfolioProjectList( { dispatch, projects, userId } ) {
   // console.log('%cSHOW PROPS', 'color: gray', projects);
+  const [ statusFilters, setStatusFilters ] = useState([]);
 
   useEffect(()=>{
     if( Object.keys(projects).length === 0 && projects.constructor === Object ){
       dispatch(loadProjectsByUserId(userId));
     }
   }, [ ]);
+
+  useEffect(()=>{
+    if( Object.keys(projects).length !== 0 ){
+      const filterOptions = projects.map(project=>project.status).filter((v, i, a) => a.indexOf(v) === i);
+      setStatusFilters(filterOptions);
+    }
+  }, [ projects ])
+
+  console.log('HERE HERE STATUS FILTERS', statusFilters);
 
   return (
     ( Object.keys(projects).length === 0 && projects.constructor === Object ) ? (<Spinner/>) : (

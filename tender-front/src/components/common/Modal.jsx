@@ -3,10 +3,8 @@ import Map from './Map';
 import './modal.sass';
 import CloseIcon from '@material-ui/icons/Close';
 
-const Modal = ({ onRequestClose, title, latitude, longitude }) => {
-
-  console.log('HERE HERE', title);
-
+const Modal = ({ onRequestClose, title, coordinates }) => {
+	
   useEffect(() => {
 		function onKeyDown(event) {
 			if (event.keyCode === 27) {
@@ -26,7 +24,7 @@ const Modal = ({ onRequestClose, title, latitude, longitude }) => {
   return (
 		<div className='modal__backdrop'>
 			<div className='modal__container'>
-				<Map latitude={latitude} longitude={longitude} />
+				<Map coordinates={coordinates} />
         <div className='modal__titlebar'>
           <CloseIcon className='close__icon' htmlColor='#06aed5' onClick={onRequestClose} />
           <p className='modal__title'>{title}</p>

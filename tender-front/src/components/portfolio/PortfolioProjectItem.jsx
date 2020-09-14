@@ -7,6 +7,7 @@ import Modal from './../common/Modal';
 function PortfolioProjectItem(props) {
   const [ isModalOpen, setModalIsOpen ] = useState(false);
   const project = props.project;
+  const coordinates = `${project.location.latitude},${project.location.longitude}`;
 
   const toggleModal = () => {
 		setModalIsOpen(!isModalOpen);
@@ -14,7 +15,7 @@ function PortfolioProjectItem(props) {
   
   return (
     <li key={project.title}>
-      {isModalOpen && <Modal onRequestClose={toggleModal} title={project.title} />}
+      {isModalOpen && <Modal onRequestClose={toggleModal} title={project.title} coordinates={coordinates}/>}
       <div className='portfolioProjList__item'>
         <div className='item__content'>
           <div className='item__img'>
@@ -35,7 +36,7 @@ function PortfolioProjectItem(props) {
             </div>
             <div className='location__bar'>
               <div className='location__icon'>
-                <PlaceIcon className='place__icon' onClick={toggleModal} />
+                <PlaceIcon className='place__icon' onClick={toggleModal}/>
               </div>
               <div className='location__text'>
                 <p>{project.location.street}, {project.location.city}, {project.location.postalCode}</p>

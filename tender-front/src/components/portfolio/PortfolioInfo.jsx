@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import TuneIcon from '@material-ui/icons/Tune';
 import SortByAlphaIcon from '@material-ui/icons/SortByAlpha';
 import './portfolioInfo.sass';
+import Dropdown from './../common/Dropdown';
 
 function PortfolioInfo({ projects }) {
+  const [ dropdownStatus, setDropdownStatus ] = useState(false);
+  const [ appliedFilter, setAppliedFilter ] = useState(false);
+  const MOCK_FILTER = ['ongoing', 'planned', 'closed'];
+
+  console.log('applied filter', appliedFilter);
+  console.log('dropdown status', dropdownStatus);
 
   function displayInfo(){
   return ( Object.keys(projects).length !== 0 && projects.constructor === Object ) ? 
@@ -19,20 +26,23 @@ function PortfolioInfo({ projects }) {
   }
 
   return (
-    <div className="portfolioInfo__container">
-      <div className='info__main'>
-        <h2>YOUR PROJECTS</h2>
-        {displayInfo()}
-      </div>
-      <div className='info__icons'>
-        <div className='icon'>
-          <TuneIcon htmlColor='#ffffff' />
+    <>
+      <div className="portfolioInfo__container">
+        <div className='info__main'>
+          <h2>YOUR PROJECTS</h2>
+          {displayInfo()}
         </div>
-        <div className='icon'>
-          <SortByAlphaIcon htmlColor='#ffffff' /> 
+        <div className='info__icons'>
+          <div className='icon'>
+            <TuneIcon htmlColor='#ffffff' onClick={(event)=>{event.preventDefault(); setDropdownStatus(!dropdownStatus)}}/>
+          </div>
+          <div className='icon'>
+            <SortByAlphaIcon htmlColor='#ffffff' /> 
+          </div>
         </div>
       </div>
-    </div>
+      { (dropdownStatus) ? <Dropdown data={MOCK_FILTER} setFilter={(v)=>setAppliedFilter(v)}/> : '' }
+    </>
   );
 }
 
