@@ -10,11 +10,6 @@ function DonutChart() {
   const svgRef = useRef();
   const [ width, setWidth ] = useState( 0 );
 
-  function getMax(array){
-    const maxReducer = (a, b) => (a > b) ? a : b;
-    return array.reduce(maxReducer);
-  }
-
   function getTotal(array){
     const totalReducer = (a, b) => a + b;
     return array.reduce(totalReducer);
@@ -26,21 +21,13 @@ function DonutChart() {
     const h = Math.floor(Math.max(Math.min(w, 500), radius*2)) + 10;  
     const donutWidth = Math.max(40, Math.floor(radius / Math.PI));
 
-    // console.log('HERE HERE:', width, '=>', w, h);
-
-    // const max = getMax(data);
     const total = getTotal(data);
 
-    // console.log('MAX', max);
-
     function slice(d, i){
-      // console.log(`%cdata index=${i} is ${d}, accumulated [${(i - 1 > 0)?getTotal(data.slice(0, i - 1)):0},${getTotal(data.slice(0, i))}]`, 'color:green');
-      // console.log(`%centering with ${d}, total ${total}`,'color: red');
       const startA = ( i === 0 ) ? 0 : getTotal( data.slice( 0, i ) );
       const endA = getTotal( data.slice( 0, i + 1) );
       const radiantsStartA = (startA/total)*Math.PI*2;
       const radiantsEndA = (endA/total)*Math.PI*2;
-      // console.log(`%cready to create arch: start angle ${radiantsStartA.toFixed(3)}, end angle ${radiantsEndA.toFixed(3)}`, 'color:yellow');
       const arc = d3
         .arc()
         .innerRadius(radius-donutWidth)
