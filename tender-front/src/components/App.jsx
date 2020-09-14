@@ -11,6 +11,7 @@ import Project from './project/Project';
 import PageNotFound from './PageNotFound';
 import PageNotAuthorised from './PageNotAuthorised';
 import DonutChart from './graphics/DonutChart';
+import Map from './common/Map';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
             <Route path='/signup' component={Signup} />
             <Route exact path='/401' component={PageNotAuthorised} />
             <Route path='/chart' component={DonutChart} />
+            <Route path='/map' component={Map} />
             <Route component={PageNotFound} />
           </Switch>
         </main>

@@ -1,13 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './portfolioProjectItem.sass';
 import PlaceIcon from '@material-ui/icons/Place';
 import { API_MAPS } from '../../auth0/API_GEOLOCATION_CONFIG';
+import Modal from './../common/Modal';
 
 function PortfolioProjectItem(props) {
+  const [ isModalOpen, setModalIsOpen ] = useState(false);
   const project = props.project;
+
+  const toggleModal = () => {
+		setModalIsOpen(!isModalOpen);
+  };
+  
   return (
     <li key={project.title}>
+      {isModalOpen && <Modal onRequestClose={toggleModal} />}
       <div className='portfolioProjList__item'>
         <div className='item__content'>
           <div className='item__img'>
@@ -28,9 +36,7 @@ function PortfolioProjectItem(props) {
             </div>
             <div className='location__bar'>
               <div className='location__icon'>
-                <a target='_blank' href={`${API_MAPS.protocol}${API_MAPS.host}${API_MAPS.query}${project.location.latitude},${project.location.longitude}`}>
-                  <PlaceIcon></PlaceIcon>
-                </a>
+                <PlaceIcon onClick={toggleModal}/>
               </div>
               <div className='location__text'>
                 <p>{project.location.street}, {project.location.city}, {project.location.postalCode}</p>
@@ -47,7 +53,11 @@ function PortfolioProjectItem(props) {
 export default PortfolioProjectItem;
 
 
-
+/*
+                <a target='_blank' href={`${API_MAPS.protocol}${API_MAPS.host}${API_MAPS.query}${project.location.latitude},${project.location.longitude}`}>
+                  <PlaceIcon></PlaceIcon>
+                </a>
+*/
 
 
 
