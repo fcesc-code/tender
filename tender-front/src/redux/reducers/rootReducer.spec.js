@@ -3,41 +3,26 @@ import { combineReducers } from 'redux';
 import project from './projectReducer';
 import portfolio from './portfolioReducer';
 import budget from './budgetReducer';
-import position from './positionReducer';
+import quotation from './quotationReducer';
 import user from './userReducer';
-import apiStatus from './apiStatusReducer';
-
+import apiCallsInProgress from './apiCallStatusReducer';
+import errors from './errorReducer';
 
 describe('ROOT REDUCER test set', ()=>{
   
-  it('Should return a constant with the result of a call to combineReducers method with a list of reducers', ()=>{
-    jest.mock('combineReducers');
+  xit('Should return a constant with the result of a call to combineReducers method with a list of reducers', ()=>{
+    jest.mock(redux, 'combineReducers');
     const expectedResult = combineReducers({
       project,
       portfolio,
       budget,
-      position,
+      quotation,
       user,
-      apiStatus
+      apiCallsInProgress,
+      errors
     });
 
     expect(rootReducer).toEqual(expectedResult);
   });
 
 });
-
-
-
-
-
-
-
-
-{
-  project,
-  portfolio,
-  budget,
-  position,
-  user,
-  apiStatus
-}

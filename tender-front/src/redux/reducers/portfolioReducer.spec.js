@@ -3,77 +3,64 @@ import portfolioReducer from './portfolioReducer';
 
 describe('PORTFOLIO REDUCER test set', ()=>{
   
-  // it('Should add a new Current User to state when SAVE_CURRENT_USER action type is called', ()=>{
-  //   const initialState = {};
-  //   const testAction = {
-  //     type: ACTION_TYPES.USER.SAVE_CURRENT_USER,
-  //     payload: "auth0|5f53d71242e345006db2cc02"
-  //   }
+  it('Should add calculated data into state when CALCULATE_PORTFOLIO action type is called', ()=>{
+    const initialState = {};
+    const testAction = {
+      type: ACTION_TYPES.PORTFOLIO.CALCULATE_PORTFOLIO,
+      payload: { data: 'someReallyBigData' }
+    }
 
-  //   const testResult = userReducer(initialState, testAction);
+    const testResult = portfolioReducer(initialState, testAction);
 
-  //   expect(testResult.currentUser).toEqual(testAction.payload);
-  // });
+    expect(testResult.calculated).toEqual(testAction.payload);
+    expect(Object.keys(testResult).length).toEqual(1);
+  });
 
-  // it('Should set currentUser to undefined when REMOVE_CURRENT_USER action type is called', ()=>{
-  //   const initialState = { currentUser: "auth0|5f53d71242e345006db2cc02" };
-  //   const testAction = {
-  //     type: ACTION_TYPES.USER.REMOVE_CURRENT_USER
-  //   }
+  it('Should add flow data into state when LOAD_PORTFOLIO_FLOW action type is called', ()=>{
+    const initialState = {};
+    const testAction = {
+      type: ACTION_TYPES.PORTFOLIO.LOAD_PORTFOLIO_FLOW,
+      payload: { data: 'someReallyBigData' }
+    }
 
-  //   const testResult = userReducer(initialState, testAction);
+    const testResult = portfolioReducer(initialState, testAction);
 
-  //   expect(testResult.currentUser).toEqual(undefined);
-  // });
+    expect(testResult.flow).toEqual(testAction.payload);
+    expect(Object.keys(testResult).length).toEqual(1);
+  });
 
-  // it('Should return a user type of \'new\' when called with a new user', ()=>{
-  //   const initialState = {};
-  //   const userType = { type: 'new', created: 'successful', signupForm: false };
-  //   const testAction = {
-  //     type: ACTION_TYPES.USER.EXIST_CURRENT_USER,
-  //     payload: userType
-  //   }
+  it('Should add data into state when LOAD_PORTFOLIO_INFO action type is called', ()=>{
+    const initialState = {};
+    const testAction = {
+      type: ACTION_TYPES.PORTFOLIO.LOAD_PORTFOLIO_INFO,
+      payload: { data: 'someReallyBigData' }
+    }
 
-  //   const testResult = userReducer(initialState, testAction);
+    const testResult = portfolioReducer(initialState, testAction);
 
-  //   expect(testResult).toEqual( { currentUserType: userType } );
-  // });
+    expect(testResult.data).toEqual(testAction.payload);
+    expect(Object.keys(testResult).length).toEqual(1);
+  });
 
-  // it('Should return a user type of \'recurrent\' when called with a recurrent user id', ()=>{
-  //   const initialState = {};
-  //   const userType = { type: 'recurrent' };
-  //   const testAction = {
-  //     type: ACTION_TYPES.USER.EXIST_CURRENT_USER,
-  //     payload: userType
-  //   }
+  it('Should return previous state when no action is given', ()=>{
+    const initialState = {};
 
-  //   const testResult = userReducer(initialState, testAction);
+    const testResult = portfolioReducer(initialState);
 
-  //   expect(testResult).toEqual( { currentUserType: userType } );
-  // });
+    expect(testResult).toEqual(initialState);
+  });
 
-  // it('Should return previous state when called with an invalid action type', ()=>{
-  //   const initialState = {};
-  //   const testAction = {
-  //     type: 'INVALID ACTION TYPE'
-  //   }
+  it('Should provide a default initial state at first run if it is not provided', ()=>{
+    const testResult = portfolioReducer();
 
-  //   const testResult = userReducer(initialState, testAction);
-
-  //   expect(testResult).toEqual(initialState);
-  // });
-
-  // it('Should return default initial state when called with no agument (only happens at initialization)', ()=>{ // DOES NOT WORK
-  //   const expectedInitialState = {};
-  //   const testAction = {
-  //     type: 'INVALID ACTION TYPE'
-  //   }
-
-  //   jest.mock('userReducer');
-
-  //   const testResult = userReducer();
-
-  //   expect(testResult).toEqual(expectedInitialState);
-  // });
+    expect(Object.keys(testResult).length).toEqual(3);
+    expect(testResult.constructor === Object).toBe(true);
+    expect(testResult.data).not.toBe(undefined);
+    expect(testResult.data.constructor === Object).toBe(true);
+    expect(testResult.flow).not.toBe(undefined);
+    expect(testResult.flow.constructor === Object).toBe(true);
+    expect(testResult.calculated).not.toBe(undefined);
+    expect(testResult.calculated.constructor === Object).toBe(true);
+  });
 
 })

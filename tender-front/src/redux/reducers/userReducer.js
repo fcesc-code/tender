@@ -8,12 +8,10 @@ export default function userReducer(state = REDUCERS_INITIAL_STATE.user, action 
     case ACTION_TYPES.USER.DELETE_USER:
       return { ...state, userToUpdate: undefined, userToDelete: action.payload };
     case ACTION_TYPES.USER.SAVE_CURRENT_USER:
-      // console.log('entering save current user - user reducer with', action.payload);
-      return { ...state, currentUser: action.payload.type, uid: action.payload.uid };
+      return { ...state, currentUserType: action.payload.type, uid: action.payload.uid };
     case ACTION_TYPES.USER.REMOVE_CURRENT_USER:
       return { ...state, currentUser: undefined, uid: undefined };
     case ACTION_TYPES.USER.EXIST_CURRENT_USER:
-      // console.log('entering exist current user - user reducer with', action.payload);
       return { ...state, currentUserType: action.payload.type, uid: action.payload.uid };
     default:
       return state;

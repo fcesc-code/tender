@@ -4,9 +4,9 @@ import REDUCERS_INITIAL_STATE from './REDUCERS_INITIAL_STATE';
 export default function projectReducer(state = REDUCERS_INITIAL_STATE.project, action = ACTION_TYPES.DEFAULT) {
   switch (action.type) {
     case ACTION_TYPES.PROJECT.CREATE_PROJECT:
-      return { ...state, item: action.payload };
+      return { ...state, itemBeingCreated: action.payload };
     case ACTION_TYPES.PROJECT.UPDATE_PROJECT:
-      return { ...state, item: action.payload };
+      return { ...state, current: action.payload };
     case ACTION_TYPES.PROJECT.DELETE_PROJECT:
       return state;
     case ACTION_TYPES.PROJECT.CALCULATE_PROJECT:

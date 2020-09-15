@@ -5,14 +5,15 @@ describe('USER REDUCER test set', ()=>{
   
   it('Should add a new Current User to state when SAVE_CURRENT_USER action type is called', ()=>{
     const initialState = {};
+    const userType = { type: 'recurrent', uid: 'auth0|5f53d71242e345006db2cc02' };
     const testAction = {
       type: ACTION_TYPES.USER.SAVE_CURRENT_USER,
-      payload: "auth0|5f53d71242e345006db2cc02"
+      payload: userType
     }
 
     const testResult = userReducer(initialState, testAction);
 
-    expect(testResult.currentUser).toEqual(testAction.payload);
+    expect(testResult).toEqual( { currentUserType: userType.type, uid: userType.uid } );
   });
 
   it('Should set currentUser to undefined when REMOVE_CURRENT_USER action type is called', ()=>{
@@ -28,7 +29,7 @@ describe('USER REDUCER test set', ()=>{
 
   it('Should return a user type of \'new\' when called with a new user', ()=>{
     const initialState = {};
-    const userType = { type: 'new', created: 'successful', signupForm: false };
+    const userType = { type: 'new', created: 'successful', signupForm: false, uid: 'auth0|5f53d71242e345006db2cc02' };
     const testAction = {
       type: ACTION_TYPES.USER.EXIST_CURRENT_USER,
       payload: userType
@@ -36,12 +37,12 @@ describe('USER REDUCER test set', ()=>{
 
     const testResult = userReducer(initialState, testAction);
 
-    expect(testResult).toEqual( { currentUserType: userType } );
+    expect(testResult).toEqual( { currentUserType: userType.type, uid: userType.uid } );
   });
 
   it('Should return a user type of \'recurrent\' when called with a recurrent user id', ()=>{
     const initialState = {};
-    const userType = { type: 'recurrent' };
+    const userType = { type: 'recurrent', uid: 'auth0|5f53d71242e345006db2cc02' };
     const testAction = {
       type: ACTION_TYPES.USER.EXIST_CURRENT_USER,
       payload: userType
@@ -49,7 +50,7 @@ describe('USER REDUCER test set', ()=>{
 
     const testResult = userReducer(initialState, testAction);
 
-    expect(testResult).toEqual( { currentUserType: userType } );
+    expect(testResult).toEqual( { currentUserType: userType.type, uid: userType.uid } );
   });
 
   it('Should return a state of userToCreate when a user is being updated in the db', ()=>{
@@ -89,17 +90,19 @@ describe('USER REDUCER test set', ()=>{
     expect(testResult).toEqual(initialState);
   });
 
-  // it('Should return default initial state when called with no agument (only happens at initialization)', ()=>{ // DOES NOT WORK
-  //   const expectedInitialState = {};
-  //   const testAction = {
-  //     type: 'INVALID ACTION TYPE'
-  //   }
+  it('Should return previous state when no action is given', ()=>{
+    const initialState = {};
 
-  //   jest.mock('userReducer');
+    const testResult = userReducer(initialState);
 
-  //   const testResult = userReducer();
+    expect(testResult).toEqual(initialState);
+  });
 
-  //   expect(testResult).toEqual(expectedInitialState);
-  // });
+  it('Should provide a default initial state at first run if it is not provided', ()=>{
+    const testResult = userReducer();
+
+    expect(Object.keys(testResult).length).toEqual(0);
+    expect(testResult.constructor === Object).toBe(true);
+  });
 
 })

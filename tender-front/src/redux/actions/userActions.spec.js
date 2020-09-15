@@ -1,7 +1,5 @@
 import { saveCurrentUser, removeCurrentUser, existCurrentUser } from './userActions';
 import ACTION_TYPES from './ACTION_TYPES';
-import api from '../../api/api';
-const apiFunctions = api();
 
 describe('USER ACTIONS - REDUX - Test set', () => {
 
@@ -31,8 +29,8 @@ describe('USER ACTIONS - REDUX - Test set', () => {
       payload: userType
     }
     
-    jest.mock('api');
-    apiFunctions.checkIsNewUser.mockReturnValue(userType);
+    jest.mock('checkIsNewUser');
+    checkIsNewUser.mockReturnValue(userType);
 
     const testResult = existCurrentUser(userId)();
 
@@ -48,8 +46,8 @@ describe('USER ACTIONS - REDUX - Test set', () => {
       payload: userType
     }
     
-    jest.mock('api');
-    apiFunctions.checkIsNewUser.mockReturnValue(userType);
+    jest.mock('checkIsNewUser');
+    checkIsNewUser.mockReturnValue(userType);
 
     const testResult = existCurrentUser(userId)();
 
