@@ -80,7 +80,7 @@ describe('LIST BY USER CONTROLLER test set', ()=>{
 
       const methods = listByUserMethods(collection);
       await methods.getFlowByUser(req, res);
-      console.log('AQUI',jsonSpy.args.length);
+      console.log('AQUI',jsonSpy.args.length, jsonSpy.args);
       expect(jsonSpy).to.have.been.calledWith(200);
     })
 
