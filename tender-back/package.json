@@ -6,7 +6,7 @@
 	"private": "true",
 	"scripts": {
 		"start": "set DEBUG=index,index:* & nodemon index.js",
-		"test": "nyc -x **/*.spec.js -x **/*_CONFIG.js --reporter=lcov --reporter=html --reporter=text mocha **/*spec.js",
+		"test": "nyc --reporter=lcov --reporter=html --reporter=text mocha **/*spec.js",
 		"lint": "eslint . --fix"
 	},
 	"keywords": [
