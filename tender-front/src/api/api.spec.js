@@ -20,13 +20,10 @@ describe('API test set', ()=>{
 
   afterEach(() => {
     axios.get.mockClear();
+    axios.post.mockClear();
   });
 
   describe('getProjectsByUserId method test set', () => {   
-
-    // afterEach(() => {
-    //   jest.mockReset();
-    // });
     
     it('Should call axios with a specific endpoint', async ()=>{
       const USER_ID = '5f4faca78b141a231040efad';
@@ -305,44 +302,55 @@ describe('API test set', ()=>{
 
   describe('checkIsNewUser method test set', () => { 
     
-    it('Should call axios with a specific endpoint', async ()=>{
-      const USER_ID = '5f4faca78b141a231040efad';
-      const ENDPOINT = `${ROOT}/users/${USER_ID}`;
+    it('Should call axios with a specific endpoint as first argument', async ()=>{
+      const USER = { sub: 'auth0|5f53d71242e345006db2cc02'};
+      const ENDPOINT = `${ROOT}/users/${USER.sub}`;
       
       axios.post.mockImplementationOnce(() => new Promise((resolve, reject)=>{resolve(DATA)}));
-      await checkIsNewUser(USER_ID);
+      await checkIsNewUser(USER);
 
-      expect(axios.get.mock.calls[0][0]).toEqual(ENDPOINT);
+      expect(axios.post.mock.calls[0][0]).toEqual(ENDPOINT);
     });
 
-    it('Should call axios with a header', async ()=>{
-      const USER_ID = '5f4faca78b141a231040efad';
+    it('Should call axios with a user object as second argument', async ()=>{
+      const USER = { sub: 'auth0|5f53d71242e345006db2cc02'};
       const DATA = { name: 'some project' };
       
       axios.post.mockImplementationOnce(() => new Promise((resolve, reject)=>{resolve(DATA)}));
-      await checkIsNewUser(USER_ID);
+      await checkIsNewUser(USER);
 
-      expect(axios.get.mock.calls[0][1]).toBeTruthy();
+      // console.log('HEEEEEEEEEEEERE', axios.post.mock.calls[0][1]);
+      expect(axios.post.mock.calls[0][1]).toEqual({ user: USER });
+    });
+
+    it('Should call axios with a header as third argument', async ()=>{
+      const USER = { sub: 'auth0|5f53d71242e345006db2cc02'};
+      const DATA = { name: 'some project' };
+      
+      axios.post.mockImplementationOnce(() => new Promise((resolve, reject)=>{resolve(DATA)}));
+      await checkIsNewUser(USER);
+
+      expect(axios.post.mock.calls[0][2]).toBeTruthy();
     });
 
     it('Should return data if axios call was successful', async () => {
-      const USER_ID = '5f4faca78b141a231040efad';
+      const USER = { sub: 'auth0|5f53d71242e345006db2cc02'};
       const DATA = { name: 'some project' };
 
       axios.post.mockImplementationOnce(() => new Promise((resolve, reject)=>{resolve(DATA)}));
 
-      const testResult = await checkIsNewUser(USER_ID);
+      const testResult = await checkIsNewUser(USER);
 
       expect(testResult).toEqual(DATA);
     });
 
     it('Should throw an error if axios call was unsuccessful', async () => {
-      const USER_ID = '5f4faca78b141a231040efad';
+      const USER = { sub: 'invalid_user_sub'};
       const ERROR = new Error('Ooops. Something went wrong.');
 
       axios.post.mockImplementationOnce(() => Promise.reject(ERROR));
 
-      const testResult = await checkIsNewUser(USER_ID);
+      const testResult = await checkIsNewUser(USER);
 
       expect(testResult).toEqual(ERROR);
     });
@@ -350,10 +358,6 @@ describe('API test set', ()=>{
   });
 
   describe('getPortfolioFlow method test set', () => { 
-    
-    // afterAll(() => {
-    //   jest.restoreAllMocks();
-    // });
     
     it('Should call axios with a specific endpoint', async ()=>{
       const USER_ID = '5f4faca78b141a231040efad';
@@ -401,13 +405,9 @@ describe('API test set', ()=>{
 
   describe('getProjectFlow method test set', () => { 
     
-    // afterAll(() => {
-    //   jest.restoreAllMocks();
-    // });
-    
     it('Should call axios with a specific endpoint', async ()=>{
       const USER_ID = '5f4faca78b141a231040efad';
-      const ENDPOINT = `${ROOT}/projects/flow/byUser/${USER_ID}`;
+      const ENDPOINT = `${ROOT}/budgets/flow/byUser/${USER_ID}`;
       
       axios.get.mockImplementationOnce(() => new Promise((resolve, reject)=>{resolve(DATA)}));
       await getProjectFlowByUserId(USER_ID);

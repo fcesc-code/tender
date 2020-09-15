@@ -11,7 +11,7 @@ export function getProjectsByUserId(_userId) {
       return data;
     })
     .catch(error=>{
-      console.log(error);
+      // console.log(error);
       return error;
   });
 }
@@ -25,7 +25,7 @@ export function getProjectBySlug(slug) {
       return data;
     })
     .catch(error=>{
-      console.log(error);
+      // console.log(error);
       return error;
   });
 }
@@ -39,7 +39,7 @@ export function getBudgetsByProjectId(_projectId, _userId) {
       return data;
     })
     .catch(error=>{
-      console.log(error);
+      // console.log(error);
       return error;
   });
 }
@@ -52,7 +52,7 @@ export function getBudgetsByUserId(_userId) {
       return data;
     })
     .catch(error=>{
-      console.log(error);
+      // console.log(error);
       return error;
   });
 }
@@ -65,7 +65,7 @@ export function getQuotationsByUserId(_userId) {
       return data;
     })
     .catch(error=>{
-      console.log(error);
+      // console.log(error);
       return error;
   });
 }
@@ -78,7 +78,7 @@ export function getQuotationsByBudgetId(_budgetId) {
       return data;
     })
     .catch(error=>{
-      console.log(error);
+      // console.log(error);
       return error;
   });
 }
@@ -91,7 +91,7 @@ export function checkIsNewUser(user) {
     return data;
   })
   .catch(error=>{
-    console.log(error);
+    // console.log(error);
     return error;
   });
 }
@@ -104,7 +104,7 @@ export function getPortfolioFlowByUserId(_userId){
       return data;
     })
     .catch(error=>{
-      console.log(error);
+      // console.log(error);
       return error;
   });
 }
@@ -117,7 +117,7 @@ export function getProjectFlowByUserId(_userId){
       return data;
     })
     .catch(error=>{
-      console.log(error);
+      // console.log(error);
       return error;
   });
 }
