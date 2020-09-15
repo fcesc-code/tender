@@ -12,7 +12,7 @@ export function formatDate(stringDate, type = { time: true, date: 'long' }) {
     formatedDate = `${getWeekdayName(date.getDay())}, ${getDaySuffix(date.getDate())} ${getMonthName(date.getMonth())} ${date.getFullYear()}`
     separator = ( type.time ) ? ' on ' : '' ;
   } else if ( type.date === 'short' ){
-    formatedDate = `${date.getDate()}/${date.getMonth()+1}/${date.getFullYear().slice(-2)}`;
+    formatedDate = `${date.getDate()}/${date.getMonth()+1}/${String(date.getFullYear()).slice(-2)}`;
     separator = ( type.time ) ? ' ' : '' ;
   } else if ( type.date === false ){
     formatedDate = '';
