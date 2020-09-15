@@ -7,7 +7,7 @@ chai.use(sinonChai);
 const DATABASE_CONFIG = require('../../database/DATABASE_CONFIG');
 const db = require('../modules/modules');
 
-describe('LIST BY PROJECT Controller test set', ()=>{
+describe('LIST BY PROJECT CONTROLLER test set', ()=>{
 
   describe('GET LIST BY PROJECT function', ()=>{
 

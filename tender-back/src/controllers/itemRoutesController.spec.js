@@ -6,7 +6,7 @@ const expect = chai.expect;
 chai.use(sinonChai);
 const DATABASE_CONFIG = require('../../database/DATABASE_CONFIG');
 
-describe('TEST SET itemRoutesController', ()=>{
+describe('ITEM ROUTES CONTROLLER test set', ()=>{
 
   describe('READ ONE - test subset for router callback', ()=>{
 
