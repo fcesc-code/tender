@@ -4,8 +4,10 @@ function formatFlow(e){
 
   function getCustomDateString(date){
     const year = date.getFullYear();
-    const month = date.getMonth();
-    const day = date.getDate();
+    const tempMonth = date.getMonth() + 1;
+    const month = tempMonth < 10 ? `0${String(tempMonth)}` : tempMonth;
+    const tempDay = date.getDate();
+    const day = tempDay < 10 ? `0${String(tempDay)}` : tempDay;
     return `${String(year).slice(-2)}.${month}.${day}`;
   }
 
