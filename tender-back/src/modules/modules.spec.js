@@ -23,12 +23,12 @@ describe('TEST SET modules', ()=>{
         json: function foo(something){something}
       };
       
-      const jsonSpy = sinon.spy(res, 'json');
+      const jsonStub = sinon.stub(res, 'json');
   
       const methods = itemMethods(collection);
       methods.readOne(req, res);
   
-      expect(jsonSpy).to.have.been.calledWith(req.data);
+      expect(jsonStub).to.have.been.calledWith(req.data);
     })
   
   })

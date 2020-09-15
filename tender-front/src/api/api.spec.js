@@ -18,10 +18,14 @@ describe('API test set', ()=>{
 
   const ROOT = 'http://localhost:3010/api';
 
-  describe('getProjectsByUserId method test set', () => { 
-    
-    // afterAll(() => {
-    //   jest.restoreAllMocks();
+  afterEach(() => {
+    axios.get.mockClear();
+  });
+
+  describe('getProjectsByUserId method test set', () => {   
+
+    // afterEach(() => {
+    //   jest.mockReset();
     // });
     
     it('Should call axios with a specific endpoint', async ()=>{
@@ -69,10 +73,6 @@ describe('API test set', ()=>{
   });
 
   describe('getProjectBySlug method test set', () => { 
-    
-    // afterAll(() => {
-    //   jest.restoreAllMocks();
-    // });
     
     it('Should call axios with a specific endpoint', async ()=>{
       const SLUG = 'house-spanish-wells-bahamas';
