@@ -42,14 +42,55 @@ describe('LIST BY USER CONTROLLER test set', ()=>{
       expect(jsonSpy).to.have.been.calledWith(200);
     })
 
+    it('Throw an exception when db call method fails', ()=>{
+      const dbFake = sinon.fake.throws(new Error);
+      sinon.replace(db, 'findToArray', dbFake);
+
+      expect(()=>{listByUserMethods(DATABASE_CONFIG.projectsCollection).getListByUser().to.throw()});
+    });
+
   });
 
-  it('Throw an exception when db call method fails', ()=>{
-    const dbFake = sinon.fake.throws(new Error);
-    sinon.replace(db, 'findToArray', dbFake);
+  describe('GET FLOW BY USER function', ()=>{
 
-    expect(()=>{listByUserMethods(DATABASE_CONFIG.projectsCollection).getListByUser().to.throw()});
+    afterEach(()=>{
+      sinon.restore();
+    });
+
+    it('Callback getFlowByUser should return 200 status if a valid user id is provided', ()=>{
+      const collection = DATABASE_CONFIG.projectsCollection;
+      const req = {
+        params: {
+          id: '5f4faca78b141a231040efad'
+        }
+      }
+      const res = {
+        status: (code)=>{code},
+        json: (something)=>{something},
+        send: (something)=>{something},
+        db: (collection)=>{
+          return {
+            collection,
+            findToArray: (query)=>{query}
+          }
+        }
+      };
+
+      const jsonSpy = sinon.spy(res, 'status');
+
+      const methods = listByUserMethods(collection);
+      methods.getFlowByUser(req, res);
+
+      expect(jsonSpy).to.have.been.calledWith(200);
+    })
+
+    it('Throw an exception when db call method fails', ()=>{
+      const dbFake = sinon.fake.throws(new Error);
+      sinon.replace(db, 'findToArray', dbFake);
+
+      expect(()=>{listByUserMethods(DATABASE_CONFIG.projectsCollection).getFlowByUser().to.throw()});
+    });
+
   });
 
-})
-
+});

@@ -19,7 +19,7 @@ describe('LIST BY PROJECT CONTROLLER test set', ()=>{
       const collection = DATABASE_CONFIG.projectsCollection;
       const req = {
         params: {
-          id: '5f4fae868b141a231040efb5'
+          id: '5f58e82a91c33d3f4808481e'
         }
       }
       const res = {
@@ -37,7 +37,7 @@ describe('LIST BY PROJECT CONTROLLER test set', ()=>{
       const jsonSpy = sinon.spy(res, 'status');
 
       const methods = listByProjectMethods(collection);
-      methods.getListByUser(req, res);
+      methods.getListByProject(req, res);
 
       expect(jsonSpy).to.have.been.calledWith(200);
     })
@@ -48,7 +48,7 @@ describe('LIST BY PROJECT CONTROLLER test set', ()=>{
     const dbFake = sinon.fake.throws(new Error);
     sinon.replace(db, 'findToArray', dbFake);
 
-    expect(()=>{listByProjectMethods(DATABASE_CONFIG.projectsCollection).getListByUser().to.throw()});
+    expect(()=>{listByProjectMethods(DATABASE_CONFIG.projectsCollection).getListByProject().to.throw()});
   });
 
 })

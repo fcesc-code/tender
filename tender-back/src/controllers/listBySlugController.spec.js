@@ -37,7 +37,7 @@ describe('LIST BY SLUG CONTROLLER test set', ()=>{
       const jsonSpy = sinon.spy(res, 'status');
 
       const methods = listBySlugMethods(collection);
-      methods.getItemBySlugr(req, res);
+      methods.getItemBySlug(req, res);
 
       expect(jsonSpy).to.have.been.calledWith(200);
       

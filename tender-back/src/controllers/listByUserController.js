@@ -1,5 +1,6 @@
 const db = require('../modules/modules.js');
 const debug = require('debug')('server:listByUserController.js');
+const orderEventsFlow = require('./../utils/orderEventsFlow');
 
 function listByUserMethods(collection){
   function getListByUser (req, res) { // this works
@@ -24,17 +25,8 @@ function listByUserMethods(collection){
       try {
         const data = await db(collection).findProjectionToArray(query, projection);
         // console.log('URRAH! data from the db:', JSON.stringify(data));
-        const reducer = (a, c) => a.concat(c);
-        const order = function (a, b) {
-          let firstTime;
-          let secondTime;
-          (a.time === '' || a.time === undefined) ? firstTime = a.est_time : firstTime = a.time;
-          (b.time === '' || b.time === undefined) ? secondTime = b.est_time : secondTime = b.time;
-          firstTime = new Date(firstTime);
-          secondTime = new Date(secondTime);
-          return firstTime - secondTime; 
-        }
-        const result = data.map(group => group.events).reduce(reducer).sort(order);
+        const filteredData = data.map(group => group.events);
+        const result = orderEventsFlow(filteredData);
         // console.log('DATA has been transformed and is ready to be sent back to front', JSON.stringify(result));
         res.status(200);
         res.json(result);

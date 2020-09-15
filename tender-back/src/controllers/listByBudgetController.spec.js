@@ -1,5 +1,5 @@
 const sinon = require('sinon');
-const listByUserMethods = require('./listByUserController');
+const listByBudgetMethods = require('./listByBudgetController');
 const chai = require('chai');
 const sinonChai = require('sinon-chai');
 const expect = chai.expect;
@@ -19,7 +19,7 @@ describe('LIST BY USER CONTROLLER test set', ()=>{
       const collection = DATABASE_CONFIG.projectsCollection;
       const req = {
         params: {
-          id: '5f4faca78b141a231040efad'
+          id: '5f5692eec76df948689ed9ba'
         }
       }
       const res = {
@@ -36,8 +36,8 @@ describe('LIST BY USER CONTROLLER test set', ()=>{
 
       const jsonSpy = sinon.spy(res, 'status');
 
-      const methods = listByUserMethods(collection);
-      methods.getListByUser(req, res);
+      const methods = listByBudgetMethods(collection);
+      methods.getListByBudget(req, res);
 
       expect(jsonSpy).to.have.been.calledWith(200);
     })
@@ -48,7 +48,7 @@ describe('LIST BY USER CONTROLLER test set', ()=>{
     const dbFake = sinon.fake.throws(new Error);
     sinon.replace(db, 'findToArray', dbFake);
 
-    expect(()=>{listByUserMethods(DATABASE_CONFIG.projectsCollection).getListByUser().to.throw()});
+    expect(()=>{listByBudgetMethods(DATABASE_CONFIG.projectsCollection).getListByBudget().to.throw()});
   });
 
 })
