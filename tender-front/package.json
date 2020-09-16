@@ -90,6 +90,7 @@
 			"!**/node_modules/**",
 			"!**/vendor/**",
 			"!**/coverage/**",
+			"!**/components/**",
 			"!**/*_CONFIG.js",
 			"!**/*_TYPES.js",
 			"!**/*_mock.js",
