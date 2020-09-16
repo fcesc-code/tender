@@ -5,7 +5,6 @@ const sinonChai = require('sinon-chai');
 const expect = chai.expect;
 chai.use(sinonChai);
 const DATABASE_CONFIG = require('../../database/DATABASE_CONFIG');
-const db = require('../modules/modules');
 
 describe('LIST BY PROJECT CONTROLLER test set', ()=>{
 
@@ -15,11 +14,11 @@ describe('LIST BY PROJECT CONTROLLER test set', ()=>{
       sinon.restore();
     });
 
-    it('Callback getListByUser should return 200 status if a valid user id is provided', ()=>{
+    it('Callback getListByUser should return 200 status if a valid user id is provided', async ()=>{
       const collection = DATABASE_CONFIG.projectsCollection;
       const req = {
         params: {
-          id: '5f58e82a91c33d3f4808481e'
+          projectId: '5f58e82a91c33d3f4808481e'
         }
       }
       const res = {
@@ -34,21 +33,31 @@ describe('LIST BY PROJECT CONTROLLER test set', ()=>{
         }
       };
 
-      const jsonSpy = sinon.spy(res, 'status');
+      const stub = sinon.stub(res, 'status');
 
       const methods = listByProjectMethods(collection);
-      methods.getListByProject(req, res);
-
-      expect(jsonSpy).to.have.been.calledWith(200);
+      await methods.getListByProject(req, res);
+      
+      expect(stub).to.have.been.calledWith(200);
     })
 
   });
 
-  it('Throw an exception when db call method fails', ()=>{
-    const dbFake = sinon.fake.throws(new Error);
-    sinon.replace(db, 'findToArray', dbFake);
+  it('Throw an exception when db call method fails', async ()=>{
+    const collection = DATABASE_CONFIG.projectsCollection;
+    const req = {};
+    const res = {
+      status: (code)=>{code},
+      json: (something)=>{something},
+      send: (something)=>{something},
+    };
 
-    expect(()=>{listByProjectMethods(DATABASE_CONFIG.projectsCollection).getListByProject().to.throw()});
+    const stub = sinon.stub(res, 'status');
+
+    const methods = listByProjectMethods(collection);
+    await methods.getListByProject(req, res);
+
+    expect(stub).to.have.been.calledWith(404);
   });
 
 })

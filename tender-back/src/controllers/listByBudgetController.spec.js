@@ -5,7 +5,6 @@ const sinonChai = require('sinon-chai');
 const expect = chai.expect;
 chai.use(sinonChai);
 const DATABASE_CONFIG = require('../../database/DATABASE_CONFIG');
-const db = require('../modules/modules');
 
 describe('LIST BY USER CONTROLLER test set', ()=>{
 
@@ -15,8 +14,8 @@ describe('LIST BY USER CONTROLLER test set', ()=>{
       sinon.restore();
     });
 
-    it('Callback getListByUser should return 200 status if a valid user id is provided', ()=>{
-      const collection = DATABASE_CONFIG.projectsCollection;
+    it('Callback getListByUser should return 200 status if a valid user id is provided', async ()=>{
+      const collection = DATABASE_CONFIG.budgetsCollection;
       const req = {
         params: {
           id: '5f5692eec76df948689ed9ba'
@@ -34,21 +33,32 @@ describe('LIST BY USER CONTROLLER test set', ()=>{
         }
       };
 
-      const jsonSpy = sinon.spy(res, 'status');
+      const stub = sinon.stub(res, 'status');
 
       const methods = listByBudgetMethods(collection);
-      methods.getListByBudget(req, res);
+      await methods.getListByBudget(req, res);
 
-      expect(jsonSpy).to.have.been.calledWith(200);
+      expect(stub).to.have.been.calledWith(200);
     })
 
   });
 
-  it('Throw an exception when db call method fails', ()=>{
-    const dbFake = sinon.fake.throws(new Error);
-    sinon.replace(db, 'findToArray', dbFake);
+  it('Throw an exception when db call method fails', async ()=>{
+    const collection = DATABASE_CONFIG.projectsCollection;
+    const req = {};
+    const res = {
+      status: (code)=>{code},
+      json: (something)=>{something},
+      send: (something)=>{something},
+    };
 
-    expect(()=>{listByBudgetMethods(DATABASE_CONFIG.projectsCollection).getListByBudget().to.throw()});
+    const stub = sinon.stub(res, 'status');
+
+    const methods = listByBudgetMethods(collection);
+    await methods.getListByBudget(req, res);
+
+    expect(stub).to.have.been.calledWith(404);
+
   });
 
 })
