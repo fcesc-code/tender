@@ -1,6 +1,8 @@
 import { loadProjectBySlug, saveProject, deleteProject, loadProjectFlowByUserId, loadBudgetsByProjectId } from './projectActions';
 import ACTION_TYPES from './ACTION_TYPES';
 
+// jest.mock('../../api/api');
+
 describe('PROJECT ACTIONS - REDUX - Test set', () => {
 
   describe('LOAD PROJECTS BY SLUG method test set', () => {
@@ -22,6 +24,44 @@ describe('PROJECT ACTIONS - REDUX - Test set', () => {
       expect(dispatch.mock.calls[1][0]).toEqual(expectedDispatchSecondCall);
       expect(dispatch.mock.calls[2][0].type).toBe(expectedDispatchThirdCall.type);
     })
+
+    // it('test', async () => {
+    //   const SLUG = 'house-spanish-wells-bahamas';
+    //   const expectedDispatchFirstCall = { type: ACTION_TYPES.API.BEGIN_API_CALL };
+    //   const expectedDispatchSecondCall = { type: ACTION_TYPES.PROJECT.LOAD_PROJECT_BYSLUG_SUCCESS };
+    //   const expectedDispatchThirdCall = {
+    //     type: ACTION_TYPES.PROJECT.LOAD_PROJECT_BYSLUG,
+    //     payload: { data: 'stuff' }
+    //   }
+
+    //   const dispatch = jest.fn();
+    //   loadProjectBySlug.mockReturnValue(()=>new Promise((resolve, reject)=>resolve({ data: 'stuff' })))
+    //   const returnedFunction = loadProjectBySlug(SLUG);
+    //   await returnedFunction(dispatch);
+
+    //   expect(dispatch.mock.calls[0][0]).toEqual(expectedDispatchFirstCall);
+    //   expect(dispatch.mock.calls[1][0]).toEqual(expectedDispatchSecondCall);
+    //   expect(dispatch.mock.calls[2][0].type).toBe(expectedDispatchThirdCall.type);
+    // })
+
+    // it('error test', async () => {
+    //   const SLUG = 'house-spanish-wells-bahamas';
+    //   const expectedDispatchFirstCall = { type: ACTION_TYPES.API.BEGIN_API_CALL };
+    //   const expectedDispatchSecondCall = { type: ACTION_TYPES.PROJECT.LOAD_PROJECT_BYSLUG_SUCCESS };
+    //   const expectedDispatchThirdCall = {
+    //     type: ACTION_TYPES.PROJECT.LOAD_PROJECT_BYSLUG,
+    //     payload: { data: 'stuff' }
+    //   }
+
+    //   const dispatch = jest.fn();
+    //   loadProjectBySlug.mockResolvedValue(new Error('Ooops. something went wrong.'))
+    //   const returnedFunction = loadProjectBySlug(SLUG);
+    //   await returnedFunction(dispatch);
+
+    //   expect(dispatch.mock.calls[0][0]).toEqual(expectedDispatchFirstCall);
+    //   expect(dispatch.mock.calls[1][0]).toEqual(expectedDispatchSecondCall);
+    //   expect(dispatch.mock.calls[2][0].type).toBe(expectedDispatchThirdCall.type);
+    // })
 
   })
 

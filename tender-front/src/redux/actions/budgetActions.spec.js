@@ -49,8 +49,8 @@ describe('API STATUS ACTIONS - REDUX - Test set', () => {
 
   describe('UPDATE BUDGET method test set', () => {
 
-    xit('test', async () => {
-      const BUDGET_ID = '5f5692eec76df948689ed9ba';
+    it('test update', async () => {
+      const BUDGET = { _id: '5f5692eec76df948689ed9ba', data: 'stuff' };
       const expectedDispatchFirstCall = { type: ACTION_TYPES.API.BEGIN_API_CALL };
       const expectedDispatchSecondCall = { type: ACTION_TYPES.BUDGET.UPDATE_BUDGET_SUCCESS };
       const expectedDispatchThirdCall = {
@@ -59,7 +59,7 @@ describe('API STATUS ACTIONS - REDUX - Test set', () => {
       }
 
       const dispatch = jest.fn();
-      const returnedFunction = updateOrCreateBudget(BUDGET_ID);
+      const returnedFunction = updateOrCreateBudget(BUDGET);
       await returnedFunction(dispatch);
 
       expect(dispatch.mock.calls[0][0]).toEqual(expectedDispatchFirstCall);
@@ -71,8 +71,8 @@ describe('API STATUS ACTIONS - REDUX - Test set', () => {
 
   describe('UPDATE BUDGET method test set', () => {
 
-    xit('test', async () => {
-      const BUDGET_ID = '___new_budget_mock_id___';
+    xit('test create', async () => {
+      const BUDGET = { id_: '___new_budget_mock_id___', data: 'stuff' };
 
       const expectedDispatchFirstCall = { type: ACTION_TYPES.API.BEGIN_API_CALL };
       const expectedDispatchSecondCall = { type: ACTION_TYPES.BUDGET.CREATE_BUDGET_SUCCESS };
@@ -82,7 +82,7 @@ describe('API STATUS ACTIONS - REDUX - Test set', () => {
       }
 
       const dispatch = jest.fn();
-      const returnedFunction = updateOrCreateBudget(BUDGET_ID);
+      const returnedFunction = updateOrCreateBudget(BUDGET);
       await returnedFunction(dispatch);
 
       expect(dispatch.mock.calls[0][0]).toEqual(expectedDispatchFirstCall);
@@ -94,7 +94,7 @@ describe('API STATUS ACTIONS - REDUX - Test set', () => {
 
   describe('DELETE BUDGET OPTIMISTIC method test set', () => {
 
-    xit('Should return an action type of ERROR_API_CALL when method apiCallError is called', () => {
+    it('Should return an action type of ERROR_API_CALL when method apiCallError is called', () => {
       const expectedDispatchFirstCall = { type: ACTION_TYPES.BUDGET.DELETE_BUDGET };
       const BUDGET_ID = '5f5692eec76df948689ed9ba';
   
