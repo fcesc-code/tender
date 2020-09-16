@@ -6,11 +6,11 @@ function router(collection){
 
   userRoutes
     .route('/:userSub')
-    .post((req, res) => {
+    .post(async(req, res) => {
       // console.log('CONSULTANT EL POST DEL USER', req.params.userSub);
       const uniqueId = req.params.userSub;
       const query = { 'user_sub': uniqueId };
-      (async function returnList(){
+      // (async function returnList(){
         try {
           // console.log('URRAH, ha entrado en la callback listo para llamar a la bd');
           const data = await db(collection).findToArray(query);
@@ -34,7 +34,7 @@ function router(collection){
           res.status(404);
           res.send(error);
         }
-      })();
+      // })();
     });
 
   return userRoutes;

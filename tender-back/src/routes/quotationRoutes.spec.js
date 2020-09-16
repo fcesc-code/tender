@@ -39,4 +39,17 @@ describe('QUOTATION ROUTES test set', () => {
       .expect(404)
   });
 
+  it('GET quotations ById with valid quotationId should return json data with status 200', () => {
+    request(mockServer)
+      .get(`${ROOT_ROUTES}/5f578c0b91c33d3f4808481d`)
+      .expect('Content-type', /json/)
+      .expect(200)
+  });
+
+  it('GET quotations ById with invalid quotationId should return status 404', () => {
+    request(mockServer)
+      .get(`${ROOT_ROUTES}/invalidId`)
+      .expect(404)
+  });
+
 });

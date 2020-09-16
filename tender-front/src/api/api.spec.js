@@ -4,6 +4,7 @@ import {
   getBudgetsByProjectId, 
   getQuotationsByUserId, 
   getQuotationsByBudgetId,
+  getQuotationById,
   getProjectBySlug,
   getPortfolioFlowByUserId,
   getProjectFlowByUserId,
@@ -299,6 +300,53 @@ describe('API test set', ()=>{
     });
 
   });
+
+  describe('getQuotationBytId method test set', () => { 
+
+    it('Should call axios with a specific endpoint', async ()=>{
+      const ID = '5f578c0b91c33d3f4808481d';
+      const ENDPOINT = `${ROOT}/quotations/${ID}`;
+      
+      axios.get.mockImplementationOnce(() => new Promise((resolve, reject)=>{resolve(DATA)}));
+      await getQuotationById(ID);
+
+      expect(axios.get.mock.calls[0][0]).toEqual(ENDPOINT);
+    });
+
+    it('Should call axios with a header', async ()=>{
+      const ID = '5f578c0b91c33d3f4808481d';
+      const DATA = { name: 'some project' };
+      
+      axios.get.mockImplementationOnce(() => new Promise((resolve, reject)=>{resolve(DATA)}));
+      await getQuotationById(ID);
+
+      expect(axios.get.mock.calls[0][1]).toBeTruthy();
+    });
+
+    it('Should return data if axios call was successful', async () => {
+      const ID = '5f578c0b91c33d3f4808481d';
+      const DATA = { name: 'some project' };
+
+      axios.get.mockImplementationOnce(() => new Promise((resolve, reject)=>{resolve(DATA)}));
+
+      const testResult = await getQuotationById(ID);
+
+      expect(testResult).toEqual(DATA);
+    });
+
+    it('Should throw an error if axios call was unsuccessful', async () => {
+      const ID = '5f578c0b91c33d3f4808481d';
+      const ERROR = new Error('Ooops. Something went wrong.');
+
+      axios.get.mockImplementationOnce(() => Promise.reject(ERROR));
+
+      const testResult = await getQuotationById(ID);
+
+      expect(testResult).toEqual(ERROR);
+    });
+
+  });
+
 
   describe('checkIsNewUser method test set', () => { 
     

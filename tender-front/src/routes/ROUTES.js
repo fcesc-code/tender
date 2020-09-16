@@ -10,9 +10,4 @@ const ROUTES = [
 // nav if true will display options in nav menu
 // auth if true will display options only if authenticated. An unauthenticated user will see options with auth false
 
-const LINKS = new Map();
-for(let route of ROUTES){
-  LINKS.set(route.title, route);
-}
-
-export default { ROUTES, LINKS };
+export default { ROUTES };
