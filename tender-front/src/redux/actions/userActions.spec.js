@@ -1,6 +1,10 @@
+// import configureMockStore from 'redux-mock-store';
+// import thunk from 'redux-thunk';
 import { saveCurrentUser, removeCurrentUser, existCurrentUser } from './userActions';
 import ACTION_TYPES from './ACTION_TYPES';
-import { checkIsNewUser } from '../../api/api';
+
+// const middlewares = [thunk];
+// const mockStore = configureMockStore(middlewares);
 
 describe('USER ACTIONS - REDUX - Test set', () => {
 
@@ -21,90 +25,43 @@ describe('USER ACTIONS - REDUX - Test set', () => {
     expect(testResult).toEqual(expectedResult);
   });
 
-  it('ESTE Should call existCurrentUser function with following arguments: userId', () => {
+  // it('ESTE Should call existCurrentUser function with following arguments: userId', () => {
+  //   const USER_TYPE = { type: 'recurrent' };
+
+  //   const testAction = {
+  //       type: ACTION_TYPES.USER.EXIST_CURRENT_USER,
+  //       payload: USER_TYPE
+  //   };
+
+  //   const store = mockStore();
+
+  //   return store.dispatch(testAction).then(() => {
+  //     const actions = store.getActions() 
+  //     console.log('WOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOW', actions);
+  //     expect(actions).toEqual(testAction)
+  //   })
+
+    
+  // });
+
+  it('Should call existCurrentUser function with following arguments: userId', async () => {
     const userId = 'auth0|5f53d71242e345006db2cc02';
     const userType = { type: 'recurrent' };
 
-    const expectedResult = {
+    const expectedDispatchFirstCall = { type: ACTION_TYPES.API.BEGIN_API_CALL };
+    const expectedDispatchSecondCall = { type: ACTION_TYPES.USER.EXIST_CURRENT_USER_SUCCESSFUL };
+    const expectedDispatchThirdCall = {
       type: ACTION_TYPES.USER.EXIST_CURRENT_USER,
       payload: userType
     }
-    
-    jest.mock('checkIsNewUser');
-    checkIsNewUser.mockReturnValue(Promisify(userType));
 
     const dispatch = jest.fn();
-    dispatch.mockReturnValueOnce(checkIsNewUser);
-    existCurrentUser(userId)(dispatch);
+    const returnedFunction = existCurrentUser(userId);
+    await returnedFunction(dispatch);
 
-    expect(checkIsNewUser).to.haveBeenCalledWith(expectedResult);
-  });
-
-  it('Should call existCurrentUser function with following arguments: userId', () => {
-    const userId = 'auth0|5f53d71242e345006db2cc02';
-    const userType = { type: 'recurrent' };
-
-    const expectedResult = {
-      type: ACTION_TYPES.USER.EXIST_CURRENT_USER,
-      payload: userType
-    }
-    
-    jest.mock('checkIsNewUser');
-    checkIsNewUser.mockReturnValue(expectedResult);
-
-    const dispatch = jest.fn();
-    existCurrentUser(userId)(dispatch);
-
-    expect(checkIsNewUser).to.haveBeenCalledWith(expectedResult);
-  });
-
-  it('Should throw an error if callback returns an error', () => {
-    const userId = 'auth0|5f53d71242e345006db2cc02';
-    const userType = { type: 'recurrent' };
-
-    const expectedResult = new Error()
-    
-    jest.mock('checkIsNewUser');
-    checkIsNewUser.mockReturnValue(expectedResult);
-
-    const dispatch = jest.fn();
-    existCurrentUser(userId)(dispatch);
-
-    expect(checkIsNewUser).to.haveBeenCalledWith(expectedResult);
-  });
-
-  it('Should return an action type of EXIST_CURRENT_USER with type \'recurrent\' when method existCurrentUser is called with an existing userId', () => {
-    const userId = 'auth0|5f53d71242e345006db2cc02';
-    const userType = { type: 'recurrent' };
-
-    const expectedResult = {
-      type: ACTION_TYPES.USER.EXIST_CURRENT_USER,
-      payload: userType
-    }
-    
-    jest.mock('checkIsNewUser');
-    checkIsNewUser.mockReturnValue(userType);
-
-    existCurrentUser(userId)(jest.fn());
-
-    expect(checkIsNewUser).to.haveBeenCalledWith(expectedResult);
-  });
-
-  it('Should return an action type of EXIST_CURRENT_USER with type \'new\' when method existCurrentUser is called with a new userId', () => {
-    const userId = 'auth0|thisWillBeAlwaysANewUser';
-    const userType = { type: 'new', created: 'successful', signupForm: false };
-
-    const expectedResult = {
-      type: ACTION_TYPES.USER.EXIST_CURRENT_USER,
-      payload: userType
-    }
-    
-    jest.mock('checkIsNewUser');
-    checkIsNewUser.mockReturnValue(userType);
-
-    const testResult = existCurrentUser(userId)();
-
-    expect(testResult).toEqual(expectedResult);
+    expect(dispatch.mock.calls[0][0]).toEqual(expectedDispatchFirstCall);
+    expect(dispatch.mock.calls[1][0]).toEqual(expectedDispatchSecondCall);
+    expect(dispatch.mock.calls[2][0].type).toBe(expectedDispatchThirdCall.type);
   });
 
 });

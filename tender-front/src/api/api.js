@@ -84,6 +84,7 @@ export function getQuotationsByBudgetId(_budgetId) {
 }
 
 export function checkIsNewUser(user) {
+  // if (!user) { throw new Error('Call error: checkIsNewUser method was called without arugments')}
   const headers = getHeaders();
   return axios.post(`${ROOT}/users/${user.sub}`, { user }, { headers } )
   .then( data=>{

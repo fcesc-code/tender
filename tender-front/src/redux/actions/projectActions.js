@@ -10,7 +10,7 @@ export function loadProjectBySlug(slug) {
         dispatch({ type: ACTION_TYPES.PROJECT.LOAD_PROJECT_BYSLUG_SUCCESS });
         dispatch({
           type: ACTION_TYPES.PROJECT.LOAD_PROJECT_BYSLUG,
-          payload: response.data[0]
+          payload: (response.data) ? response.data[0] : null
         });
       })
       .catch(error => {
@@ -20,30 +20,30 @@ export function loadProjectBySlug(slug) {
   };
 }
 
-export function saveProject(project) {
-  return function(dispatch) {
-    dispatch(beginApiCall());
-    return saveProject(project)
-      .then(response => {
-        dispatch({ type: ACTION_TYPES.PROJECT.UPDATE_PROJECT_SUCCESS });
-        dispatch({
-          type: ACTION_TYPES.PROJECT.UPDATE_PROJECT,
-          payload: response.data
-        });
-      })
-      .catch(error => {
-        dispatch(apiCallError(error));
-        throw error;
-      });
-  };
-}
+// export function saveProject(project) {
+//   return function(dispatch) {
+//     dispatch(beginApiCall());
+//     return saveProject(project)
+//       .then(response => {
+//         dispatch({ type: ACTION_TYPES.PROJECT.UPDATE_PROJECT_SUCCESS });
+//         dispatch({
+//           type: ACTION_TYPES.PROJECT.UPDATE_PROJECT,
+//           payload: response.data
+//         });
+//       })
+//       .catch(error => {
+//         dispatch(apiCallError(error));
+//         throw error;
+//       });
+//   };
+// }
 
-export function deleteProject(project_id) {
-  return function(dispatch) {
-    dispatch({ type: ACTION_TYPES.PROJECT.DELETE_PROJECT, payload: project_id });
-    return deleteProject(project_id);
-  };
-}
+// export function deleteProject(project_id) {
+//   return function(dispatch) {
+//     dispatch({ type: ACTION_TYPES.PROJECT.DELETE_PROJECT, payload: project_id });
+//     return deleteProject(project_id);
+//   };
+// }
 
 export function loadProjectFlowByUserId(_userId) {
   // console.log('action loadProjectFlowByUserId');

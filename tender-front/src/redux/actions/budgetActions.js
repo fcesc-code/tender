@@ -1,29 +1,16 @@
 import ACTION_TYPES from './ACTION_TYPES';
 import { beginApiCall, apiCallError } from './apiStatusActions';
 
-export function createBudgetSuccess(budget) {
-  return { type: ACTION_TYPES.BUDGET.CREATE_PROJECT, payload: budget };
-}
-
-export function updateBudgetSuccess(budget) {
-  return { type: ACTION_TYPES.BUDGET.UPDATE_PROJECT, payload: budget };
-}
-
-export function deleteBudgetOptimistic(_id) {
-  return { type: ACTION_TYPES.BUDGET.DELETE_PROJECT, payload: _id };
-}
-
-export function loadBudgetByIdSuccess(_id) {
-  return { type: ACTION_TYPES.BUDGET.LOAD_PROJECT, payload: _id };
-}
-
 export function loadBudgetById(_id) {
   return function(dispatch) {
     dispatch(beginApiCall());
-    return api
-      .getBudgetById(_id)
-      .then(budget => {
-        dispatch(loadBudgetByIdSuccess(budget));
+    return getBudgetById(_id)
+      .then(response =>{
+        dispatch({ type: ACTION_TYPES.BUDGET.LOAD_BUDGET_SUCCESS });
+        dispatch({
+          type: ACTION_TYPES.BUDGET.LOAD_BUDGET,
+          payload: (response.data) ? response.data[0] : null
+        });
       })
       .catch(error => {
         dispatch(apiCallError(error));
@@ -33,14 +20,23 @@ export function loadBudgetById(_id) {
 }
 
 export function saveBudget(budget) {
-  return function(dispatch, getState) {
+  return function(dispatch) {
     dispatch(beginApiCall());
-    return api
-      .saveBudget(budget)
-      .then(savedBudget => {
-        budget._id
-          ? dispatch(updateBudgetSuccess(savedBudget))
-          : dispatch(createBudgetSuccess(savedBudget));
+    return createOrUpdateBudget(budget)
+      .then(response => {
+        if(budget._id){
+          dispatch({ type: ACTION_TYPES.BUDGET.UPDATE_BUDGET_SUCCESS });
+          dispatch({
+            type: ACTION_TYPES.BUDGET.UPDATE_BUDGET,
+            payload: (response.data) ? response.data[0] : null
+          });
+        } else {
+          dispatch({ type: ACTION_TYPES.BUDGET.CREATE_BUDGET_SUCCESS });
+          dispatch({
+            type: ACTION_TYPES.BUDGET.CREATE_BUDGET,
+            payload: (response.data) ? response.data[0] : null
+          });
+        }
       })
       .catch(error => {
         dispatch(apiCallError(error));
