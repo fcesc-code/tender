@@ -8,11 +8,12 @@ import user from './userReducer';
 import apiCallsInProgress from './apiCallStatusReducer';
 import errors from './errorReducer';
 
+jest.mock(redux, 'combineReducers');
+
 describe('ROOT REDUCER test set', ()=>{
   
   xit('Should return a constant with the result of a call to combineReducers method with a list of reducers', ()=>{
-    jest.mock(redux, 'combineReducers');
-    const expectedResult = combineReducers({
+    const REDUCERS = {
       project,
       portfolio,
       budget,
@@ -20,9 +21,11 @@ describe('ROOT REDUCER test set', ()=>{
       user,
       apiCallsInProgress,
       errors
-    });
+    };
+    const testResult = combineReducers(REDUCERS);
 
-    expect(rootReducer).toEqual(expectedResult);
+    expect(combineReducers).toHaveBeenCalled();
+    expect(testResult).toEqual(rootReducer);
   });
 
 });
