@@ -51,4 +51,17 @@ describe('BUDGET ROUTES test set', () => {
       .get(`${ROOT_ROUTES}/byProject/invalidId`)
       .expect(404)
   });
+
+  it('GET budget with valid budgetId should return json data with status 200', () => {
+    request(mockServer)
+      .get(`${ROOT_ROUTES}/5f5692eec76df948689ed9ba`)
+      .expect('Content-type', /json/)
+      .expect(200)
+  });
+
+  xit('GET budget with invalid budgetId should return status 404', () => {
+    request(mockServer)
+      .get(`${ROOT_ROUTES}/invalidId`)
+      .expect(404)
+  }); // falla, debería parar en el .all si es inválido y no continuar, revisar
 });

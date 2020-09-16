@@ -44,6 +44,20 @@ export function getBudgetsByProjectId(_projectId, _userId) {
   });
 }
 
+export function getBudgetById(_budgetId, _userId) {
+  const headers = getHeaders();
+  // console.log('api was called: getBudgetsByProjectId');
+  return axios.get(`${ROOT}/budgets/${_budgetId}`, { headers } )
+    .then( data=>{
+      // console.log('%cDATA from db arrived at front @ getBudgetsByProjectId - api', 'color: blue')
+      return data;
+    })
+    .catch(error=>{
+      // console.log(error);
+      return error;
+  });
+}
+
 export function getBudgetsByUserId(_userId) {
   const headers = getHeaders();
   return axios.get(`${ROOT}/budgets/byUser/${_userId}`, { headers } )
@@ -75,6 +89,20 @@ export function getQuotationsByBudgetId(_budgetId) {
   return axios.get(`${ROOT}/quotations/byBudget/${_budgetId}`, { headers } )
     .then( data=>{
       console.log('%cDATA from db arrived at front @ getQuotationsByBudgetId - api', 'color: blue')
+      return data;
+    })
+    .catch(error=>{
+      // console.log(error);
+      return error;
+  });
+}
+
+export function getQuotationById(_quotationId, _userId) {
+  const headers = getHeaders();
+  // console.log('api was called: getBudgetsByProjectId');
+  return axios.get(`${ROOT}/quotations/${_quotationId}`, { headers } )
+    .then( data=>{
+      // console.log('%cDATA from db arrived at front @ getBudgetsByProjectId - api', 'color: blue')
       return data;
     })
     .catch(error=>{

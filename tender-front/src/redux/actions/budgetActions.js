@@ -1,5 +1,27 @@
 import ACTION_TYPES from './ACTION_TYPES';
 import { beginApiCall, apiCallError } from './apiStatusActions';
+import { getBudgetById, saveBudget, deleteBudget, getQuotationsByBudgetId } from '../../api/api';
+
+export function loadQuotationsByBudgetId(_projectId, _userId) { 
+  return function (dispatch) {
+  // console.log('loadBudgetsByProjectId action called with ', _projectId, _userId);
+  dispatch(beginApiCall());
+  
+  return getQuotationsByBudgetId(_projectId, _userId)
+    .then(response => {
+      // console.log('loadBudgetsByProjectId: data received from api into action, and ready for dispatch', response.data);
+      dispatch({ type: ACTION_TYPES.BUDGET.LOAD_BUDGET_INFO_SUCCESS });
+      dispatch({
+        type: ACTION_TYPES.BUDGET.LOAD_BUDGET_INFO,
+        payload: response.data
+      });
+    })
+    .catch(error => {
+      dispatch(apiCallError(error));
+      throw error;
+    });
+  }
+}
 
 export function loadBudgetById(_id) {
   return function(dispatch) {
@@ -19,10 +41,10 @@ export function loadBudgetById(_id) {
   };
 }
 
-export function saveBudget(budget) {
+export function updateOrCreateBudget(budget) {
   return function(dispatch) {
     dispatch(beginApiCall());
-    return createOrUpdateBudget(budget)
+    return saveBudget(budget)
       .then(response => {
         if(budget._id){
           dispatch({ type: ACTION_TYPES.BUDGET.UPDATE_BUDGET_SUCCESS });
@@ -45,15 +67,15 @@ export function saveBudget(budget) {
   };
 }
 
-export function deleteBudget(budget) {
+export function deleteBudgetOptimistic(project_id) {
   return function(dispatch) {
-    dispatch(deleteBudgetOptimistic(budget));
-    return api.deleteBudget(budget,_id);
+    dispatch({ type: ACTION_TYPES.BUDGET.DELETE_BUDGET });
+    return deleteBudget(project_id);
   };
 }
 
 /* || pending ||
 ACTION_TYPES.BUDGET.CALCULATE_BUDGET
-ACTION_TYPES.BUDGET.UPDATE_BUDGET_STATUS
-ACTION_TYPES.BUDGET.SUBMIT_BUDGET
 */
+
+

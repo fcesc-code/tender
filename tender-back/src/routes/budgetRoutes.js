@@ -1,6 +1,7 @@
 const express = require('express');
 const listByUserMethods = require('../controllers/listByUserController');
 const listByProjectMethods = require('../controllers/listByProjectController');
+const itemMethods = require('../controllers/itemRoutesController');
 
 function router(collection){
   const budgetRoutes = express.Router();
@@ -16,6 +17,27 @@ function router(collection){
   budgetRoutes
     .route('/byProject/:projectId')
     .get(listByProjectMethods(collection).getListByProject);
+
+  budgetRoutes
+    .all('/:budgetId', (req, res, next)=>{
+      const query = { '_id': ObjectID(req.params.budgetId) };
+      // console.log('calling with query', query);
+      (async function returnList(){
+        try {
+          const data = await db(collection).findToArray(query);
+          req.data = data;
+          next();
+        } catch (error) {
+          res.send(error);
+        }
+      })();
+    })
+
+  budgetRoutes
+    .route('/:budgetId')
+    //.patch(itemMethods(collection).updateMany) // not operative yet
+    //.delete(itemMethods(collection).remove) // not operative yet
+    .get(itemMethods(collection).readOne);
 
   return budgetRoutes;
 }

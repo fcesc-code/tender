@@ -57,7 +57,7 @@ describe('LIST BY USER CONTROLLER test set', ()=>{
       sinon.restore();
     });
 
-    it.only('Callback getFlowByUser should return 200 status if a valid user id is provided', async ()=>{
+    it('Callback getFlowByUser should return 200 status if a valid user id is provided', async ()=>{
       const collection = DATABASE_CONFIG.projectsCollection;
       const req = {
         params: {

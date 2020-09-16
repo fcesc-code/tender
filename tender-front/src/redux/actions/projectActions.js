@@ -40,7 +40,7 @@ export function loadProjectBySlug(slug) {
 
 // export function deleteProject(project_id) {
 //   return function(dispatch) {
-//     dispatch({ type: ACTION_TYPES.PROJECT.DELETE_PROJECT, payload: project_id });
+//     dispatch({ type: ACTION_TYPES.PROJECT.DELETE_PROJECT });
 //     return deleteProject(project_id);
 //   };
 // }
