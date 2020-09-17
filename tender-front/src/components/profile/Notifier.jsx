@@ -11,11 +11,6 @@ function Notifier({ user }) {
     {'title': 'A new project was added in your portfolio', 'root': '/portfolio/', 'slug': '' }
   ];
 
-
-  // useEffect(()=>{
-
-  // }, [])
-
   return (
     <section className='notifier'>
       <div className='notifier__title'>

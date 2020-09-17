@@ -35,9 +35,3 @@ const Modal = ({ onRequestClose, title, coordinates }) => {
 };
 
 export default Modal;
-
-/*
-				<button type='button' onClick={onRequestClose}>
-					Close
-				</button>
-*/

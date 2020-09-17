@@ -4,12 +4,10 @@ import { getBudgetById, saveBudget, deleteBudget, getQuotationsByBudgetId } from
 
 export function loadQuotationsByBudgetId(_projectId, _userId) { 
   return function (dispatch) {
-  // console.log('loadBudgetsByProjectId action called with ', _projectId, _userId);
   dispatch(beginApiCall());
   
   return getQuotationsByBudgetId(_projectId, _userId)
     .then(response => {
-      // console.log('loadBudgetsByProjectId: data received from api into action, and ready for dispatch', response.data);
       dispatch({ type: ACTION_TYPES.BUDGET.LOAD_BUDGET_INFO_SUCCESS });
       dispatch({
         type: ACTION_TYPES.BUDGET.LOAD_BUDGET_INFO,
@@ -73,9 +71,3 @@ export function deleteBudgetOptimistic(project_id) {
     return deleteBudget(project_id);
   };
 }
-
-/* || pending ||
-ACTION_TYPES.BUDGET.CALCULATE_BUDGET
-*/
-
-

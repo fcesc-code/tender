@@ -1,10 +1,5 @@
-// import configureMockStore from 'redux-mock-store';
-// import thunk from 'redux-thunk';
 import { saveCurrentUser, removeCurrentUser, existCurrentUser } from './userActions';
 import ACTION_TYPES from './ACTION_TYPES';
-
-// const middlewares = [thunk];
-// const mockStore = configureMockStore(middlewares);
 
 describe('USER ACTIONS - REDUX - Test set', () => {
 
@@ -24,25 +19,6 @@ describe('USER ACTIONS - REDUX - Test set', () => {
 
     expect(testResult).toEqual(expectedResult);
   });
-
-  // it('ESTE Should call existCurrentUser function with following arguments: userId', () => {
-  //   const USER_TYPE = { type: 'recurrent' };
-
-  //   const testAction = {
-  //       type: ACTION_TYPES.USER.EXIST_CURRENT_USER,
-  //       payload: USER_TYPE
-  //   };
-
-  //   const store = mockStore();
-
-  //   return store.dispatch(testAction).then(() => {
-  //     const actions = store.getActions() 
-  //     console.log('WOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOW', actions);
-  //     expect(actions).toEqual(testAction)
-  //   })
-
-    
-  // });
 
   it('Should call existCurrentUser function with following arguments: userId', async () => {
     const userId = 'auth0|5f53d71242e345006db2cc02';

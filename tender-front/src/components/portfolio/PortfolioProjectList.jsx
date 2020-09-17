@@ -6,7 +6,6 @@ import { loadProjectsByUserId } from '../../redux/actions/portfolioActions';
 import Spinner from '../common/Spinner';
 
 function PortfolioProjectList( { dispatch, projects, userId } ) {
-  // console.log('%cSHOW PROPS', 'color: gray', projects);
   const [ statusFilters, setStatusFilters ] = useState([]);
 
   useEffect(()=>{

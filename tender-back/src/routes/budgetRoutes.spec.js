@@ -63,5 +63,5 @@ describe('BUDGET ROUTES test set', () => {
     request(mockServer)
       .get(`${ROOT_ROUTES}/invalidId`)
       .expect(404)
-  }); // falla, debería parar en el .all si es inválido y no continuar, revisar
+  }); 
 });

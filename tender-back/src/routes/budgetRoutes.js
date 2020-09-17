@@ -19,18 +19,15 @@ function router(collection){
     .get(listByProjectMethods(collection).getListByProject);
 
   budgetRoutes
-    .all('/:budgetId', (req, res, next)=>{
-      const query = { '_id': ObjectID(req.params.budgetId) };
-      // console.log('calling with query', query);
-      (async function returnList(){
-        try {
-          const data = await db(collection).findToArray(query);
-          req.data = data;
-          next();
-        } catch (error) {
-          res.send(error);
-        }
-      })();
+    .all('/:budgetId', async (req, res, next)=>{
+      try {
+        const query = { '_id': ObjectID(req.params.budgetId) };
+        const data = await db(collection).findToArray(query);
+        req.data = data;
+        next();
+      } catch (error) {
+        res.send(error);
+      }
     })
 
   budgetRoutes

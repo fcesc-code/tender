@@ -8,45 +8,6 @@ const db = require('../modules/modules.js');
 function router(collection){
   const projectRoutes = express.Router();
 
-  // projectRoutes
-  //   .all('/:itemId', (req, res, next) => {
-  //     Model.findById(req.params.itemId, (error, item) =>{
-  //       if (error) { res.send(error) }
-  //       if (item) {
-  //         req.item = item;
-  //         next();
-  //       } else {
-  //         res.sendStatus(404);
-  //       }
-  //     })
-  //   });
-
-  // projectRoutes
-  //   .route('/:itemId')
-  //   .patch(itemMethods(collection).updateMany)
-  //   .delete(itemMethods(collection).remove)
-  //   .get(itemMethods(collection).readOne);
-
-  // projectRoutes
-  //   .route('byUser/')
-  //   .post(listMethods(collection).create)
-  //   .get(listMethods(collection).getList);
-
-  // projectRoutes
-  //   .all('byUser/:userId', (req, res, next) => {
-  //     console.log('ENTERING ALL');
-  //     Model.findById(req.params.userId, (error, user) =>{
-  //       if (error) { res.send(error) }
-  //       if (user) {
-  //         req.user = user;
-  //         console.log('HERE REQUEST FROM ALL', req);
-  //         next();
-  //       } else {
-  //         res.sendStatus(404);
-  //       }
-  //     })
-  //   });
-
   projectRoutes
     .route('/byUser/:userId')
     .get(listByUserMethods(collection).getListByUser);
@@ -60,18 +21,15 @@ function router(collection){
     .get(listByUserMethods(collection).getFlowByUser);
 
   projectRoutes
-    .all('/:projectId', (req, res, next)=>{
-      const query = { '_id': ObjectID(req.params.projectId) };
-      // console.log('calling with query', query);
-      (async function returnList(){
-        try {
-          const data = await db(collection).findToArray(query);
-          req.data = data;
-          next();
-        } catch (error) {
-          res.send(error);
-        }
-      })();
+    .all('/:projectId', async (req, res, next)=>{
+      try {
+        const query = { '_id': ObjectID(req.params.projectId) };
+        const data = await db(collection).findToArray(query);
+        req.data = data;
+        next();
+      } catch (error) {
+        res.send(error);
+      }
     })
 
   projectRoutes

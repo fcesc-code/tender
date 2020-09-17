@@ -16,17 +16,14 @@ function router(collection){
 
   quotationRoutes
     .all('/:quotationId', (req, res, next)=>{
-      const query = { '_id': ObjectID(req.params.quotationId) };
-      // console.log('calling with query', query);
-      (async function returnList(){
-        try {
-          const data = await db(collection).findToArray(query);
-          req.data = data;
-          next();
-        } catch (error) {
-          res.send(error);
-        }
-      })();
+      try {
+        const query = { '_id': ObjectID(req.params.quotationId) };
+        const data = await db(collection).findToArray(query);
+        req.data = data;
+        next();
+      } catch (error) {
+        res.send(error);
+      }
     })
 
   quotationRoutes

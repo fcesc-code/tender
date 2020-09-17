@@ -1,8 +1,6 @@
 import { loadPortfolioFlowByUserId, loadProjectsByUserId } from './portfolioActions';
 import ACTION_TYPES from './ACTION_TYPES';
 
-// jest.mock('../../api/api');
-
 describe('PORTFOLIO ACTIONS - REDUX - Test set', () => {
 
   describe('LOAD PORTFOLIO FLOW BY USER ID method test set', () => {

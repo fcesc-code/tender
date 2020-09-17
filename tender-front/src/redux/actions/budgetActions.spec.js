@@ -106,14 +106,4 @@ describe('API STATUS ACTIONS - REDUX - Test set', () => {
 
   })
 
-  // it('Should return an action type of ERROR_API_CALL when method apiCallError is called', () => {
-  //   const testAction = { type: ACTION_TYPES.API.ERROR_API_CALL };
-
-  //   const testResult = saveBudget();
-
-  //   expect(testResult).toEqual(testAction);
-  // });
-
-  // TESTEAR ERRORES DE CADA MÉTODO
-
 })

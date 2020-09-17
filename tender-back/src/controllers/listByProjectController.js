@@ -1,7 +1,7 @@
 const db = require('../modules/modules.js');
 
 function listByProjectMethods(collection){
-  async function getListByProject (req, res) { // this works
+  async function getListByProject (req, res) { 
     try {
       const query = { 'project_id': req.params.projectId };
       const data = await db(collection).findToArray(query);

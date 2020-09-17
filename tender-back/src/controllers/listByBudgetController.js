@@ -1,7 +1,7 @@
 const db = require('../modules/modules.js');
 
 function listByBudgetMethods(collection){
-  async function getListByBudget (req, res) { // this works
+  async function getListByBudget (req, res) { 
     try {
       const query = { 'budget_id': req.params.budgetId };
       const data = await db(collection).findToArray(query);

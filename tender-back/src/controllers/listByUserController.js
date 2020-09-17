@@ -3,7 +3,7 @@ const debug = require('debug')('server:listByUserController.js');
 const orderEventsFlow = require('./../utils/orderEventsFlow');
 
 function listByUserMethods(collection){
-  async function getListByUser (req, res) { // this works
+  async function getListByUser (req, res) { 
     try {
       const query = { 'clearance.user_id': req.params.userId };
       const data = await db(collection).findToArray(query);
