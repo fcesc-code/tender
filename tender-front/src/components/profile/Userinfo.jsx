@@ -11,8 +11,6 @@ function Userinfo({ user }) {
   const [ userOrganizationNick, setUserOrganizationNick ] = useState('');
   const [ editableForm, setEditableForm ] = useState( false );
 
-  console.log('HERE HERE, ', userOrganizationName, userOrganizationNick, userOrganizationRole);
-
   return (
     <section className='userDataForm'>
       <h3>Edit your user data:</h3>
