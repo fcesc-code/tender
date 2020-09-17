@@ -10,9 +10,6 @@ function PortfolioInfo({ projects }) {
   const [ appliedFilter, setAppliedFilter ] = useState(false);
   const MOCK_FILTER = ['ongoing', 'planned', 'closed'];
 
-  console.log('applied filter', appliedFilter);
-  console.log('dropdown status', dropdownStatus);
-
   function displayInfo(){
   return ( Object.keys(projects).length !== 0 && projects.constructor === Object ) ? 
     (

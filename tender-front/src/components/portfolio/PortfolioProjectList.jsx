@@ -21,8 +21,6 @@ function PortfolioProjectList( { dispatch, projects, userId } ) {
     }
   }, [ projects ])
 
-  console.log('HERE HERE STATUS FILTERS', statusFilters);
-
   return (
     ( Object.keys(projects).length === 0 && projects.constructor === Object ) ? (<Spinner/>) : (
       <div className="portfolioProjectList__container">

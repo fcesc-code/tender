@@ -76,7 +76,6 @@ function DonutChart() {
 
   return(
     <div className='chart__container'>
-      <h2>Donut chart!</h2>
       <div className='charts chart1' ref={svgRef}>
       </div>
     </div>

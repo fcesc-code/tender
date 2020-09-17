@@ -15,7 +15,7 @@ function router(collection){
     .get(listByBudgetMethods(collection).getListByBudget);
 
   quotationRoutes
-    .all('/:quotationId', (req, res, next)=>{
+    .all('/:quotationId', async (req, res, next)=>{
       try {
         const query = { '_id': ObjectID(req.params.quotationId) };
         const data = await db(collection).findToArray(query);
