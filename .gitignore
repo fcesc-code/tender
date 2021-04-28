@@ -101,10 +101,6 @@ firebaseinit.js
 *.xcf
 
 #config files
-*_CONFIG.*
-*_config.*
-*.CONFIG.*
-*.config.*
 *SECRET*.*
 *secret*.*
 *KEYS*.*
