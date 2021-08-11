@@ -1,5 +1,5 @@
-import React from 'react';
-import DonutChart from '../graphics/DonutChart';
+import React from "react";
+import DonutChart from "../graphics/DonutChart.jsx";
 
 function ProjectBoard() {
   return (

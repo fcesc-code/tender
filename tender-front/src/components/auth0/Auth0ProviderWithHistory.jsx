@@ -1,11 +1,10 @@
-import React from 'react';
-import { useHistory } from 'react-router-dom';
-import { Auth0Provider } from '@auth0/auth0-react';
-import CONNECTION_CONFIG from './../../auth0/CONNECTION_CONFIG';
+import React from "react";
+import { useHistory } from "react-router-dom";
+import { Auth0Provider } from "@auth0/auth0-react";
+import CONNECTION_CONFIG from "./CONNECTION_CONFIG";
 
 const Auth0ProviderWithHistory = ({ children }) => {
-  const domain = CONNECTION_CONFIG.domain;
-  const clientId = CONNECTION_CONFIG.clientId;
+  const { domain, clientId } = CONNECTION_CONFIG;
 
   const history = useHistory();
 

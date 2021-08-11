@@ -1,7 +1,10 @@
-import ACTION_TYPES from './../actions/ACTION_TYPES';
-import REDUCERS_INITIAL_STATE from './REDUCERS_INITIAL_STATE';
+import ACTION_TYPES from "../actions/ACTION_TYPES";
+import REDUCERS_INITIAL_STATE from "./REDUCERS_INITIAL_STATE";
 
-export default function projectReducer(state = REDUCERS_INITIAL_STATE.project, action = ACTION_TYPES.DEFAULT) {
+export default function projectReducer(
+  state = REDUCERS_INITIAL_STATE.project,
+  action = ACTION_TYPES.DEFAULT
+) {
   switch (action.type) {
     case ACTION_TYPES.PROJECT.CREATE_PROJECT:
       return { ...state, itemBeingCreated: action.payload };

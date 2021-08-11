@@ -1,14 +1,13 @@
-import ACTION_TYPES from './../actions/ACTION_TYPES';
-import projectReducer from './projectReducer';
+import ACTION_TYPES from "../actions/ACTION_TYPES";
+import projectReducer from "./projectReducer";
 
-describe('PROJECT REDUCER test set', ()=>{
-  
-  it('Should add calculated data into state when CALCULATE_PROJECT action type is called', ()=>{
+describe("PROJECT REDUCER test set", () => {
+  it("Should add calculated data into state when CALCULATE_PROJECT action type is called", () => {
     const initialState = {};
     const testAction = {
       type: ACTION_TYPES.PROJECT.CALCULATE_PROJECT,
-      payload: { data: 'someReallyBigData' }
-    }
+      payload: { data: "someReallyBigData" },
+    };
 
     const testResult = projectReducer(initialState, testAction);
 
@@ -16,12 +15,12 @@ describe('PROJECT REDUCER test set', ()=>{
     expect(Object.keys(testResult).length).toEqual(1);
   });
 
-  it('Should add flow data into state when LOAD_PROJECT_FLOW action type is called', ()=>{
+  it("Should add flow data into state when LOAD_PROJECT_FLOW action type is called", () => {
     const initialState = {};
     const testAction = {
       type: ACTION_TYPES.PROJECT.LOAD_PROJECT_FLOW,
-      payload: { data: 'someReallyBigData' }
-    }
+      payload: { data: "someReallyBigData" },
+    };
 
     const testResult = projectReducer(initialState, testAction);
 
@@ -29,12 +28,12 @@ describe('PROJECT REDUCER test set', ()=>{
     expect(Object.keys(testResult).length).toEqual(1);
   });
 
-  it('Should add data into state when LOAD_PROJECT_INFO action type is called', ()=>{
+  it("Should add data into state when LOAD_PROJECT_INFO action type is called", () => {
     const initialState = {};
     const testAction = {
       type: ACTION_TYPES.PROJECT.LOAD_PROJECT_INFO,
-      payload: { data: 'someReallyBigData' }
-    }
+      payload: { data: "someReallyBigData" },
+    };
 
     const testResult = projectReducer(initialState, testAction);
 
@@ -42,12 +41,12 @@ describe('PROJECT REDUCER test set', ()=>{
     expect(Object.keys(testResult).length).toEqual(1);
   });
 
-  it('Should add data into current property of state when LOAD_PROJECT_BYSLUG action type is called', ()=>{
+  it("Should add data into current property of state when LOAD_PROJECT_BYSLUG action type is called", () => {
     const initialState = {};
     const testAction = {
       type: ACTION_TYPES.PROJECT.LOAD_PROJECT_BYSLUG,
-      payload: { data: 'someReallyBigData' }
-    }
+      payload: { data: "someReallyBigData" },
+    };
 
     const testResult = projectReducer(initialState, testAction);
 
@@ -55,12 +54,12 @@ describe('PROJECT REDUCER test set', ()=>{
     expect(Object.keys(testResult).length).toEqual(1);
   });
 
-  it('Should add data into current property of state when UPDATE_PROJECT action type is called', ()=>{
+  it("Should add data into current property of state when UPDATE_PROJECT action type is called", () => {
     const initialState = {};
     const testAction = {
       type: ACTION_TYPES.PROJECT.UPDATE_PROJECT,
-      payload: { data: 'someReallyBigData' }
-    }
+      payload: { data: "someReallyBigData" },
+    };
 
     const testResult = projectReducer(initialState, testAction);
 
@@ -68,12 +67,12 @@ describe('PROJECT REDUCER test set', ()=>{
     expect(Object.keys(testResult).length).toEqual(1);
   });
 
-  it('Should add data into itemBeingCreated property of state when CREATE_PROJECT action type is called', ()=>{
+  it("Should add data into itemBeingCreated property of state when CREATE_PROJECT action type is called", () => {
     const initialState = {};
     const testAction = {
       type: ACTION_TYPES.PROJECT.CREATE_PROJECT,
-      payload: { data: 'someReallyBigData' }
-    }
+      payload: { data: "someReallyBigData" },
+    };
 
     const testResult = projectReducer(initialState, testAction);
 
@@ -81,19 +80,19 @@ describe('PROJECT REDUCER test set', ()=>{
     expect(Object.keys(testResult).length).toEqual(1);
   });
 
-  it('Should return previous state when DELETE_PROJECT action type is called', ()=>{
+  it("Should return previous state when DELETE_PROJECT action type is called", () => {
     const initialState = {};
     const testAction = {
       type: ACTION_TYPES.PROJECT.DELETE_PROJECT,
-      payload: { data: 'someReallyBigData' }
-    }
+      payload: { data: "someReallyBigData" },
+    };
 
     const testResult = projectReducer(initialState, testAction);
 
     expect(testResult).toEqual(initialState);
   });
 
-  it('Should return previous state when no action is given', ()=>{
+  it("Should return previous state when no action is given", () => {
     const initialState = {};
 
     const testResult = projectReducer(initialState);
@@ -101,7 +100,7 @@ describe('PROJECT REDUCER test set', ()=>{
     expect(testResult).toEqual(initialState);
   });
 
-  it('Should provide a default initial state at first run if it is not provided', ()=>{
+  it("Should provide a default initial state at first run if it is not provided", () => {
     const testResult = projectReducer();
 
     expect(Object.keys(testResult).length).toEqual(4);
@@ -115,5 +114,4 @@ describe('PROJECT REDUCER test set', ()=>{
     expect(testResult.current).not.toBe(undefined);
     expect(testResult.current.constructor === Object).toBe(true);
   });
-
-})
+});
