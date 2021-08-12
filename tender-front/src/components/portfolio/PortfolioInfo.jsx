@@ -8,7 +8,7 @@ import Dropdown from "../common/Dropdown.jsx";
 
 function PortfolioInfo({ projects }) {
   const [dropdownStatus, setDropdownStatus] = useState(false);
-  const [appliedFilter, setAppliedFilter] = useState(false);
+  const [setAppliedFilter] = useState(false);
   const MOCK_FILTER = ["ongoing", "planned", "closed"];
 
   function displayInfo() {

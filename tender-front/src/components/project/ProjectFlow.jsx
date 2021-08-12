@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import CustomTimeLine from "../common/CustomTimeLine.jsx";
 import { loadProjectFlowByUserId } from "../../redux/actions/projectActions";
 import "./projectFlow.sass";
@@ -11,7 +12,7 @@ function ProjectFlow({ dispatch, flow, userId }) {
     if (flow === undefined && userId !== undefined) {
       dispatch(loadProjectFlowByUserId(userId));
     }
-  }, [userId]);
+  }, [userId]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return flow === undefined ? (
     <Spinner />
@@ -35,5 +36,11 @@ function mapStateToProps(state) {
     userId: state.user.uid,
   };
 }
+
+ProjectFlow.propTypes = {
+  dispatch: PropTypes.any,
+  flow: PropTypes.any,
+  userId: PropTypes.string,
+};
 
 export default connect(mapStateToProps)(ProjectFlow);

@@ -20,7 +20,7 @@ function Project({ dispatch, userId }) {
     if (urlSlug !== undefined) {
       dispatch(loadProjectBySlug(urlSlug, userId));
     }
-  }, [urlSlug]);
+  }, [urlSlug]); // eslint-disable-line react-hooks/exhaustive-deps
 
   function renderCurrentTab() {
     if (view === "all") {

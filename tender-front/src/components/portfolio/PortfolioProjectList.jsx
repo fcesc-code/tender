@@ -7,13 +7,13 @@ import { loadProjectsByUserId } from "../../redux/actions/portfolioActions";
 import Spinner from "../common/Spinner.jsx";
 
 function PortfolioProjectList({ dispatch, projects, userId }) {
-  const [statusFilters, setStatusFilters] = useState([]);
+  const [setStatusFilters] = useState([]);
 
   useEffect(() => {
     if (Object.keys(projects).length === 0 && projects.constructor === Object) {
       dispatch(loadProjectsByUserId(userId));
     }
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     if (Object.keys(projects).length !== 0) {
@@ -22,7 +22,7 @@ function PortfolioProjectList({ dispatch, projects, userId }) {
         .filter((v, i, a) => a.indexOf(v) === i);
       setStatusFilters(filterOptions);
     }
-  }, [projects]);
+  }, [projects]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return Object.keys(projects).length === 0 &&
     projects.constructor === Object ? (

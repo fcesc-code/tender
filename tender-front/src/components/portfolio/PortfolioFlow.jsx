@@ -12,7 +12,7 @@ function PortfolioFlow({ dispatch, flow, userId }) {
     if (flow === undefined && userId !== undefined) {
       dispatch(loadPortfolioFlowByUserId(userId));
     }
-  }, [userId]);
+  }, [userId]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return flow === undefined ? (
     <Spinner />

@@ -15,7 +15,7 @@ function ProjectBudgetTab({ dispatch, userId, budgets, projectId, view }) {
     ) {
       dispatch(loadBudgetsByProjectId(projectId, userId));
     }
-  }, [userId, projectId]);
+  }, [userId, projectId]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return Object.keys(budgets).length === 0 && budgets.constructor === Object ? (
     <Spinner />

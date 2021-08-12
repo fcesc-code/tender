@@ -9,9 +9,9 @@ function Userinfo({ user }) {
   const [updatedAt] = useState(
     formatDate(user.updated_at, { time: true, date: "long" })
   );
-  const [userOrganizationName, setUserOrganizationName] = useState("");
-  const [userOrganizationRole, setUserOrganizationRole] = useState("");
-  const [userOrganizationNick, setUserOrganizationNick] = useState("");
+  const [setUserOrganizationName] = useState("");
+  const [setUserOrganizationRole] = useState("");
+  const [setUserOrganizationNick] = useState("");
   const [editableForm, setEditableForm] = useState(false);
 
   return (

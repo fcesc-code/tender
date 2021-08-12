@@ -9,13 +9,13 @@ import {
 function Map({ coordinates }) {
   const [url, setUrl] = useState("");
 
-  function urlBuilder() {
-    return `${API_MAPS_EMBED.protocol}${API_MAPS_EMBED.host}${API_MAPS_EMBED.api}${API_MAPS_EMBED.mode}${API_MAPS_EMBED.keyPrefix}${API_MAPS_EMBED_KEY}${API_MAPS_EMBED.queryPrefix}${coordinates}`;
-  }
-
   useEffect(() => {
+    function urlBuilder() {
+      return `${API_MAPS_EMBED.protocol}${API_MAPS_EMBED.host}${API_MAPS_EMBED.api}${API_MAPS_EMBED.mode}${API_MAPS_EMBED.keyPrefix}${API_MAPS_EMBED_KEY}${API_MAPS_EMBED.queryPrefix}${coordinates}`;
+    }
+
     setUrl(urlBuilder());
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <React.Fragment>
