@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import CloseIcon from "@material-ui/icons/Close";
+import PropTypes from "prop-types";
 import Map from "./Map.jsx";
 import "./modal.sass";
 
@@ -35,6 +36,12 @@ const Modal = ({ onRequestClose, title, coordinates }) => {
       </div>
     </div>
   );
+};
+
+Modal.propTypes = {
+  onRequestClose: PropTypes.bool,
+  title: PropTypes.string,
+  coordinates: PropTypes.object,
 };
 
 export default Modal;

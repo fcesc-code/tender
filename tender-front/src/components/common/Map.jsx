@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./map.sass";
+import PropTypes from "prop-types";
 import {
   API_MAPS_EMBED,
   API_MAPS_EMBED_KEY,
@@ -30,5 +31,9 @@ function Map({ coordinates }) {
     </React.Fragment>
   );
 }
+
+Map.propTypes = {
+  coordinates: PropTypes.object,
+};
 
 export default Map;
