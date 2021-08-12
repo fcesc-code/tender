@@ -6,7 +6,7 @@ import LogoutButton from "../welcome/LogoutButton.jsx";
 import "./nav.sass";
 
 function Nav() {
-  const [menu] = useState(ROUTES.ROUTES.filter((route) => route.nav));
+  const [menu] = useState(ROUTES.BASE_ROUTES.filter((route) => route.nav));
   const { isAuthenticated } = useAuth0();
 
   function getMenu() {
