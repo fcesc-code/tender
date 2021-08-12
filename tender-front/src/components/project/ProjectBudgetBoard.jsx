@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import "./projectBudgetBoard.sass";
 import Spinner from "../common/Spinner.jsx";
 
@@ -147,5 +148,9 @@ function mapStateToProps(state, { view }) {
     budget: selectedBudget,
   };
 }
+
+ProjectBudgetBoard.propTypes = {
+  budget: PropTypes.any,
+};
 
 export default connect(mapStateToProps)(ProjectBudgetBoard);

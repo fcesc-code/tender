@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import "./userinfo.sass";
 import formatDate from "../../tools/formatDate";
 
@@ -23,7 +24,7 @@ function Userinfo({ user }) {
               <img
                 className="formPicture"
                 src={user.picture}
-                alt={`Avatar picture of ${user.name}`}
+                alt={`Avatar of ${user.name}`}
               />
             </div>
             <div className="formSection">
@@ -154,5 +155,9 @@ function Userinfo({ user }) {
     </section>
   );
 }
+
+Userinfo.propTypes = {
+  user: PropTypes.object,
+};
 
 export default Userinfo;

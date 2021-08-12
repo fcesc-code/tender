@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 import "./portfolioProjectItem.sass";
 import PlaceIcon from "@material-ui/icons/Place";
 import Modal from "../common/Modal.jsx";
@@ -70,6 +71,10 @@ function PortfolioProjectItem(props) {
     </li>
   );
 }
+
+PortfolioProjectItem.propTypes = {
+  project: PropTypes.any,
+};
 
 export default PortfolioProjectItem;
 

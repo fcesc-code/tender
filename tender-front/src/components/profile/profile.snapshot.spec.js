@@ -1,11 +1,11 @@
-import React from 'react';
-import renderer from 'react-test-renderer';
-import Profile from './Profile';
+import React from "react";
+import renderer from "react-test-renderer";
+import Profile from "./Profile.jsx";
 
 const tree = renderer.create(<Profile />).toJSON();
 
-describe('Profile component snapshot', () => {
-    test('should match', () => {
-        expect(tree).toMatchSnapshot();
-    })
-})
+describe("Profile component snapshot", () => {
+  test("should match", () => {
+    expect(tree).toMatchSnapshot();
+  });
+});

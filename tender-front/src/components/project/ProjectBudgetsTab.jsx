@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import "./projectBudgetsTab.sass";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
+import PropTypes from "prop-types";
 import { loadBudgetsByProjectId } from "../../redux/actions/projectActions";
 import Spinner from "../common/Spinner.jsx";
 
@@ -49,5 +50,13 @@ function mapStateToProps(state) {
     projectId: state.project.current._id,
   };
 }
+
+ProjectBudgetTab.propTypes = {
+  dispatch: PropTypes.any,
+  userId: PropTypes.string,
+  budgets: PropTypes.any,
+  projectId: PropTypes.string,
+  view: PropTypes.any,
+};
 
 export default connect(mapStateToProps)(ProjectBudgetTab);

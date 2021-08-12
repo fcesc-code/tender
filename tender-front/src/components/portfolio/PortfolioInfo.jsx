@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import TuneIcon from "@material-ui/icons/Tune";
 import SortByAlphaIcon from "@material-ui/icons/SortByAlpha";
 import "./portfolioInfo.sass";
@@ -79,5 +80,9 @@ function mapStateToProps(state) {
     userId: state.user.uid,
   };
 }
+
+PortfolioInfo.propTypes = {
+  projects: PropTypes.any,
+};
 
 export default connect(mapStateToProps)(PortfolioInfo);

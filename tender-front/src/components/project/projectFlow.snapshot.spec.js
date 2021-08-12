@@ -1,11 +1,11 @@
-import React from 'react';
-import renderer from 'react-test-renderer';
-import ProjectFlow from './ProjectFlow';
+import React from "react";
+import renderer from "react-test-renderer";
+import ProjectFlow from "./ProjectFlow.jsx";
 
 const tree = renderer.create(<ProjectFlow />).toJSON();
 
-describe('ProjectFlow component snapshot', () => {
-    test('should match', () => {
-        expect(tree).toMatchSnapshot();
-    })
-})
+describe("ProjectFlow component snapshot", () => {
+  test("should match", () => {
+    expect(tree).toMatchSnapshot();
+  });
+});

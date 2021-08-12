@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import "./notifier.sass";
 import UpdatesListItem from "./UpdatesListItem.jsx";
 
@@ -44,5 +45,9 @@ function Notifier({ user }) {
     </section>
   );
 }
+
+Notifier.propTypes = {
+  user: PropTypes.object,
+};
 
 export default Notifier;

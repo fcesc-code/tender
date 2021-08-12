@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import CONNECTION_CONFIG from "../auth0/CONNECTION_CONFIG";
 import Userinfo from "./Userinfo.jsx";
 import Notifier from "./Notifier.jsx";
@@ -43,6 +44,10 @@ const Profile = ({ dispatch }) => {
       </div>
     )
   );
+};
+
+Profile.propTypes = {
+  dispatch: PropTypes.any,
 };
 
 export default connect()(Profile);

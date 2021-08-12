@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { useRouteMatch } from "react-router-dom";
+import PropTypes from "prop-types";
 import ProjectInfo from "./ProjectInfo.jsx";
 import ProjectFlow from "./ProjectFlow.jsx";
 import ProjectBudgetsTab from "./ProjectBudgetsTab.jsx";
@@ -56,5 +57,10 @@ function mapStateToProps(state) {
     userId: state.user.uid,
   };
 }
+
+Project.propTypes = {
+  dispatch: PropTypes.any,
+  userId: PropTypes.string,
+};
 
 export default connect(mapStateToProps)(Project);

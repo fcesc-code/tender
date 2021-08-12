@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import PortfolioProjectItem from "./PortfolioProjectItem.jsx";
 import "./portfolioProjectList.sass";
 import { loadProjectsByUserId } from "../../redux/actions/portfolioActions";
@@ -43,5 +44,11 @@ function mapStateToProps(state) {
     userId: state.user.uid,
   };
 }
+
+PortfolioProjectList.propTypes = {
+  dispatch: PropTypes.any,
+  userId: PropTypes.string,
+  projects: PropTypes.array,
+};
 
 export default connect(mapStateToProps)(PortfolioProjectList);
