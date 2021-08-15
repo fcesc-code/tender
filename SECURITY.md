@@ -6,7 +6,7 @@ The project is currently under development and is still in its version 0.0.0.
 
 | Version | Supported          |
 | ------- | ------------------ |
-| 1.0.0   | :v:                |
+| 1.0.0   | ✔️                |
 
 ## Reporting a Vulnerability
 
