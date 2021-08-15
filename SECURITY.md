@@ -2,11 +2,12 @@
 
 ## Supported Versions
 
-The project is currently under development and is still in its version 0.0.0. 
+The project is currently under development and is still in its version 1.0.0. 
 
 | Version | Supported          |
 | ------- | ------------------ |
 | 1.0.0   | ✔️                |
+| < 1.0.0 | ❌                |
 
 ## Reporting a Vulnerability
 
