@@ -36,6 +36,8 @@ Initial release: 0.1.0 31st August 2020
 - [MongoDB](https://www.mongodb.com)
 - [Joi](https://github.com/sideway/joi#readme)
 - [D3js](https://d3js.org/)
+- [Nodemon](https://nodemon.io/)
+- [Material UI](https://material-ui.com/)
 
 *Testing*
 - [Jest](https://jestjs.io/)
