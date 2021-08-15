@@ -13,44 +13,57 @@ Context: this prototype is being developed as a final project for Skylab bootcam
 
 ### Versions
 
+Current version: 1.0.0 16th September 2020. Latest updated 15th August 2021.
 Initial release: 0.1.0 31st August 2020
 
 ### Tech stack
 
-*Languages*
--Javascript
--Typescript
+*Languages and pseudolanguages*
+- Javascript
+- [Typescript](https://www.typescriptlang.org/)
+- [HTML](https://html.spec.whatwg.org/)
+- [sass](https://sass-lang.com/)
+- [YAML](https://yaml.org/) for GitHub Actions
+- [Markdown](https://daringfireball.net/projects/markdown/)
 
 *Core stack*
--React
--Express
--Node
--Redux
--Flux
--Passport
--MongoDB
--Joi
--D3js
+- [React](https://reactjs.org)
+- [Express](https://expressjs.com/)
+- [Node](https://nodejs.org)
+- [Redux](https://redux.js.org/)
+- [Passport](http://www.passportjs.org)
+- [Auth0](https://auth0.com/)
+- [MongoDB](https://www.mongodb.com)
+- [Joi](https://github.com/sideway/joi#readme)
+- [D3js](https://d3js.org/)
 
 *Testing*
--Jest
--Enzyme
--Mocha
--Sinon
--Chai
--Nyc
+- [Jest](https://jestjs.io/)
+- [Enzyme](https://enzymejs.github.io/enzyme/)
+- [Mocha](https://mochajs.org/)
+- [Sinon](https://sinonjs.org/)
+- [Chai](https://www.chaijs.com/)
+- [Nyc](https://istanbul.js.org/)
 
 *Code quality*
--Eslint
--Sonarqube
+- [Eslint](https://eslint.org/)
+- [Sonarqube](https://www.sonarqube.org/)
+- [CodeQL](https://codeql.github.com/) Automated GitHub workflow
+
+*Project management*
+- [GitHub](https://github.com/)
+- [GitHub Actions](https://github.com/features/actions) to automate actions
+- [VSC](https://code.visualstudio.com/) as code editor
+- [WLS](https://docs.microsoft.com/es-es/windows/wsl/) Windos subsystem for linux (ubuntu 20)
+- [Trello](https://trello.com/)
+- [Excalidraw](https://excalidraw.com/)
 
 ### Philosophy, frameworks & principles
 
--Agile
--Scrum
--SOLID principles
--TDD
--CI
+- [Agile](http://agilemanifesto.org/)
+- [Scrum](https://www.scrum.org/)
+- [SOLID](https://en.wikipedia.org/wiki/SOLID) principles
+- Continuous delivery
 
 ### Sprints & estimated releases
 
@@ -66,9 +79,9 @@ Initial release: 0.1.0 31st August 2020
 
 ### Author
 
-Francesc Brugarolas. Passionate about building meaningful things; phisically and, especially, in code.
+[Francesc Brugarolas](https://linkedin.com/in/francescbrugarolas). Passionate about building meaningful things; phisically and, especially, in code.
 
 ### Special thanks to
 
-@Gilberto Cao
+@[Gilberto Cao](https://linkedin.com/in/gilbecao)
 *skylab-bootcamp-202007* - Visit [Skylab](https://www.skylabcoders.com/es/)
