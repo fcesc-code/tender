@@ -51,7 +51,7 @@
 		"eslint": "^7.32.0",
 		"eslint-config-airbnb-base": "^14.2.1",
 		"eslint-config-prettier": "^6.15.0",
-		"mocha": "^8.4.0",
+		"mocha": "^10.1.0",
 		"nyc": "^15.1.0",
 		"prettier": "^2.3.2",
 		"sinon": "^9.2.4",
