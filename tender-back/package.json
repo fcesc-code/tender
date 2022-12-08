@@ -28,11 +28,11 @@
 	},
 	"license": "spanish intellectual property law @29th-August-2020",
 	"dependencies": {
-		"body-parser": "^1.19.0",
+		"body-parser": "^1.20.1",
 		"chalk": "^4.1.2",
 		"cors": "^2.8.5",
 		"debug": "^4.3.2",
-		"express": "^4.17.1",
+		"express": "^4.18.2",
 		"express-jwt": "^6.1.0",
 		"express-jwt-authz": "^2.4.1",
 		"joi": "^17.4.2",
